@@ -1,0 +1,66 @@
+%how to implement code
+%https://de.overleaf.com/learn/latex/Code_Highlighting_with_minted
+
+Im folgenden Kapitel sehen Sie, wie Sie Code in Latex einbinden können. Eine weitere Option wäre das Package listings. Zuerst sehen Sie ein Python-Beispiel.
+
+\begin{minted}{python}
+def addNum(list):
+    sum = 0
+    
+    for val in list:
+        sum = sum+val
+        
+    return sum
+\end{minted}
+
+Hier sehen Sie ein Java-Beispiel:
+
+\begin{minted}{java}
+public class Calculator {
+    public static int addNum(int[] list) {
+          int sum = 0;
+
+        for(int i = 0; i < list.length; i++) {
+            sum = sum + list[i];
+        }
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {1,2,3,4,5,6,7,8,9};
+        int sum = addNum(numbers);
+        System.out.printf("Sum: %d", sum);
+    }
+}
+\end{minted}
+
+
+Wenn Sie ihren Code referenzieren möchten, dann müssen Sie Listings nutzen. Dies geht auch zusammen mit minted. 
+
+\begin{listing}
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{java}
+    public class Example {
+        public static void main(String[] args) {
+            int[] array = {1, 5, 3, 2, 4};
+            
+            for (int i = 0; i < array.length; i++) {
+                System.out.println(array[i]);
+            }
+        }
+    }
+\end{minted}
+\caption{Array in Java}
+\label{java_example}
+\end{listing}
+\newpage
+
+In line~2 of listing \ref{java_example}, we can see that...
+
+%import code from file:
+%\inputminted{python}{src/example.py}

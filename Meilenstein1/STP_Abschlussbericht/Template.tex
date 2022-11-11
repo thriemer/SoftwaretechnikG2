@@ -1,0 +1,177 @@
+%--------------------------------------------------------------------------------------%--------------------------------------------------------------------------------------
+%
+%  Global settings, dont change it! (excapt additional \usepackage commands)
+%  Always use PDFLatex!
+%
+%--------------------------------------------------------------------------------------%--------------------------------------------------------------------------------------
+\documentclass[a4paper, 12pt, oneside, BCOR1cm,toc=chapterentrywithdots]{scrbook}
+
+\usepackage{graphicx}           % use for pdfLatex
+\usepackage{makeidx} % f\"{u}r Benutzung des Befehls \printindex
+\usepackage[colorlinks=false]{hyperref}
+\usepackage{tocbibind}
+\usepackage{blindtext}
+\usepackage{subfigure} 
+\usepackage{acronym}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{listings}
+
+\newenvironment{myreq}[1]{%
+\setlist[description]{font=\normalfont\color{darkgray}}%
+\begin{tcolorbox}[colframe=black,colback=white, sharp corners, boxrule=1pt]%
+\bfseries\color{blue}%
+\begin{description}#1}%
+{\end{description}\end{tcolorbox}}
+
+\newcommand{\threeinline}[3]{\begin{multicols}{3}#1 #2 #3\end{multicols}}
+\newcommand{\twoinline}[2]{\begin{multicols}{2}#1 #2\end{multicols}}
+
+\newcommand{\reqno}{\item[Requirement-ID:]}
+\newcommand{\reqtype}{\item[Requirement Type:]}
+\newcommand{\reqevent}{\item[Event:]}
+\newcommand{\reqdesc}{\item[Description:]}
+\newcommand{\reqrat}{\item[Rationale:]}
+\newcommand{\reqorig}{\item[Originator:]}
+\newcommand{\reqfit}{\item[Fit Criterion:]}
+\newcommand{\reqsatis}{\item[Customer Satisfaction:]}
+\newcommand{\reqdissat}{\item[Customer Dissatisfaction:]}
+\newcommand{\reqdep}{\item[Dependencies:]}
+\newcommand{\reqconf}{\item[Conflicts:]}
+\newcommand{\reqmater}{\item[Materials:]}
+\newcommand{\reqhist}{\item[History:]}
+
+
+
+
+\hypersetup{%
+bookmarksnumbered=true, hyperindex=true,
+%
+%Im Acrobat Reader Subtitel 1. Ebene anzeigen
+bookmarksopen=true, bookmarksopenlevel=1,
+%
+pdfborder=0 0 0 % Keine Box um die Links!
+}
+
+% --------------------------------------------------------------
+% Force Tables and List to be added in Table of Content
+% --------------------------------------------------------------
+
+\renewcommand*{\tableofcontents}{%
+  	\begingroup
+  	\tocsection
+  	\tocfile{\contentsname}{toc}
+  	\endgroup
+}
+\renewcommand*{\listoffigures}{%
+  	\begingroup
+  	\tocsection
+  	\tocfile{\listfigurename}{lof}
+  	\endgroup
+}
+\renewcommand{\listoftables}{
+	\begingroup
+	\tocsection
+	\tocfile{\listtablename}{lot}
+	\endgroup
+}
+\begin{document}
+
+%--------------------------------------------------------------------------------------%--------------------------------------------------------------------------------------
+%
+%  Here starts the userspace !
+%
+%--------------------------------------------------------------------------------------%--------------------------------------------------------------------------------------
+
+%--------titlepage
+\begin{titlepage}
+
+{
+    \begin{center}
+        \raisebox{-1ex}{\includegraphics[scale=1.5]{TU_Chemnitz_positiv_gruen.pdf}}\\
+    \end{center}
+    \vspace{0.5cm}
+}
+
+\begin{center}
+
+\LARGE{\textbf{Titel des Abschlussberichts}}\\
+\vspace{1cm}
+
+
+\Large{\textbf{Softwaretechnikpraktikum - Abschlussbericht}}\\ 
+\vspace{1cm}
+
+Fakultät für Informatik\\
+Professur Softwaretechnik
+\end{center}
+\vspace{3cm}
+Eingereicht von: Gruppe X (Mitglied 1, Mitglied 2...)\\
+Einreichungsdatum: 12.12.1212\\
+\vspace{0.3cm}\\
+Betreuerin: Prof. Dr. Janet Siegmund \\
+Betreuer: Dominik Gorgosch
+
+\end{titlepage}
+
+%---------------------------------------------------------
+% Table of Contents, List of figures, List of Tables
+%---------------------------------------------------------
+
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\renewcommand{\listfigurename}{Abbildungsverzeichnis}
+\renewcommand{\listtablename}{Tabellenverzeichnis}
+\renewcommand{\figurename}{Abbildung}
+\tableofcontents
+\listoffigures
+\listoftables
+
+%---------------------------------------------------------
+% Abkürzungsverzeichnis
+%---------------------------------------------------------
+\twocolumn
+\addchap{Abkürzungsverzeichnis}
+\begin{acronym}[Bash]
+ \acro{TUC}{TU Chemnitz}
+
+\end{acronym}
+
+\onecolumn
+%---------------------------------------------------------
+% Here starts the real work
+%---------------------------------------------------------
+
+\chapter{Einführung}
+\input{src/intro}  % Load Data from File intro.tex
+
+\chapter{Tabellen}
+\input{src/example_tables} % Load Data from File example_tables
+
+\chapter{Abbildungen}
+\input{src/example_figures} % Load Data from File example_figures
+
+\chapter{Codebeispiel}
+\input{src/example_code} % Load Data from File example_code
+
+\chapter{Abschnitte und Zitieren} % Load Data from File example_sections
+\input{src/example_sections}
+
+
+\chapter{Volere} % Load Data from File volere_template
+\input{src/volere_template}
+
+
+%---------------------------------------------------------
+% bibliography based on Springer Design
+%---------------------------------------------------------
+
+\bibliographystyle{splncs03}
+\renewcommand{\bibname}{Literaturverzeichnis}
+\bibliography{bibliography}
+
+\printindex
+
+\end{document}

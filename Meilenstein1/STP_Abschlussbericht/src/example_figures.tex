@@ -1,0 +1,20 @@
+% Example of, how to use figures
+
+Hier sehen Sie die Einbindung von Abbildungen/Grafiken/Bildern.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{TU_Chemnitz_positiv_gruen.pdf}
+\caption{Abbildung 1}
+\label{fig:pic0}
+\end{figure}
+
+Wenn Sie mehrere Bilder nebeneinander einfügen wollen, können Sie eine subfigure oder minipage nutzen.
+
+\begin{figure}[h]
+    \subfigure[Dies ist die erste Grafik]{\includegraphics[width=0.49\textwidth]{TU_Chemnitz_positiv_gruen.pdf} \label{fig:pic1}}
+    \subfigure[Dies ist die zweite Grafik]{\includegraphics[width=0.49\textwidth]{TU_Chemnitz_positiv_gruen.pdf}\label{fig:pic2}}
+\caption{Dies ist die Beschriftung der gesamten Grafik}
+\end{figure}
+
+Für die Referenzierung eines Bildes, nutzen Sie folgenden Befehl~\ref{fig:pic1}.
