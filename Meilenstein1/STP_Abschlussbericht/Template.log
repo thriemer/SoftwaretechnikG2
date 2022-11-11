@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  11 NOV 2022 15:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  11 NOV 2022 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -902,7 +902,7 @@ File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count359
 \l__pdf_internal_box=\box124
 )
-No file Template.aux.
+(./Template.aux)
 \openout1 = `Template.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
@@ -927,7 +927,7 @@ Package scrbase Info: activating english \contentsname on input line 81.
 Package scrbase Info: activating english \listfigurename on input line 81.
 Package scrbase Info: activating english \listtablename on input line 81.
 Package tocbasic Info: usage of `tocbibind' detected on input line 81.
-(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count360
 \scratchdimen=\dimen273
@@ -965,6 +965,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 81.
 LaTeX Info: Redefining \pageref on input line 81.
 LaTeX Info: Redefining \nameref on input line 81.
+
+(./Template.out) (./Template.out)
 \@outlinefile=\write6
 \openout6 = `Template.out'.
 
@@ -998,31 +1000,33 @@ Package pdftex.def Info: TU_Chemnitz_positiv_gruen.pdf  used on input line 94.
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./TU_Chemnitz_positiv_grue
-n.pdf>]
+n.pdf>] (./Template.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1.
+)
 \tf@toc=\write7
 \openout7 = `Template.toc'.
 
- [2
+
+[2
 
 
-]
-
-Package hyperref Warning: old lof file detected, not used; run LaTeX again.
-
+] (./Template.lof)
 \tf@lof=\write8
 \openout8 = `Template.lof'.
 
-[3
+ [3
 
 
-]
-
-Package hyperref Warning: old lot file detected, not used; run LaTeX again.
-
+] (./Template.lot)
 \tf@lot=\write9
 \openout9 = `Template.lot'.
 
-[4
+ [4
 
 
 ]
@@ -1042,14 +1046,6 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              a package that still implements the
 (scrbook)              deprecated \float@addtolist interface.
 
-
-LaTeX Warning: Hyper reference `acro:TUC' on page 5 undefined on input line 138
-.
-
-
-LaTeX Warning: Hyper reference `acro:TUC' on page 5 undefined on input line 138
-.
-
 [5
 
 
@@ -1060,27 +1056,13 @@ chapter 1.
 (./src/intro.tex
 Package acronym Info: Label `acro:TUC' newly defined as it shall be overridden
 although it is yet undefined on input line 2.
-
-
-Package acronym Warning: Acronym `TUC' is not defined on input line 2.
-
-
-Package acronym Warning: Acronym `TUC' is not defined on input line 2.
-
 ) [6
 
 
 
 ]
 chapter 2.
-(./src/example_tables.tex
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 6.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 6.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 6.
-) [7
+(./src/example_tables.tex) [7
 
 
 
@@ -1104,10 +1086,6 @@ File: TU_Chemnitz_positiv_gruen.pdf Graphic file (type pdf)
 <use TU_Chemnitz_positiv_gruen.pdf>
 Package pdftex.def Info: TU_Chemnitz_positiv_gruen.pdf  used on input line 16.
 (pdftex.def)             Requested size: 209.13013pt x 136.65427pt.
-
-
-LaTeX Warning: Reference `fig:pic1' on page 8 undefined on input line 20.
-
 ) [8
 
 
@@ -1243,11 +1221,7 @@ t line 58.
 [9
 
 
-]
-
-LaTeX Warning: Reference `java_example' on page 10 undefined on input line 63.
-
-) [10]
+]) [10]
 chapter 5.
 (./src/example_sections.tex
 
@@ -1264,40 +1238,46 @@ o-gram-mier-anf^^?angern [[]].
 
 ]
 chapter 6.
-(./src/volere_template.tex
+(./src/login_volere.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 []
  []
 
-)
+) (./src/aufgaben_volere.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--7
+[]
+ []
+
+) (./src/admin_volere.tex [12
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 7--7
+[]
+ []
+
+) (./src/auswertung_volere.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--7
+[]
+ []
+
+) [13]
 No file Template.bbl.
 No file Template.ind.
-[12
-
-
-] (./Template.aux)
+[14] (./Template.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Template.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Template.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `Template.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(rm Template.pyg)...disabled (restricted).
 
  ) 
 Here is how much of TeX's memory you used:
- 27113 strings out of 478238
- 528723 string characters out of 5850455
- 967955 words of memory out of 5000000
- 44889 multiletter control sequences out of 15000+600000
+ 27158 strings out of 478238
+ 529613 string characters out of 5850455
+ 976719 words of memory out of 5000000
+ 44911 multiletter control sequences out of 15000+600000
  475349 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,8n,106p,10603b,539s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1306,10 +1286,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 l12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on Template.pdf (12 pages, 145265 bytes).
+Output written on Template.pdf (14 pages, 149647 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
+ 209 PDF objects out of 1000 (max. 8388607)
+ 173 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
  130 words of extra memory for PDF output out of 10000 (max. 10000000)
 
