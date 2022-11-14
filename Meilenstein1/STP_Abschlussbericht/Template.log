@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  11 NOV 2022 16:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  14 NOV 2022 15:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1256,15 +1256,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--7
 []
  []
 
-) (./src/auswertung_volere.tex
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]
+ []
+
+
+Overfull \hbox (2.97162pt too wide) in paragraph at lines 26--26
+[]\OT1/cmr/bx/n/12 Aufgabenmetriken
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+[]\OT1/cmr/bx/n/12 Benutzermetriken
+ []
+
+
+Underfull \hbox (badness 4899) in paragraph at lines 47--48
+[]\OT1/cmr/bx/n/12 Als Lehrkraft m^^?ochte ich den Lern-fortschritt der
+ []
+
+[14] [15]) (./src/auswertung_volere.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 []
  []
 
-) [13]
+) [16]
 No file Template.bbl.
 No file Template.ind.
-[14] (./Template.aux)
+[17] (./Template.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1274,10 +1299,10 @@ runsystem(rm Template.pyg)...disabled (restricted).
 
  ) 
 Here is how much of TeX's memory you used:
- 27158 strings out of 478238
- 529613 string characters out of 5850455
- 976719 words of memory out of 5000000
- 44911 multiletter control sequences out of 15000+600000
+ 27169 strings out of 478238
+ 529772 string characters out of 5850455
+ 977719 words of memory out of 5000000
+ 44918 multiletter control sequences out of 15000+600000
  475349 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,8n,106p,10603b,539s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1286,10 +1311,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 l12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on Template.pdf (14 pages, 149647 bytes).
+Output written on Template.pdf (17 pages, 159396 bytes).
 PDF statistics:
- 209 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 226 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 138 words of extra memory for PDF output out of 10000 (max. 10000000)
 

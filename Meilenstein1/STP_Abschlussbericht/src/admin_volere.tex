@@ -1,20 +1,78 @@
 %Quelle: https://tex.stackexchange.com/questions/515525/how-to-make-a-custom-requirement-card-like-voleres
-
+\subsection{Anforderungen an das Administrationssystem}
 \begin{myreq}
   \threeinline
-    {\reqno 75}
+    {\reqno 314}
     {\reqtype Funktional}
-    {\reqevent -}
-  \reqdesc description text description text description text 
-  \reqrat some more text some more text some more text 
-  \reqorig other text other text other text 
-  \reqfit longer text that needs more than one line longer text that needs more than one line
+    {\reqevent Manipulieren von Aufgaben}
+  \reqdesc Es soll eine grafische Oberfläche zur Manipulation von Aufgaben geben.
+  \reqrat Als Lehrkraft möchte ich alle sieben Aufgabentypen anlegen, bearbeiten, speichern und löschen können.
+  \reqorig Lehrkraft
+  \reqfit Erfüllt, wenn man für jeden Aufgabentyp alle oben genannten Operationen ausführen kann.
   \twoinline
     {\reqsatis 5}
     {\reqdissat 3}
   \twoinline
-  {\reqdep some more text}
-  {\reqconf 111}
-  \reqmater other text other text other text 
-  \reqhist other text other text other text 
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 14.11.2022
 \end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno 315}
+    {\reqtype Funktional}
+    {\reqevent Aufgabenmetriken anschauen}
+  \reqdesc Es soll eine grafische Oberfläche geben, um akkumulierte Metriken zu bestimmten Aufgaben zu sehen.
+  \reqrat Als Lehrkraft möchte ich den Lernfortschritt der Gruppe einschätzen können und gegebenenfalls auf einzelne Aufgaben eingehen können.
+  \reqorig Lehrkraft
+  \reqfit Erfüllt, wenn man pro Aufgabe sieht, wie oft diese gelöst wurde und was die durchschnittliche Fehleranzahl ist.
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 14.11.2022
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno 316}
+    {\reqtype Funktional}
+    {\reqevent Benutzermetriken anschauen}
+  \reqdesc Es soll eine grafische Oberfläche geben, um akkumulierte und detaillierte Metriken zu ausgewählten Benutzern zu sehen.
+  \reqrat Als Lehrkraft möchte ich den Lernfortschritt der Einzelperson einschätzen können um gezielte Impulse geben zu können oder auf Aufgabenspezifische Fragen problemlos antworten zu können.
+  \reqorig Lehrkraft
+  \reqfit Erfüllt, wenn man Benutzer suchen kann und pro Benutzer sieht wie viele Aufgaben schon gelöst wurden und welche durchschnittliche Fehlerquote dieser hat. Zusätzlich soll man für jede gelöste Aufgabe noch die Punktzahl und Eingabe des Benutzers sehen.
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 14.11.2022
+\end{myreq}
+
+\begin{myreq}
+  \twoinline
+    {\reqno 317}
+    {\reqtype Nicht Funktional}
+    {\reqevent Intuitive Darstellung}
+  \reqdesc Die Benutzeroberfläche soll möglichst intuitiv angeordnet werden, um einen schnellen Einstieg in das Programm zu gewährleisten.
+  \reqrat Als Lehrkraft möchte ich mich auf das Lehren konzentrieren und nicht gegen ein Programm kämpfen.
+  \reqorig Lehrkraft
+  \reqfit Ein Test mit mehreren Personen wurde durchgeführt. Dabei wurden alle täglichen Use-Cases abgedeckt und validiert, dass bei der Navigation und Benutzung keine größeren Probleme aufgetreten sind.
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 14.11.2022
+\end{myreq}
+
