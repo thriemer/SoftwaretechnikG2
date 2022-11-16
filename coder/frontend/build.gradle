@@ -1,0 +1,11 @@
+plugins{
+    id 'base'
+    id 'com.github.node-gradle.node' version '3.4.0'
+}
+
+task copyDistFolder(type: Copy){
+    from "$rootDir/frontend/dist"
+    into "$rootDir/backend/src/main/resources/static/app"
+}
+
+copyDistFolder.dependsOn(npm_run_build)
