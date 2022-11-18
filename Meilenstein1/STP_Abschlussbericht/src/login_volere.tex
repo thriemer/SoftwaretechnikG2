@@ -1,20 +1,146 @@
-%Quelle: https://tex.stackexchange.com/questions/515525/how-to-make-a-custom-requirement-card-like-voleres
+\documentclass{article}
+
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+
+\newenvironment{myreq}[1]{%
+\setlist[description]{font=\normalfont\color{darkgray}}%
+\begin{tcolorbox}[colframe=black,colback=white, sharp corners, boxrule=1pt]%
+\bfseries\color{blue}%
+\begin{description}#1}%
+{\end{description}\end{tcolorbox}}
+
+\newcommand{\threeinline}[3]{\begin{multicols}{3}#1 #2 #3\end{multicols}}
+\newcommand{\twoinline}[2]{\begin{multicols}{2}#1 #2\end{multicols}}
+
+\newcommand{\reqno}{\item[Requirement \#:]}
+\newcommand{\reqtype}{\item[Requirement Type:]}
+\newcommand{\reqevent}{\item[Event/UC:]}
+\newcommand{\reqdesc}{\item[Description:]}
+\newcommand{\reqrat}{\item[Rationale:]}
+\newcommand{\reqorig}{\item[Originator:]}
+\newcommand{\reqfit}{\item[Fit Criterion:]}
+\newcommand{\reqsatis}{\item[Customer Satisfaction:]}
+\newcommand{\reqdissat}{\item[Customer Dissatisfaction:]}
+\newcommand{\reqdep}{\item[Dependencies:]}
+\newcommand{\reqconf}{\item[Conflicts:]}
+\newcommand{\reqmater}{\item[Materials:]}
+\newcommand{\reqhist}{\item[History:]}
+
+\begin{document}
+\begin{myreq}
+  \threeinline
+    {\reqno ?}
+    {\reqtype funktional}
+    {\reqevent Login}
+  \reqdesc Neue Nutzer sollen sich registrieren können.
+  \reqrat Die Erstellung eines Accounts ist notwendig, um nutzerspezifische Daten zuordnen zu können. 
+  \reqorig Kunde 
+  \reqfit Nutzername und Passwort wurden erfolgreich übermittelt und in einer Datenbank gespeichert.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt
+\end{myreq}
 
 \begin{myreq}
   \threeinline
-    {\reqno 75}
-    {\reqtype Funktional}
-    {\reqevent -}
-  \reqdesc description text description text description text 
-  \reqrat some more text some more text some more text 
-  \reqorig other text other text other text 
-  \reqfit longer text that needs more than one line longer text that needs more than one line
+    {\reqno ?}
+    {\reqtype funktional}
+    {\reqevent Login}
+  \reqdesc Bei falscher Eingabe der Logindaten soll der Nutzer aufgefordert werden Nutzername und Passwort erneut einzugeben.
+  \reqrat Falsche Eingaben dürfen nicht dazu führen, dass der Login trotzdem durchgeführt wird oder der Nutzer vom Login ausgeschlossen wird.
+  \reqorig  
+  \reqfit Die Eingabefelder für Nutzername und Passwort sind geleert und die Anwendung wartet auf erneute Eingabe dieser Daten.
   \twoinline
-    {\reqsatis 5}
+    {\reqsatis 1}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno ?}
+    {\reqtype n. funkt.}
+    {\reqevent Login}
+  \reqdesc Passwörter sollen verschlüsselt dargestellt werden.
+  \reqrat Passwörter sollen für Andere nicht sichtbar sein.
+  \reqorig  
+  \reqfit Die Zeichen des Passworts werden als "*" dargestellt.
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno ?}
+    {\reqtype funktional}
+    {\reqevent Login}
+  \reqdesc Man soll sich über einen Account anmelden können.
+  \reqrat Um die Aufgaben lösen zu können muss man sich davor anmelden können. Außerdem wird dadurch sichergestellt, dass man seine Aufgaben selbst löst.
+  \reqorig Kunde 
+  \reqfit Erfüllt, wenn man sich anmelden kann.
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno ?}
+    {\reqtype funktional}
+    {\reqevent Login}
+  \reqdesc Der Administrator soll die Möglichkeit haben, neue Accounts anzulegen und bestehende Accounts zu löschen.
+  \reqrat Als Administrator möchte ich für neue Studierende Accounts erstellen können und bestehende Accounts löschen können, wenn Studierende die Universität verlassen.
+  \reqorig Kunde 
+  \reqfit Erfüllt, wenn der Administrator Accounts erstellen und löschen kann.
+  \twoinline
+    {\reqsatis 4}
     {\reqdissat 3}
   \twoinline
-  {\reqdep some more text}
-  {\reqconf 111}
-  \reqmater other text other text other text 
-  \reqhist other text other text other text 
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt
 \end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno ?}
+    {\reqtype n. funkt.}
+    {\reqevent Login}
+  \reqdesc Die Benutzeroberfläche soll für eine unkomplizierte Nutzung intuitiv gestaltet sein.
+  \reqrat Als Nutzer möchte ich mich auf die Erstellung und Bearbeitung der Aufgaben konzentrieren und keine Probleme beim Anmelden haben.
+  \reqorig Kunde 
+  \reqfit Erfüllt, wenn bei einem Test von zehn Personen, die sich jeweils fünfmal anmelden sollen, kein Problem aufgetreten ist.
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt
+\end{myreq}
+\end{document}
