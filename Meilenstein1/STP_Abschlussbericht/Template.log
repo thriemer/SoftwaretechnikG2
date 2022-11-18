@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  18 NOV 2022 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  18 NOV 2022 16:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -902,7 +902,7 @@ File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count359
 \l__pdf_internal_box=\box124
 )
-(./Template.aux)
+No file Template.aux.
 \openout1 = `Template.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
@@ -927,7 +927,7 @@ Package scrbase Info: activating english \contentsname on input line 81.
 Package scrbase Info: activating english \listfigurename on input line 81.
 Package scrbase Info: activating english \listtablename on input line 81.
 Package tocbasic Info: usage of `tocbibind' detected on input line 81.
- (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count360
 \scratchdimen=\dimen273
@@ -965,8 +965,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 81.
 LaTeX Info: Redefining \pageref on input line 81.
 LaTeX Info: Redefining \nameref on input line 81.
-
-(./Template.out) (./Template.out)
 \@outlinefile=\write6
 \openout6 = `Template.out'.
 
@@ -1000,29 +998,21 @@ Package pdftex.def Info: TU_Chemnitz_positiv_gruen.pdf  used on input line 94.
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./TU_Chemnitz_positiv_grue
-n.pdf>] (./Template.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 1.
-)
+n.pdf>]
 \tf@toc=\write7
 \openout7 = `Template.toc'.
 
+ [2
 
-[2
 
-
-] (./Template.lof)
+]
 \tf@lof=\write8
 \openout8 = `Template.lof'.
 
  [3
 
 
-] (./Template.lot)
+]
 \tf@lot=\write9
 \openout9 = `Template.lot'.
 
@@ -1046,6 +1036,14 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              a package that still implements the
 (scrbook)              deprecated \float@addtolist interface.
 
+
+LaTeX Warning: Hyper reference `acro:TUC' on page 5 undefined on input line 138
+.
+
+
+LaTeX Warning: Hyper reference `acro:TUC' on page 5 undefined on input line 138
+.
+
 [5
 
 
@@ -1056,13 +1054,27 @@ chapter 1.
 (./src/intro.tex
 Package acronym Info: Label `acro:TUC' newly defined as it shall be overridden
 although it is yet undefined on input line 2.
+
+
+Package acronym Warning: Acronym `TUC' is not defined on input line 2.
+
+
+Package acronym Warning: Acronym `TUC' is not defined on input line 2.
+
 ) [6
 
 
 
 ]
 chapter 2.
-(./src/example_tables.tex) [7
+(./src/example_tables.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 6.
+) [7
 
 
 
@@ -1086,6 +1098,10 @@ File: TU_Chemnitz_positiv_gruen.pdf Graphic file (type pdf)
 <use TU_Chemnitz_positiv_gruen.pdf>
 Package pdftex.def Info: TU_Chemnitz_positiv_gruen.pdf  used on input line 16.
 (pdftex.def)             Requested size: 209.13013pt x 136.65427pt.
+
+
+LaTeX Warning: Reference `fig:pic1' on page 8 undefined on input line 20.
+
 ) [8
 
 
@@ -1221,7 +1237,11 @@ t line 58.
 [9
 
 
-]) [10]
+]
+
+LaTeX Warning: Reference `java_example' on page 10 undefined on input line 63.
+
+) [10]
 chapter 5.
 (./src/example_sections.tex
 
@@ -1239,82 +1259,397 @@ o-gram-mier-anf^^?angern [[]].
 ]
 chapter 6.
 (./src/login_volere.tex
-Underfull \hbox (badness 10000) in paragraph at lines 7--7
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \documentclass
+                  {article}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 \usepackage
+               {multicol}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 \usepackage
+               [dvipsnames]{xcolor}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 \usepackage
+               {enumitem}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \usepackage
+               {tcolorbox}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \myreq already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 {\end{description}\end{tcolorbox}}
+                                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \threeinline already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 ...egin{multicols}{3}#1 #2 #3\end{multicols}}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \twoinline already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...{\begin{multicols}{2}#1 #2\end{multicols}}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqno already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \newcommand{\reqno}{\item[Requirement \#:]}
+                                                
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqtype already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 ...ommand{\reqtype}{\item[Requirement Type:]}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqevent already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \newcommand{\reqevent}{\item[Event/UC:]}
+                                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqdesc already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \newcommand{\reqdesc}{\item[Description:]}
+                                               
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqrat already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \newcommand{\reqrat}{\item[Rationale:]}
+                                            
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqorig already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \newcommand{\reqorig}{\item[Originator:]}
+                                              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqfit already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.24 \newcommand{\reqfit}{\item[Fit Criterion:]}
+                                                
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqsatis already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.25 ...{\reqsatis}{\item[Customer Satisfaction:]}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqdissat already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 ...qdissat}{\item[Customer Dissatisfaction:]}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqdep already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 \newcommand{\reqdep}{\item[Dependencies:]}
+                                               
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqconf already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 \newcommand{\reqconf}{\item[Conflicts:]}
+                                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqmater already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.29 \newcommand{\reqmater}{\item[Materials:]}
+                                              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \reqhist already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 \newcommand{\reqhist}{\item[History:]}
+                                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 \begin{document}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
 []
  []
 
-) (./src/aufgaben_volere.tex
-Underfull \hbox (badness 10000) in paragraph at lines 7--7
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--44
+[]\OT1/cmr/bx/n/12 Nutzername und Pass-wort wur-den er-fol-gre-ich
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
 []
  []
 
-) (./src/admin_volere.tex [12
+
+Underfull \hbox (badness 6125) in paragraph at lines 57--58
+\OT1/cmr/bx/n/12 aufge-fordert wer-den Nutzer-name und Pass-wort erneut
+ []
+
+[12
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 7--7
-[]
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
+[]\OT1/cmr/bx/n/12 n.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--26
+Underfull \hbox (badness 10000) in paragraph at lines 94--94
 []
- []
-
-
-Overfull \hbox (2.97162pt too wide) in paragraph at lines 26--26
-[]\OT1/cmr/bx/n/12 Aufgabenmetriken
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 45--45
+Underfull \hbox (badness 10000) in paragraph at lines 113--113
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--45
-[]\OT1/cmr/bx/n/12 Benutzermetriken
+Underfull \hbox (badness 10000) in paragraph at lines 132--132
+[]\OT1/cmr/bx/n/12 n.
  []
 
 
-Underfull \hbox (badness 4899) in paragraph at lines 47--48
-[]\OT1/cmr/bx/n/12 Als Lehrkraft m^^?ochte ich den Lern-fortschritt der
+Underfull \hbox (badness 1092) in paragraph at lines 133--134
+[]\OT1/cmr/bx/n/12 Die Be-nutze-r-oberfl^^?ache soll f^^?ur eine un-kom-plizier
+te
  []
 
-[14] [15]) (./src/auswertung_volere.tex [16]
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
-[]\OT1/cmr/bx/n/12 Das sys-tem muss ver-schiedene Auf-gaben-typen
- []
-
-[17]) [18]
-No file Template.bbl.
-No file Template.ind.
-[19] (./Template.aux)
+[14] [15] (./Template.aux)
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `Template.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Template.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Template.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(rm Template.pyg)...disabled (restricted).
 
- ) 
+ ) )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 32 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 27173 strings out of 478238
- 529816 string characters out of 5850455
- 977719 words of memory out of 5000000
- 44920 multiletter control sequences out of 15000+600000
+ 27118 strings out of 478238
+ 528792 string characters out of 5850455
+ 974955 words of memory out of 5000000
+ 44893 multiletter control sequences out of 15000+600000
  475349 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,8n,106p,10603b,539s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-l12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on Template.pdf (19 pages, 162391 bytes).
+ 108i,8n,106p,10603b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsl12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+sbx10.pfb>
+Output written on Template.pdf (15 pages, 154133 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 130 words of extra memory for PDF output out of 10000 (max. 10000000)
 
