@@ -1,66 +1,99 @@
 %Quelle: https://tex.stackexchange.com/questions/515525/how-to-make-a-custom-requirement-card-like-voleres
 
-\begin{myreq}
-  
-    \reqno 75
-    \reqtype nicht  funktionale anforderungung
-    \reqevent 7.9
- 
-  \reqdesc Die Auswertungsdatein werden gesamelt.
-  \reqrat Die Benutzer können besser erfahren,welche fehler
-Sie gemacht haben.Das datenbank zeigt , wie viel Fehler
-Sie gemacht haben, und welche Aufgaben schwer oder einfach
-war.
-   
-  \reqorig 
-  \reqfit Achtzig prozent der lösungen zu den Aufgaben müssen gespeichert un angezeigt werden.
-  \twoinline
-    \reqsatis 5
-    \reqdissat 3
-  \reqdep 
-  \reqconf
-  \reqmater other text other text other text 
-  \reqhist 16.11.2022
-\end{myreq}
+\section*{Anforderungen an das Auswertungssystem}
 
+\subsection*{Funktionale Anforderungen}
 
 \begin{myreq}
-  
-    \reqno 75
-    \reqtype funktionale anforderungung
-    \reqevent 7.9
- 
-  \reqdesc Das system muss verschiedene Aufgabentypen auswerten.
+    \reqno 12
+    \reqtype Funktional
+    \reqevent Auswertung
+  \reqdesc Das System muss verschiedene Aufgabentypen auswerten.
   \reqrat Das Aufgabensystem besteht aus verschiedene Aufgabentypen,
-die Jeweils einen einen speyiellen regeln zur
-auswertung benotigen
-  \reqorig 
-  \reqfit Sieben verschiedenen Aufgabenarten mussen bewertet werden.
+die jeweils spezielle Regeln zur Auswertung benötigen.
+  \reqorig Kunde
+  \reqfit Sieben verschiedenen Aufgabenarten müssen bewertet werden.
   \twoinline
     \reqsatis 5
     \reqdissat 3
   \reqdep 
   \reqconf
-  \reqmater other text other text other text 
-  \reqhist 16.11.2022
+  \reqmater -
+  \reqhist 16.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
 
 \begin{myreq}
   
-    \reqno 75
-    \reqtype funktionale anforderungung
-    \reqevent 7.9
- 
-  \reqdesc das system muss Java und Python emulieren
-  \reqrat alle Aufgaben Arten im Aufgabesystemteil testen die
-Java und python kenntnisse fur den benutzer
-  \reqorig 
-  \reqfit mindestens eine Aufgabentyp,der mit java oder python geschrieben wurde, sollte auswerten werden.
+    \reqno 13
+    \reqtype Funktional
+    \reqevent Programmiersprachen
+  \reqdesc Das System muss Java und Python ausführen
+  \reqrat Alle Aufgaben Arten im Aufgabesystemteil testen die Java und Python Kenntnisse für den Benutzer.
+  \reqorig Kunde
+  \reqfit Mindestens ein Aufgabentyp,der mit Java oder Python geschrieben wurde, sollte ausgewertet werden.
   \twoinline
     \reqsatis 5
     \reqdissat 3
   \reqdep 
   \reqconf
-  \reqmater other text other text other text 
-  \reqhist 16.11.2022
+  \reqmater -
+  \reqhist 16.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno 14}
+    {\reqtype Funktional}
+    {\reqevent Aufgabenmetriken anschauen}
+  \reqdesc Es soll eine grafische Oberfläche geben, um akkumulierte Metriken zu bestimmten Aufgaben zu sehen.
+  \reqrat Als Kunde möchte ich den Lernfortschritt der Gruppe einschätzen können und gegebenenfalls auf einzelne Aufgaben eingehen können.
+  \reqorig Kunde
+  \reqfit Erfüllt, wenn man pro Aufgabe sieht, wie oft diese gelöst wurde und was die durchschnittliche Fehleranzahl ist.
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 2}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 14.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno 15}
+    {\reqtype Funktional}
+    {\reqevent Benutzermetriken anschauen}
+  \reqdesc Es soll eine grafische Oberfläche geben, um akkumulierte und detaillierte Metriken zu ausgewählten Benutzern zu sehen.
+  \reqrat Als Kunde möchte ich den Lernfortschritt der Einzelperson einschätzen können um gezielte Impulse geben zu können oder auf Aufgabenspezifische Fragen problemlos antworten zu können.
+  \reqorig Kunde
+  \reqfit Erfüllt, wenn man Benutzer suchen kann und pro Benutzer sieht wie viele Aufgaben schon gelöst wurden und welche durchschnittliche Fehlerquote dieser hat. Zusätzlich soll man für jede gelöste Aufgabe noch die Punktzahl und Eingabe des Benutzers sehen.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 2}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 14.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
+\subsection*{Nichtfunktionale Anforderung}
+
+\begin{myreq}
+  
+    \reqno 16
+    \reqtype Nichtfunktional
+    \reqevent Auswertung
+  \reqdesc Die Auswertung jeder Aufgabe sollte nicht länger als zehn Sekunden dauern.
+  \reqrat Zum einen möchte der Lernende nicht lange auf sein Ergebnis warten und zum anderen ist Effizienz wichtig, da das System gut skalieren soll.
+  \reqorig Kunde 
+  \reqfit Die Anforderung ist erfüllt, wenn 90\% aller Aufgaben innerhalb von zehn Sekunden ausgewertet werden.
+  \twoinline
+    \reqsatis 5
+    \reqdissat 3
+  \reqdep 
+  \reqconf
+  \reqmater - 
+  \reqhist 16.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}

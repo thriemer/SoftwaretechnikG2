@@ -1,13 +1,14 @@
 %Quelle: https://tex.stackexchange.com/questions/515525/how-to-make-a-custom-requirement-card-like-voleres
-\subsection{Anforderungen an das Administrationssystem}
+\section*{Anforderungen an das Administrationssystem}
+\subsection*{Funktionale Anforderungen}
 \begin{myreq}
   \threeinline
-    {\reqno 314}
+    {\reqno 9}
     {\reqtype Funktional}
     {\reqevent Manipulieren von Aufgaben}
   \reqdesc Es soll eine grafische Oberfläche zur Manipulation von Aufgaben geben.
-  \reqrat Als Lehrkraft möchte ich alle sieben Aufgabentypen anlegen, bearbeiten, speichern und löschen können.
-  \reqorig Lehrkraft
+  \reqrat Als Kunde möchte ich alle sieben Aufgabentypen anlegen, bearbeiten, speichern und löschen können.
+  \reqorig Kunde
   \reqfit Erfüllt, wenn man für jeden Aufgabentyp alle oben genannten Operationen ausführen kann.
   \twoinline
     {\reqsatis 2}
@@ -16,55 +17,38 @@
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 14.11.2022 (erstellt) 
+  \reqhist 14.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
 
 \begin{myreq}
   \threeinline
-    {\reqno 315}
+    {\reqno 10}
     {\reqtype Funktional}
-    {\reqevent Aufgabenmetriken anschauen}
-  \reqdesc Es soll eine grafische Oberfläche geben, um akkumulierte Metriken zu bestimmten Aufgaben zu sehen.
-  \reqrat Als Lehrkraft möchte ich den Lernfortschritt der Gruppe einschätzen können und gegebenenfalls auf einzelne Aufgaben eingehen können.
-  \reqorig Lehrkraft
-  \reqfit Erfüllt, wenn man pro Aufgabe sieht, wie oft diese gelöst wurde und was die durchschnittliche Fehleranzahl ist.
+    {\reqevent Manipulieren von Accounts }
+  \reqdesc Der Administrator soll die Möglichkeit haben, neue Accounts anzulegen und bestehende Accounts zu löschen.
+  \reqrat Als Administrator möchte ich für neue Studierende Accounts erstellen können und bestehende Accounts löschen können, wenn Studierende die Universität verlassen.
+  \reqorig Kunde 
+  \reqfit Erfüllt, wenn der Administrator Accounts erstellen und löschen kann.
   \twoinline
-    {\reqsatis 3}
-    {\reqdissat 2}
+    {\reqsatis 4}
+    {\reqdissat 3}
   \twoinline
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 14.11.2022 (erstellt)
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
 
-\begin{myreq}
-  \threeinline
-    {\reqno 316}
-    {\reqtype Funktional}
-    {\reqevent Benutzermetriken anschauen}
-  \reqdesc Es soll eine grafische Oberfläche geben, um akkumulierte und detaillierte Metriken zu ausgewählten Benutzern zu sehen.
-  \reqrat Als Lehrkraft möchte ich den Lernfortschritt der Einzelperson einschätzen können um gezielte Impulse geben zu können oder auf Aufgabenspezifische Fragen problemlos antworten zu können.
-  \reqorig Lehrkraft
-  \reqfit Erfüllt, wenn man Benutzer suchen kann und pro Benutzer sieht wie viele Aufgaben schon gelöst wurden und welche durchschnittliche Fehlerquote dieser hat. Zusätzlich soll man für jede gelöste Aufgabe noch die Punktzahl und Eingabe des Benutzers sehen.
-  \twoinline
-    {\reqsatis 2}
-    {\reqdissat 2}
-  \twoinline
-  {\reqdep -}
-  {\reqconf -}
-  \reqmater -
-  \reqhist 14.11.2022
-\end{myreq}
+\subsection*{Nichtfunktionale Anforderungen}
 
 \begin{myreq}
   \twoinline
-    {\reqno 317}
+    {\reqno 11}
     {\reqtype Nicht Funktional}
     {\reqevent Intuitive Darstellung}
   \reqdesc Die Benutzeroberfläche soll möglichst intuitiv angeordnet werden, um einen schnellen Einstieg in das Programm zu gewährleisten.
-  \reqrat Als Lehrkraft möchte ich mich auf das Lehren konzentrieren und nicht gegen ein Programm kämpfen.
-  \reqorig Lehrkraft
+  \reqrat Als Kunde möchte ich mich auf das Lehren konzentrieren und nicht gegen ein Programm kämpfen.
+  \reqorig Kunde
   \reqfit Ein Test mit mehreren Personen wurde durchgeführt. Dabei wurden alle täglichen Use-Cases abgedeckt und validiert, dass bei der Navigation und Benutzung keine größeren Probleme aufgetreten sind.
   \twoinline
     {\reqsatis 1}
@@ -73,6 +57,5 @@
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 14.11.2022 (erstellt)
+  \reqhist 14.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
-

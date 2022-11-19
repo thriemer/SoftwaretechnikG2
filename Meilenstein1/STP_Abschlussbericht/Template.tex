@@ -98,7 +98,7 @@ pdfborder=0 0 0 % Keine Box um die Links!
 
 \begin{center}
 
-\LARGE{\textbf{Titel des Abschlussberichts}}\\
+\LARGE{\textbf{Abschlussbericht Meilenstein 1}}\\
 \vspace{1cm}
 
 
@@ -109,73 +109,56 @@ Fakultät für Informatik\\
 Professur Softwaretechnik
 \end{center}
 \vspace{3cm}
-Eingereicht von: Gruppe X (Mitglied 1, Mitglied 2...)\\
-Einreichungsdatum: 12.12.1212\\
+Eingereicht von: Gruppe 2 (Lisa Neuhaus, Dai Yun, Li Haowei, Thriemer Linus, Rollhagen Leon, Liang Fudong, Barakat Hamza Adnan Daoud)\\
+Einreichungsdatum: 19.11.2022\\
 \vspace{0.3cm}\\
 Betreuerin: Prof. Dr. Janet Siegmund \\
 Betreuer: Dominik Gorgosch
 
 \end{titlepage}
-
-%---------------------------------------------------------
-% Table of Contents, List of figures, List of Tables
-%---------------------------------------------------------
-
-\renewcommand{\contentsname}{Inhaltsverzeichnis}
-\renewcommand{\listfigurename}{Abbildungsverzeichnis}
-\renewcommand{\listtablename}{Tabellenverzeichnis}
-\renewcommand{\figurename}{Abbildung}
-\tableofcontents
-\listoffigures
-\listoftables
-
-%---------------------------------------------------------
-% Abkürzungsverzeichnis
-%---------------------------------------------------------
-\twocolumn
-\addchap{Abkürzungsverzeichnis}
-\begin{acronym}[Bash]
- \acro{TUC}{TU Chemnitz}
-
-\end{acronym}
-
-\onecolumn
 %---------------------------------------------------------
 % Here starts the real work
 %---------------------------------------------------------
 
-\chapter{Einführung}
-\input{src/intro}  % Load Data from File intro.tex
+\chapter{Bericht}
+\section*{Was ist passiert}
 
-\chapter{Tabellen}
-\input{src/example_tables} % Load Data from File example_tables
+Begonnen hat unsere Arbeit mit dem Kundengespräch, bei dem wir die Möglichkeit hatten offene Fragen zu klären. Danach haben wir uns als Gruppe organisiert und einen Termin für das erste Treffen gesucht. Bei diesem haben wir die Aufgaben untereinander verteilt. 
+Da nicht alle Gruppenmitglieder zum ersten Meeting erschienen sind, hat der Projektmanager diese Personen speziell kontaktiert um Verfügbarkeiten und Aufgaben zu klären. Dabei hat sich herausgestellt, dass ein Kommilitone das Praktikum erst später abschließen möchte und hat deswegen die Gruppe verlassen.
+Dann haben wir uns mit den Aufgaben beschäftigt und konnten dann beim zweiten Treffen Fragen klären, die aufgekommen sind. Zum einen, haben wir geklärt wie die einzelnen Felder ausgefüllt werden müssen und zum anderen haben wir die Bedeutung von Satisfaction und Dissatisfaction spezifiziert. 
+Im letzten Meeting haben wir unsere Ausarbeitungen präsentiert und die fehlenden Karten gemeinsam gefüllt. Im Anschluss haben sich die zwei Präsentatoren nochmal getroffen um den Karten den letzten Feinschliff zu verleihen und diesen Bericht zu schreiben.
 
-\chapter{Abbildungen}
-\input{src/example_figures} % Load Data from File example_figures
+\section*{Herausforderungen und Probleme}
+Das Hauptproblem war einen Termin zu finden, an dem alle Gruppenmitglieder Zeit haben. Bis jetzt haben wir noch keinen passenden Termin gefunden, an dem alle Zeit haben.
+Im Allgemeinen ist die Kommunikation sehr träge, weswegen solche einfachen Fragen erst Tage später beantwortet werden. Wir werden aber trotzdem weiterhin versuchen einen gemeinsamen Termin zu finden. Zur Not auch Online oder alternativ auch nur mit einer Teilgruppe.
+Es schien auch so, als ob Freitags alle Zeit hätten, die Gruppe war jedoch trotzdem nicht vollzählig.
+Ein weitere Herausforderung ist, dass wir ein sehr internationales Team sind, und deswegen die Sprachbarriere erst überwunden werden muss, bevor man über technische Details reden kann. 
+Des weiteren sind einige der verwendeten Tools neu und die Teilnehmer müssen sich erst einarbeiten.  Dabei sind die Meetings nützlich, weil erfahrenere Mitglieder die anderen unterstützen können.
 
-\chapter{Codebeispiel}
-\input{src/example_code} % Load Data from File example_code
+\section*{Was lief gut}
+Trotz der Herausforderungen wurde alle Aufgaben erfüllt. Hilfreich waren die Treffen, bei denen man gesehen hat, dass alle anwesenden Motiviert waren die Hürden zu meistern. Man konnte sich auf alle aktiven Mitglieder verlassen, da die Lösungen zum Stichtag präsentiert wurden.
 
-\chapter{Abschnitte und Zitieren} % Load Data from File example_sections
-\input{src/example_sections}
+\section*{Erkenntnisse}
+Rückblickend war die Anzahl an Treffen optimal, es wird sich jedoch herausstellen, ob zweimal die Woche für den nächsten Meilenstein noch ausreicht.
 
+Wir bevorzugen Präsenztreffen, weil man leichter Kommunizieren kann. Da die Latenz nicht vorhanden ist, muss man nicht immer warten bevor man antwortet und es passiert nicht so oft, dass man gleichzeitig anfängt zu sprechen. Zusätzlich merkt man, ob mein gegenüber mich verstanden hat.
 
-\chapter{Volere} % Load Data from File volere_template
+Außerdem haben wir festgestellt, dass wir sehr unterschiedliche Technik benutzen, was später beim aufsetzen der Entwicklungsumgebung berücksichtigt werden muss.
+
+\section*{Wer hat was bearbeitet:}
+\begin{itemize}
+\item Leon: 3, 5, 10
+\item Lisa: 1, 2, 3, 4,
+\item Fudong & Hamza: 12, 13
+\item Linus: 9, 11, 14, 15, 16
+\item Aufgabenssystem haben wir als Gruppe gelöst ( ohne Li & Yun)
+\item Li & Yun: haben nichts bearbeitet und waren nicht bei den Meetings anwesend
+\end{itemize}
+
+\chapter{Volere}
 \input{src/login_volere}
 \input{src/aufgaben_volere}
 \input{src/admin_volere}
 \input{src/auswertung_volere}
-
-
-
-%---------------------------------------------------------
-% bibliography based on Springer Design
-%---------------------------------------------------------
-
-\bibliographystyle{splncs03}
-\renewcommand{\bibname}{Literaturverzeichnis}
-\bibliography{bibliography}
-
-\printindex
 
 \end{document}

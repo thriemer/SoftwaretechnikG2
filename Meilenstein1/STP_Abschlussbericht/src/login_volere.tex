@@ -1,39 +1,9 @@
-\documentclass{article}
-
-\usepackage{multicol}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{enumitem}
-\usepackage{tcolorbox}
-
-\newenvironment{myreq}[1]{%
-\setlist[description]{font=\normalfont\color{darkgray}}%
-\begin{tcolorbox}[colframe=black,colback=white, sharp corners, boxrule=1pt]%
-\bfseries\color{blue}%
-\begin{description}#1}%
-{\end{description}\end{tcolorbox}}
-
-\newcommand{\threeinline}[3]{\begin{multicols}{3}#1 #2 #3\end{multicols}}
-\newcommand{\twoinline}[2]{\begin{multicols}{2}#1 #2\end{multicols}}
-
-\newcommand{\reqno}{\item[Requirement \#:]}
-\newcommand{\reqtype}{\item[Requirement Type:]}
-\newcommand{\reqevent}{\item[Event/UC:]}
-\newcommand{\reqdesc}{\item[Description:]}
-\newcommand{\reqrat}{\item[Rationale:]}
-\newcommand{\reqorig}{\item[Originator:]}
-\newcommand{\reqfit}{\item[Fit Criterion:]}
-\newcommand{\reqsatis}{\item[Customer Satisfaction:]}
-\newcommand{\reqdissat}{\item[Customer Dissatisfaction:]}
-\newcommand{\reqdep}{\item[Dependencies:]}
-\newcommand{\reqconf}{\item[Conflicts:]}
-\newcommand{\reqmater}{\item[Materials:]}
-\newcommand{\reqhist}{\item[History:]}
-
-\begin{document}
+\section*{Anforderungen an das Loginsystem}
+\subsection*{Funktionale Anforderungen}
 \begin{myreq}
   \threeinline
-    {\reqno ?}
-    {\reqtype funktional}
+    {\reqno 1}
+    {\reqtype Funktional}
     {\reqevent Login}
   \reqdesc Neue Nutzer sollen sich registrieren können.
   \reqrat Die Erstellung eines Accounts ist notwendig, um nutzerspezifische Daten zuordnen zu können. 
@@ -46,17 +16,17 @@
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 18.11.2022 - erstellt
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
 
 \begin{myreq}
   \threeinline
-    {\reqno ?}
-    {\reqtype funktional}
+    {\reqno 2}
+    {\reqtype Funktional}
     {\reqevent Login}
   \reqdesc Bei falscher Eingabe der Logindaten soll der Nutzer aufgefordert werden Nutzername und Passwort erneut einzugeben.
   \reqrat Falsche Eingaben dürfen nicht dazu führen, dass der Login trotzdem durchgeführt wird oder der Nutzer vom Login ausgeschlossen wird.
-  \reqorig  
+  \reqorig Kunde
   \reqfit Die Eingabefelder für Nutzername und Passwort sind geleert und die Anwendung wartet auf erneute Eingabe dieser Daten.
   \twoinline
     {\reqsatis 1}
@@ -65,32 +35,13 @@
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 18.11.2022 - erstellt
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
 
 \begin{myreq}
   \threeinline
-    {\reqno ?}
-    {\reqtype n. funkt.}
-    {\reqevent Login}
-  \reqdesc Passwörter sollen verschlüsselt dargestellt werden.
-  \reqrat Passwörter sollen für Andere nicht sichtbar sein.
-  \reqorig  
-  \reqfit Die Zeichen des Passworts werden als "*" dargestellt.
-  \twoinline
-    {\reqsatis 3}
-    {\reqdissat 4}
-  \twoinline
-  {\reqdep -}
-  {\reqconf -}
-  \reqmater -
-  \reqhist 18.11.2022 - erstellt
-\end{myreq}
-
-\begin{myreq}
-  \threeinline
-    {\reqno ?}
-    {\reqtype funktional}
+    {\reqno 3}
+    {\reqtype Funktional}
     {\reqevent Login}
   \reqdesc Man soll sich über einen Account anmelden können.
   \reqrat Um die Aufgaben lösen zu können muss man sich davor anmelden können. Außerdem wird dadurch sichergestellt, dass man seine Aufgaben selbst löst.
@@ -103,32 +54,34 @@
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 18.11.2022 - erstellt
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
 
+\subsection*{Nichtfunktionale Anforderungen}
+
 \begin{myreq}
-  \threeinline
-    {\reqno ?}
-    {\reqtype funktional}
-    {\reqevent Login}
-  \reqdesc Der Administrator soll die Möglichkeit haben, neue Accounts anzulegen und bestehende Accounts zu löschen.
-  \reqrat Als Administrator möchte ich für neue Studierende Accounts erstellen können und bestehende Accounts löschen können, wenn Studierende die Universität verlassen.
-  \reqorig Kunde 
-  \reqfit Erfüllt, wenn der Administrator Accounts erstellen und löschen kann.
   \twoinline
-    {\reqsatis 4}
-    {\reqdissat 3}
+    {\reqno 4}
+    {\reqtype Nichtfunktional}
+    {\reqevent Login}
+  \reqdesc Passwörter sollen verschlüsselt dargestellt werden.
+  \reqrat Passwörter sollen für Andere nicht sichtbar sein.
+  \reqorig Kunde
+  \reqfit Die Zeichen des Passworts werden als "*" dargestellt.
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 4}
   \twoinline
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 18.11.2022 - erstellt
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
 
 \begin{myreq}
-  \threeinline
-    {\reqno ?}
-    {\reqtype n. funkt.}
+  \twoinline
+    {\reqno 5}
+    {\reqtype Nichtfunktional}
     {\reqevent Login}
   \reqdesc Die Benutzeroberfläche soll für eine unkomplizierte Nutzung intuitiv gestaltet sein.
   \reqrat Als Nutzer möchte ich mich auf die Erstellung und Bearbeitung der Aufgaben konzentrieren und keine Probleme beim Anmelden haben.
@@ -141,6 +94,5 @@
   {\reqdep -}
   {\reqconf -}
   \reqmater -
-  \reqhist 18.11.2022 - erstellt
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
-\end{document}

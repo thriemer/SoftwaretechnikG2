@@ -1,20 +1,62 @@
-%Quelle: https://tex.stackexchange.com/questions/515525/how-to-make-a-custom-requirement-card-like-voleres
+\section*{Anforderungen an das Aufgabensystem}
+\subsection*{Funktionale Anforderungen}
+\begin{myreq}
+  \threeinline
+    {\reqno 6}
+    {\reqtype Funktional}
+    {\reqevent Aufgabe lösen}
+  \reqdesc Es soll Eingabemasken für alle Aufgabentypen geben.
+  \reqrat Die Benutzer sollen alle Aufgabentypen lösen können.
+  \reqorig Kunde
+  \reqfit Alle Aufgabenmasken wurden über Unit- und Integrationstests überprüft.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
 
 \begin{myreq}
   \threeinline
-    {\reqno 75}
+    {\reqno 7}
     {\reqtype Funktional}
-    {\reqevent -}
-  \reqdesc description text description text description text 
-  \reqrat some more text some more text some more text 
-  \reqorig other text other text other text 
-  \reqfit longer text that needs more than one line longer text that needs more than one line
+    {\reqevent Internetabbruch abfangen}
+  \reqdesc Die Eingaben der Benutzer werden aller zehn Sekunden im System gespeichert.
+  \reqrat Bei Intenernetabbrüchen ist es benutzerfreundlich, wenn nicht alle Eingaben verloren gehen.
+  \reqorig Kunde
+  \reqfit Diese Anforderung kann man mit automatisierten Tests überprüfen.
   \twoinline
-    {\reqsatis 5}
+    {\reqsatis 4}
     {\reqdissat 3}
   \twoinline
-  {\reqdep some more text}
-  {\reqconf 111}
-  \reqmater other text other text other text 
-  \reqhist other text other text other text 
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
 \end{myreq}
+
+\subsection*{Nichtfunktionale Anforderungen}
+
+\begin{myreq}
+  \twoinline
+    {\reqno 8}
+    {\reqtype Nicht-Funktional}
+    {\reqevent Aufgabe lösen}
+  \reqdesc Eingabemasken haben Function zur Formatierung und Syntaxhighlighting.
+  \reqrat Code wird durch Syntaxhighlights und Formatierung deutlich besser lesbar.
+  \reqorig Kunde
+  \reqfit Diese Anforderung kann man über manuelle Tests überprüfen.
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
