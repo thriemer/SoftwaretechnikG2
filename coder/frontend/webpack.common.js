@@ -1,12 +1,13 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const path = require("path");
 
 module.exports = {
   mode: "none",
-  entry: "./src/script.ts",
+  entry: "./src/code-editor.ts",
   output: {
-    filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    filename: '[name].bundle.js'
   },
     module: {
       rules: [
@@ -27,6 +28,14 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      			{
+      				test: /\.css$/,
+      				use: ['style-loader', 'css-loader']
+      			},
+      			{
+      				test: /\.ttf$/,
+      				use: ['file-loader']
+      			}
       ],
     },
     plugins: [
@@ -34,5 +43,8 @@ module.exports = {
       filename: "index.html",
       template: "./src/index.html",
     }),
+        new MonacoWebpackPlugin({
+        			languages: ['typescript', 'javascript', 'css']
+        		})
   ],
 };
