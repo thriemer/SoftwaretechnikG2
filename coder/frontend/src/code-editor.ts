@@ -9,9 +9,9 @@ export class MyElement extends LitElement {
   @property()
   height = 600;
   @property()
-  language = 'java';
+  language = 'javascript';
   @property()
-  code = 'public class Main{public static void main(String args[]){System.out.println("Hello World");}}';
+  code = 'function(){Console.log("Hello");}';
     createRenderRoot() {
         return this;
     }
