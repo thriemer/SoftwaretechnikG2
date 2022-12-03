@@ -11,4 +11,6 @@ public interface DBAbstraction {
     Task getTaskByName(String name);
 
     CodeEvaluation getCodeEvaluationByName(String taskName);
+
+    Task[] getAllTasks();
 }
