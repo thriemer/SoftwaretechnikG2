@@ -11,9 +11,9 @@ import java.util.Arrays;
 @Service
 public class JavaSourceValidator {
 
-    public TestResult[] testProgram(String source,CodeEvaluation codeEvaluation) {
+    public TestResult[] testProgram(String source, CodeEvaluation codeEvaluation) {
         try {
-            Class<?> compiledClazz = CompilingClassLoader.getInstance().loadClassFromString(source);
+            Class<?> compiledClazz = new CompilingClassLoader().loadClassFromString(source);
             Class<?>[] parameterTypes = Arrays.stream(codeEvaluation.input()[0]).map(this::getClassType).toArray(Class[]::new);
 
             Method toValidate = compiledClazz.getDeclaredMethod(codeEvaluation.method(), parameterTypes);
@@ -24,8 +24,9 @@ public class JavaSourceValidator {
                 var out = codeEvaluation.expectedOutput()[i];
                 var actual = toValidate.invoke(null, in);
                 boolean correct = out.equals(actual);
-                String interpolated = TestResult.ERROR_MESSAGE_TEMPLATE.formatted(out, actual);
-                result[i] = new TestResult(correct, correct ? "" : interpolated);
+                String wrongMessage = TestResult.ERROR_MESSAGE_TEMPLATE.formatted(Arrays.toString(in), out, actual);
+                String correctMessage = TestResult.CORRECT_MESSAGE_TEMPLATE.formatted(Arrays.toString(in), out);
+                result[i] = new TestResult(correct, correct ? correctMessage : wrongMessage);
             }
             return result;
         } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException |

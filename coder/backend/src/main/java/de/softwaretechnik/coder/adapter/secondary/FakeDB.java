@@ -20,7 +20,7 @@ public class FakeDB implements DBAbstraction {
                         """),
             new Task("reverse", "Reverse the String", """
                     public class StringUtil {
-                        public static int reverseString(String s){
+                        public static String reverseString(String s){
                             return "TODO";
                         }
                     }

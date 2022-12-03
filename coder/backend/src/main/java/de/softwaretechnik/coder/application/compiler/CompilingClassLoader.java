@@ -9,20 +9,15 @@ import java.util.regex.Pattern;
 
 
 class CompilingClassLoader extends ClassLoader {
-    private static final CompilingClassLoader __instance = new CompilingClassLoader();
 
     private static final Logger logger = Logger.getLogger(CompilingClassLoader.class.getName());
 
     private Pattern namePattern;
     private Pattern packagePattern;
 
-    private CompilingClassLoader() {
+    public CompilingClassLoader() {
         this.namePattern = Pattern.compile(".*class[ ]+([a-zA-Z0-9$_]+).*");
         this.packagePattern = Pattern.compile(".*package[ ]+([a-zA-Z0-9$_.]+).*");
-    }
-
-    public static CompilingClassLoader getInstance() {
-        return __instance;
     }
 
     // load the class file after compiling the code
@@ -77,7 +72,7 @@ class CompilingClassLoader extends ClassLoader {
 
         try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(classFilePath)); ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             byte[] buffer = new byte[4 * 1024];
-            int bytesRead = -1;
+            int bytesRead;
 
             while ((bytesRead = bin.read(buffer)) != -1) {
                 baos.write(buffer, 0, bytesRead);
