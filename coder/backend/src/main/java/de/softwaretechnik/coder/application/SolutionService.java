@@ -6,8 +6,6 @@ import de.softwaretechnik.coder.domain.TestResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class SolutionService {
@@ -20,12 +18,8 @@ public class SolutionService {
         return javaSourceValidator.testProgram(code, codeEvaluation);
     }
 
-    public List<String> getAllTaskNames() {
-        return dbAbstraction.getTaskNames();
-    }
-
-    public Task getTaskByName(String name) {
-        return dbAbstraction.getTaskByName(name);
+    public Task[] getAllTasks() {
+        return dbAbstraction.getAllTasks();
     }
 
 }

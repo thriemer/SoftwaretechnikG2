@@ -18,7 +18,7 @@ public class FakeDB implements DBAbstraction {
                         }
                     }
                         """),
-            new Task("reverse","Reverse the String", """
+            new Task("reverse", "Reverse the String", """
                     public class StringUtil {
                         public static int reverseString(String s){
                             return "TODO";
@@ -35,7 +35,7 @@ public class FakeDB implements DBAbstraction {
                     new Object[][]{{"HelloWorld!"}, {"I've seen enough of Ba Sing Sei. And I can't even see! ~ Toph"}},
                     new Object[]{"!dlroWolleH", "hpoT ~ !ees neve t'nac I dnA .ieS gniS aB fo hguone nees ev'I"}
             )
-            );
+    );
 
     public List<String> getTaskNames() {
         return allTasks.stream().map(Task::name).toList();
@@ -47,6 +47,10 @@ public class FakeDB implements DBAbstraction {
 
     public CodeEvaluation getCodeEvaluationByName(String taskName) {
         return allEvaluations.stream().filter(e -> e.taskName().equals(taskName)).findFirst().orElse(null);
+    }
+
+    public Task[] getAllTasks() {
+        return allTasks.toArray(Task[]::new);
     }
 
 }
