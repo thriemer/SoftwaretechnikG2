@@ -2,6 +2,7 @@ import {LitElement,css, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import { createRef, Ref, ref } from "lit/directives/ref.js";
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+import {Task, TestResult} from './TaskDefinition'
 
 @customElement('code-editor')
 export class CodeEditor extends LitElement {
@@ -12,16 +13,33 @@ export class CodeEditor extends LitElement {
   @property()
   height = 600;
   @property()
-  language? : string;
+  language = "java";
   @property()
   code? : string;
-    createRenderRoot() {
+  createRenderRoot() {
         return this;
-    }
+  }
+
+  private currentTask?: Task;
+  @property()
+  private evaluation?: TestResult[];
+
   render() {
     return html`
+    <p>${this.currentTask===undefined?"":this.currentTask.taskDescription}</p>
       <main ${ref(this.container)}  style="width:${this.width}px; height:600px; border:1px solid #ccc;"></main>
+      <button @click="${this.submit}">Submit solution</button>
+      <ul>
+      ${this.generateEvaluationList()}
+      </ul>
     `;
+  }
+
+  generateEvaluationList(){
+  if(this.evaluation===undefined){
+    return html``;
+  }
+ return this.evaluation.map((result) => html`<li style="color: ${result.correct?'green':'red'}">${result.message}</li>`);
   }
 
     firstUpdated() {
@@ -33,6 +51,29 @@ export class CodeEditor extends LitElement {
       this.editor.onDidChangeModelContent((e)=> {
       this.code=this.editor!.getValue();
       });
+      this.initTask();
+    }
+
+    initTask = async()=>{
+        const response = await fetch("../api/task/listAll");
+        response.json().then(data =>  {
+        console.log(data);
+        var taskList = data as Task[];
+        this.currentTask = taskList[Math.floor(Math.random()*taskList.length)];
+        this.editor!.setValue(this.currentTask.codeTemplate);
+        })
+        .catch(ex=>{console.log(ex);});
+    }
+
+    submit = async()=>{
+        const response = await fetch("../api/task/submit?taskName="+this.currentTask!.name, {
+            method: 'POST',
+            body: this.code
+        });
+        response.json().then(data=>{
+        this.evaluation = data as TestResult[];
+        console.log(this.evaluation);
+        }).catch(ex=>{console.log(ex);});
     }
 
 updated(changedProperties: Map<string, unknown>) {
