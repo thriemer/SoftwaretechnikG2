@@ -70,6 +70,10 @@ export class CodeEditor extends LitElement {
             method: 'POST',
             body: this.code
         });
+        if(!response.ok){
+            this.evaluation = [{correct: false,message: await response.text()}];
+            return;
+        }
         response.json().then(data=>{
         this.evaluation = data as TestResult[];
         console.log(this.evaluation);
