@@ -27,7 +27,8 @@ class JavaSourceValidatorTest {
         //act
         var actual = cut.testProgram(sourceCode, codeEvaluation);
         //assert
-        assertArrayEquals(new TestResult[]{new TestResult(true, ""), new TestResult(false, "Expected: \"24\" but was: \"22\"")}, actual);
+        assertArrayEquals(new TestResult[]{new TestResult(true, "Input: \"[5, 4]\"\nCorrect: \"9\""), new TestResult(false, "Input: \"[11, 11]\"\n" +
+                "Expected: \"24\" but was: \"22\"")}, actual);
     }
 
 }
