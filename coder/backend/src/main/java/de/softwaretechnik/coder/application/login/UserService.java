@@ -1,6 +1,7 @@
-package de.softwaretechnik.coder.config;
+package de.softwaretechnik.coder.application.login;
 
-import lombok.RequiredArgsConstructor;
+import de.softwaretechnik.coder.adapter.secondary.UserRepository;
+import de.softwaretechnik.coder.domain.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,7 +17,6 @@ public class UserService implements UserDetailsService {
     public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        createUser("linus","1234");
     }
 
     public void createUser(String username, String plainTextPassword) {

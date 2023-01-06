@@ -1,4 +1,4 @@
-package de.softwaretechnik.coder.config;
+package de.softwaretechnik.coder.application.login;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;

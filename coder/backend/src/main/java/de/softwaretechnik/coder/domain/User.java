@@ -1,4 +1,4 @@
-package de.softwaretechnik.coder.config;
+package de.softwaretechnik.coder.domain;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
