@@ -19,7 +19,7 @@ public class TaskController {
     }
 
     @GetMapping("/api/task/listAll")
-    ResponseEntity<Task[]> getTaskByName() {
+    ResponseEntity<Task[]> listAllTasks() {
         return ResponseEntity.ok(solutionService.getAllTasks());
     }
 
