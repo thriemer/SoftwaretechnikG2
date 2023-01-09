@@ -55,11 +55,20 @@ export class CodeEditor extends LitElement {
     }
 
     initTask = async()=>{
+        var wantedTask = location.search.substring(1).split("=")[1];
         const response = await fetch("../api/task/listAll");
         response.json().then(data =>  {
         console.log(data);
         var taskList = data as Task[];
-        this.currentTask = taskList[Math.floor(Math.random()*taskList.length)];
+        for(const t of taskList){
+            if(t.name===wantedTask){
+                this.currentTask = t;
+                break;
+            }
+        }
+        if(this.currentTask==null){
+            this.currentTask = taskList[Math.floor(Math.random()*taskList.length)];
+        }
         this.editor!.setValue(this.currentTask.codeTemplate);
         })
         .catch(ex=>{console.log(ex);});
