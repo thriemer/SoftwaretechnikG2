@@ -1,0 +1,18 @@
+html,body{height:100%}
+#monacoEditor {
+width: 100%;
+height: 75%;
+margin: 0;
+padding: 0;
+}
+button {
+background-color: #4CAF50; /* Green */
+  border: 1px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5%;
+}

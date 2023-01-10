@@ -4,7 +4,7 @@
 <h1>Hello, <span th:text="${userName}"></span>!</h1>
 <h2>Coding tasks:</h2>
 <ul th:each="task : ${tasks}">
-<li><a th:href="@{/app/index.html?task={taskId}(taskId=${task.name})}" th:text="${task.name}"></a></li>
+<li><a th:href="@{/codingTask.html(task = ${task.name}, language = java)}" th:text="${task.name}"></a></li>
 </ul>
 </body>
 </html>
