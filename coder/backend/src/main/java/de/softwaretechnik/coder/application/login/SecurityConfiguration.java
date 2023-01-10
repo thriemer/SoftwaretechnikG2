@@ -17,6 +17,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers( "/favicon.ico").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
