@@ -21,7 +21,6 @@ var taskToSolve;
 await response.json().then(taskList => {
         for (const t of taskList) {
             if (params.get('task') === t.name) {
-                console.log("setting task");
                 taskToSolve = t;
                 break;
             }
@@ -54,19 +53,18 @@ document.getElementById("submit").onclick = async () => {
                     correct: false,
                     message: await response.text()
                 }];
-                return;
-            }
+            }else{
            await response.json().then(data => {
                 evaluation = data;
             }).catch(ex => {
                 console.log(ex);
             });
+            }
             var builtHTML = "<ul>";
             for(const e of evaluation){
                let showColor = e.correct ? 'green': 'red';
                builtHTML = builtHTML + '<li style="color:'+ showColor+'">'+e.message+'</li>'
             }
             builtHTML = builtHTML+"</ul>";
-            console.log(builtHTML);
             document.getElementById('evaluation').innerHTML =builtHTML;
 }
