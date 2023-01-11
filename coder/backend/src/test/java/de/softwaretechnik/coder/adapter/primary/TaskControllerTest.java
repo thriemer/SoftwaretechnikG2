@@ -103,4 +103,20 @@ class TaskControllerTest {
                 .build()));
     }
 
+    @Test
+    void testShowHomePage() throws Exception {
+        //arrange
+        mockUserDatabase();
+        Task[] tasks = new Task[]{new Task("Task 1","This is a task 1","psvm"), new Task("Task 2","This is a task 2","psvm")};
+        when(solutionService.getAllTasks()).thenReturn(tasks);
+        //act, assert
+        mockMvc.perform(get("/")
+                        .with(SecurityMockMvcRequestPostProcessors.user("user")))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"))
+                .andExpect(model().attribute("userName", "user"))
+                .andExpect(model().attribute("tasks", tasks));
+    }
+
+
 }
