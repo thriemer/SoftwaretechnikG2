@@ -132,7 +132,7 @@ class TaskControllerTest {
 
 
     @Test
-    void handleTemplateModifiedException_withTemplateModifiedException_returnsBadRequestWithErrorMessage() throws Exception {
+    void testhandleTemplateModifiedException_returnsBadRequestWithErrorMessage() throws Exception {
         //arrange
         TaskController taskController = new TaskController(solutionService);
         Exception cause = new ClassNotFoundException("Class not found");
@@ -144,7 +144,17 @@ class TaskControllerTest {
         assertEquals(response.getBody(), "Class not found");
     }
 
-
+    @Test
+    void testhandleTemplateModifiedException_WithoutCause() throws Exception {
+        //arrange
+        TaskController taskController = new TaskController(solutionService);
+        TemplateModifiedException ex = new TemplateModifiedException("template modified", new Exception());
+        //act
+        ResponseEntity<String> response = taskController.handleTemplateModifiedException(ex);
+        //assert
+        assertEquals(response.getStatusCodeValue(), 400);
+        assertEquals(response.getBody(), ex.getMessage());
+    }
 
 
 }
