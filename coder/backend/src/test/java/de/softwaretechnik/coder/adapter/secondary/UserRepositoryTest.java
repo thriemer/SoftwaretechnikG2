@@ -26,6 +26,6 @@ public class UserRepositoryTest {
         Assertions.assertEquals(user.isAccountNonLocked(),actual.isAccountNonLocked());
         Assertions.assertEquals(user.isCredentialsNonExpired(),actual.isCredentialsNonExpired());
         Assertions.assertEquals(user.isEnabled(),actual.isEnabled());
+        Assertions.assertEquals(user.getAuthorities(),actual.getAuthorities());
     }
-
 }
