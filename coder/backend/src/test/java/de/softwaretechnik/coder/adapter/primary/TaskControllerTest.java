@@ -1,5 +1,7 @@
 package de.softwaretechnik.coder.adapter.primary;
 
+import de.softwaretechnik.coder.adapter.primary.TaskController;
+import de.softwaretechnik.coder.application.compiler.TemplateModifiedException;
 import de.softwaretechnik.coder.adapter.secondary.UserRepository;
 import de.softwaretechnik.coder.application.DBAbstraction;
 import de.softwaretechnik.coder.application.SolutionService;
@@ -16,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Optional;
@@ -26,6 +29,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -117,6 +121,30 @@ class TaskControllerTest {
                 .andExpect(model().attribute("userName", "user"))
                 .andExpect(model().attribute("tasks", tasks));
     }
+
+    @Test
+    public void testTemplateModifiedException() {
+        Exception originalException = new Exception("original message");
+        TemplateModifiedException ex = new TemplateModifiedException("Wrapper message", originalException);
+        assertEquals("Wrapper message", ex.getMessage());
+        assertEquals(originalException, ex.getCause());
+    }
+
+
+    @Test
+    void handleTemplateModifiedException_withTemplateModifiedException_returnsBadRequestWithErrorMessage() throws Exception {
+        //arrange
+        TaskController taskController = new TaskController(solutionService);
+        Exception cause = new ClassNotFoundException("Class not found");
+        TemplateModifiedException ex = new TemplateModifiedException("template modified", cause);
+        //act
+        ResponseEntity<String> response = taskController.handleTemplateModifiedException(ex);
+        //assert
+        assertEquals(response.getStatusCodeValue(), 400);
+        assertEquals(response.getBody(), "Class not found");
+    }
+
+
 
 
 }
