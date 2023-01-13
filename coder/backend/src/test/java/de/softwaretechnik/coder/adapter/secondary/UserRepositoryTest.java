@@ -22,6 +22,10 @@ public class UserRepositoryTest {
         //assert
         Assertions.assertEquals(user.getUsername(),actual.getUsername());
         Assertions.assertEquals(user.getPassword(),actual.getPassword());
+        Assertions.assertEquals(user.isAccountNonExpired(),actual.isAccountNonExpired());
+        Assertions.assertEquals(user.isAccountNonLocked(),actual.isAccountNonLocked());
+        Assertions.assertEquals(user.isCredentialsNonExpired(),actual.isCredentialsNonExpired());
+        Assertions.assertEquals(user.isEnabled(),actual.isEnabled());
+        Assertions.assertEquals(user.getAuthorities(),actual.getAuthorities());
     }
-
 }

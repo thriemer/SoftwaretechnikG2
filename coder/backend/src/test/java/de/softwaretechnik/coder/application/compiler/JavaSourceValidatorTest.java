@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class JavaSourceValidatorTest {
 
-    private JavaSourceValidator cut = new JavaSourceValidator();
+    private final JavaSourceValidator cut = new JavaSourceValidator();
 
     @Test
     void testAPlusB_correctResult() {
