@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+
+</head>
+<title>
+
+</title>
+<body>
+<div>
+  <h3>Please fill the following blank(s) with the proper values:</h3>
+  <form>
+    <p>Create a variable called z, assign x + y to it, and display the result.<br>
+      int x = 5;<br>
+      int y = 10;<br>
+      <input type="text" id="blank7"> <input type="text" id="blank8">= x + y;<br>
+      System.out.println(<input type="text" id="blank9">);</br>.</p>
+    <a th:href="@{/q4.html}" class="submit" id = "next" type="submit"
+       th:onclick="evaluation3()">Next &raquo;</a>
+    <a th:href="q2.html" class="previous">&laquo; Previous</a>
+  </form>
+</div>
+<script th:src="@{/js/eval3.js}"> </script>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE  html>
+<html   xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Home Page</title>
+  <link th:href="@{/css/homepage.css}" rel="stylesheet">
+</head>
+<div class="wrapper">
+  <nav>
+    <ul class="menu-area">
+      <li><a th:href="@{~/http://"><strong>Home</strong></a></li>
+      <li id="task" class="dropdown"><a th:href="@{~/http://}"><strong>Tasks</strong></a></li>
+      <ul id="tasks">
+        <li><a th:href="@{~/fillinblank.html}">Fill in the blank</a></li>
+        <li><a th:href="@{~/index.html}">coding task</a></li>
+        <li><a th:href="@{~/http://}">Task 3</a></li>
+        <li><a th:href="@{~/http://}">Task 4</a></li>
+        <li><a th:href="@{http://}">Task 5</a></li>
+      </ul>
+      </li>
+      <li><a th:href="@{~/login.html}" id="signout"><strong>Sign Out</strong></a></li>
+    </ul>
+  </nav>
+</div>
+<body>
+
+</body>
+</html>

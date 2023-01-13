@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+</head>
+<title>
+
+</title>
+<body>
+<div>
+  <h3>Please fill the following blank(s) with the proper values:</h3>
+  <form>
+    <p>2.Fill in the missing parts to create three variables of the same type, using a comma-separated list:<br>
+      <input type="text" id="blank10">x = 5<input type="text" id="blank11"> y = 6<input type="text" id="blank12">
+      z = 50;<br>
+      System.out.println(x + y + z); .</p>
+
+    <a class="submit" id = "next" type="submit"
+       th:onclick="evaluation4()">Submit &raquo;</a>
+    <a th:href="@{/q1.html}" class="submit" id = "next" type="submit"
+       th:onclick="cleen()">End &raquo;</a>
+
+  </form>
+</div>
+<script th:src="@{/eval4.js}"> </script>
+
+</body>
+</html>
