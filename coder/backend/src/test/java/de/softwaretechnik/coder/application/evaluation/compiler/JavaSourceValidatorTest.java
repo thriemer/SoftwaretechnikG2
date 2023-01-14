@@ -1,7 +1,8 @@
-package de.softwaretechnik.coder.application.compiler;
+package de.softwaretechnik.coder.application.evaluation.compiler;
 
+import de.softwaretechnik.coder.application.evaluation.compiler.JavaSourceValidator;
+import de.softwaretechnik.coder.domain.CodeSampleSolution;
 import de.softwaretechnik.coder.domain.CodeEvaluation;
-import de.softwaretechnik.coder.domain.TestResult;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -13,7 +14,7 @@ class JavaSourceValidatorTest {
     @Test
     void testAPlusB_correctResult() {
         //arrange
-        CodeEvaluation codeEvaluation = new CodeEvaluation("add", "add",
+        CodeSampleSolution codeSampleSolution = new CodeSampleSolution("add", "add",
                 new Object[][]{{5, 4}, {11, 11}},
                 new Object[]{9, 24}
         );
@@ -25,9 +26,9 @@ class JavaSourceValidatorTest {
                 }
                 """;
         //act
-        var actual = cut.testProgram(sourceCode, codeEvaluation);
+        var actual = cut.testProgram(sourceCode, codeSampleSolution);
         //assert
-        assertArrayEquals(new TestResult[]{new TestResult(true, "Input: \"[5, 4]\"\nCorrect: \"9\""), new TestResult(false, "Input: \"[11, 11]\"\n" +
+        assertArrayEquals(new CodeEvaluation[]{new CodeEvaluation(true, "Input: \"[5, 4]\"\nCorrect: \"9\""), new CodeEvaluation(false, "Input: \"[11, 11]\"\n" +
                 "Expected: \"24\" but was: \"22\"")}, actual);
     }
 

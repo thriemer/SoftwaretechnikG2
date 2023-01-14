@@ -1,4 +1,4 @@
-package de.softwaretechnik.coder.application.compiler;
+package de.softwaretechnik.coder.application.evaluation.compiler;
 
 import java.io.*;
 import java.nio.file.Files;

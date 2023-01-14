@@ -1,16 +1,16 @@
 package de.softwaretechnik.coder.application;
 
-import de.softwaretechnik.coder.domain.CodeEvaluation;
-import de.softwaretechnik.coder.domain.Task;
+import de.softwaretechnik.coder.domain.CodeSampleSolution;
+import de.softwaretechnik.coder.domain.CodeTask;
 
 import java.util.List;
 
 public interface DBAbstraction {
     List<String> getTaskNames();
 
-    Task getTaskByName(String name);
+    CodeTask getTaskByName(String name);
 
-    CodeEvaluation getCodeEvaluationByName(String taskName);
+    CodeSampleSolution getCodeSampleSolutionByName(String taskName);
 
-    Task[] getAllTasks();
+    CodeTask[] getAllTasks();
 }
