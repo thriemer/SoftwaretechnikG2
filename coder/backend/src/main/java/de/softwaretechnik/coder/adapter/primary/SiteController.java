@@ -1,6 +1,6 @@
 package de.softwaretechnik.coder.adapter.primary;
 
-import de.softwaretechnik.coder.application.SolutionService;
+import de.softwaretechnik.coder.application.tasks.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,12 +14,12 @@ import java.security.Principal;
 public class SiteController {
 
     @Autowired
-    SolutionService solutionService;
+    TaskService taskService;
 
     @GetMapping("/")
     String showHomePage(Model model, Principal principal) {
         model.addAttribute("userName", principal.getName());
-        model.addAttribute("tasks", solutionService.getAllTasks());
+        model.addAttribute("tasks", taskService.getAllTasks());
         return "index";
     }
 

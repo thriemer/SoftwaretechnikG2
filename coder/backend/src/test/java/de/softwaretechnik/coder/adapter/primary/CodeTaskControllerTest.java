@@ -1,12 +1,11 @@
 package de.softwaretechnik.coder.adapter.primary;
 
-import de.softwaretechnik.coder.adapter.primary.TaskController;
-import de.softwaretechnik.coder.application.compiler.TemplateModifiedException;
+import de.softwaretechnik.coder.application.evaluation.SolutionSubmitService;
+import de.softwaretechnik.coder.application.evaluation.compiler.TemplateModifiedException;
 import de.softwaretechnik.coder.adapter.secondary.UserRepository;
-import de.softwaretechnik.coder.application.DBAbstraction;
-import de.softwaretechnik.coder.application.SolutionService;
-import de.softwaretechnik.coder.domain.Task;
-import de.softwaretechnik.coder.domain.TestResult;
+import de.softwaretechnik.coder.application.tasks.TaskService;
+import de.softwaretechnik.coder.domain.CodeTask;
+import de.softwaretechnik.coder.domain.CodeEvaluation;
 import de.softwaretechnik.coder.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,11 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -33,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TaskControllerTest {
+class CodeTaskControllerTest {
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
@@ -45,14 +42,14 @@ class TaskControllerTest {
     UserRepository repository;
 
     @MockBean
-    DBAbstraction dbAbstraction;
+    TaskService taskService;
 
     @MockBean
-    SolutionService solutionService;
+    SolutionSubmitService solutionSubmitService;
 
     @BeforeEach
     void setupTasks() {
-        when(solutionService.getAllTasks()).thenReturn(new Task[]{new Task("taskName", "taskDesc", "psvm")});
+        when(taskService.getAllTasks()).thenReturn(new CodeTask[]{new CodeTask("taskName", "taskDesc", "psvm")});
     }
 
     @Test
@@ -87,7 +84,7 @@ class TaskControllerTest {
         String codedSolution = "psvm(){sout(myFancyCode);}";
         mockUserDatabase();
 
-        when(solutionService.testResults(codedSolution,"taskName")).thenReturn(new TestResult[]{new TestResult(true,"fine")});
+        when(solutionSubmitService.submitSolution("user", codedSolution, "taskName")).thenReturn(new CodeEvaluation[]{new CodeEvaluation(true, "fine")});
 
         //act, assert
         mockMvc.perform(post("/api/task/submit?taskName=taskName")
@@ -111,15 +108,15 @@ class TaskControllerTest {
     void testShowHomePage() throws Exception {
         //arrange
         mockUserDatabase();
-        Task[] tasks = new Task[]{new Task("Task 1","This is a task 1","psvm"), new Task("Task 2","This is a task 2","psvm")};
-        when(solutionService.getAllTasks()).thenReturn(tasks);
+        CodeTask[] codeTasks = new CodeTask[]{new CodeTask("Task 1", "This is a task 1", "psvm"), new CodeTask("Task 2", "This is a task 2", "psvm")};
+        when(taskService.getAllTasks()).thenReturn(codeTasks);
         //act, assert
         mockMvc.perform(get("/")
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
                 .andExpect(model().attribute("userName", "user"))
-                .andExpect(model().attribute("tasks", tasks));
+                .andExpect(model().attribute("tasks", codeTasks));
     }
 
     @Test
@@ -134,7 +131,7 @@ class TaskControllerTest {
     @Test
     void testhandleTemplateModifiedException_returnsBadRequestWithErrorMessage() throws Exception {
         //arrange
-        TaskController taskController = new TaskController(solutionService);
+        TaskController taskController = new TaskController(solutionSubmitService, taskService);
         Exception cause = new ClassNotFoundException("Class not found");
         TemplateModifiedException ex = new TemplateModifiedException("template modified", cause);
         //act
@@ -147,7 +144,7 @@ class TaskControllerTest {
     @Test
     void testhandleTemplateModifiedException_WithoutCause() throws Exception {
         //arrange
-        TaskController taskController = new TaskController(solutionService);
+        TaskController taskController = new TaskController(solutionSubmitService, taskService);
         TemplateModifiedException ex = new TemplateModifiedException("template modified", new Exception());
         //act
         ResponseEntity<String> response = taskController.handleTemplateModifiedException(ex);
