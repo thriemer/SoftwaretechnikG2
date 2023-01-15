@@ -1,0 +1,98 @@
+\section*{Anforderungen an das Loginsystem}
+\subsection*{Funktionale Anforderungen}
+\begin{myreq}
+  \threeinline
+    {\reqno 1}
+    {\reqtype Funktional}
+    {\reqevent Login}
+  \reqdesc Neue Nutzer sollen sich registrieren können.
+  \reqrat Die Erstellung eines Accounts ist notwendig, um nutzerspezifische Daten zuordnen zu können. 
+  \reqorig Kunde 
+  \reqfit Nutzername und Passwort wurden erfolgreich übermittelt und in einer Datenbank gespeichert.
+  \twoinline
+    {\reqsatis 2}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno 2}
+    {\reqtype Funktional}
+    {\reqevent Login}
+  \reqdesc Bei falscher Eingabe der Logindaten soll der Nutzer aufgefordert werden Nutzername und Passwort erneut einzugeben.
+  \reqrat Falsche Eingaben dürfen nicht dazu führen, dass der Login trotzdem durchgeführt wird oder der Nutzer vom Login ausgeschlossen wird.
+  \reqorig Kunde
+  \reqfit Die Eingabefelder für Nutzername und Passwort sind geleert und die Anwendung wartet auf erneute Eingabe dieser Daten.
+  \twoinline
+    {\reqsatis 1}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
+\begin{myreq}
+  \threeinline
+    {\reqno 3}
+    {\reqtype Funktional}
+    {\reqevent Login}
+  \reqdesc Man soll sich über einen Account anmelden können.
+  \reqrat Um die Aufgaben lösen zu können muss man sich davor anmelden können. Außerdem wird dadurch sichergestellt, dass man seine Aufgaben selbst löst.
+  \reqorig Kunde 
+  \reqfit Erfüllt, wenn man sich anmelden kann.
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
+\subsection*{Nichtfunktionale Anforderungen}
+
+\begin{myreq}
+  \twoinline
+    {\reqno 4}
+    {\reqtype Nichtfunktional}
+    {\reqevent Login}
+  \reqdesc Passwörter sollen verschlüsselt dargestellt werden.
+  \reqrat Passwörter sollen für Andere nicht sichtbar sein.
+  \reqorig Kunde
+  \reqfit Die Zeichen des Passworts werden als "*" dargestellt.
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}
+
+\begin{myreq}
+  \twoinline
+    {\reqno 5}
+    {\reqtype Nichtfunktional}
+    {\reqevent Login}
+  \reqdesc Die Benutzeroberfläche soll für eine unkomplizierte Nutzung intuitiv gestaltet sein.
+  \reqrat Als Nutzer möchte ich mich auf die Erstellung und Bearbeitung der Aufgaben konzentrieren und keine Probleme beim Anmelden haben.
+  \reqorig Kunde 
+  \reqfit Erfüllt, wenn bei einem Test von zehn Personen, die sich jeweils fünfmal anmelden sollen, kein Problem aufgetreten ist.
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep -}
+  {\reqconf -}
+  \reqmater -
+  \reqhist 18.11.2022 - erstellt, 19.11.2022 - überarbeitet
+\end{myreq}

@@ -1,0 +1,262 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                             %
+% Anwendungsbeispiel für das Beamer-Template TU Chemnitz                      %
+% (c) Mario Haustein (mario.haustein@hrz.tu-chemnitz.de), 2013-2019           %
+%                                                                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+\usepackage[babelshorthands]{polyglossia}
+\setmainlanguage{german}
+\else\ifluatex
+\usepackage[babelshorthands]{polyglossia}
+\setmainlanguage{german}
+\else
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{listingsutf8}
+\fi\fi
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{exscale}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{chemfig}
+\usepackage{metalogo}
+\usepackage{tabularx}
+\usepackage{framed}
+\graphicspath{ {./bilder} }
+
+
+% Trennstellen für URLs
+\def\UrlBreaks{\do\:\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]%
+ \do\)\do\,\do\?\do\'\do+\do\=\do\#}
+\def\UrlBigBreaks{}
+
+% TUC-Templates laden.
+\usetheme{tuc2019}
+\mode<article>{\usepackage{beamerarticletuc2019}}
+
+
+% Metadaten
+\title{\LaTeX-Beamer an der TU Chemnitz}
+\subtitle[Anleitung und Musterbeispiel]{Anleitung und Musterbeispiel für das \texttt{tuc2019}-Beamer-Template}
+\author{Linus und Fudong}
+\date[\today]{Stand: \today}
+\institute[G2]{TU Chemnitz}
+\titlegraphic{\includegraphics[height=0.2\textheight]{tuc2019/logo/tuc_green}}
+
+
+\definecolor{background}{HTML}{eee8d5}
+\definecolor{commentColor}{HTML}{93a1a1}
+\definecolor{pgrey}{HTML}{839496}
+\definecolor{fontColor}{HTML}{657b83}
+\definecolor{keyword}{HTML}{cb4b16}
+\definecolor{stringColor}{HTML}{2aa198}
+
+\definecolor{shadecolor}{named}{background}
+
+\lstset{ %
+  basicstyle=\footnotesize\ttfamily,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  showstringspaces=false,
+  captionpos=b,                    % sets the caption-position to bottom
+  rulecolor=\color{fontColor},
+  commentstyle=\color{commentColor},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{keyword},       % keyword style
+  stringstyle=\color{stringColor},     % string literal styl
+}
+
+\begin{document}
+
+\begin{frame}
+\frametitle{Was ist passiert}
+\begin{itemize}
+\item Reguläre meetings
+\item Datenbankanbindung
+\item Benutzeranmeldung \& Registrierung
+\item Frontend durch Thymeleaf ersetzt 
+\item Testabdeckung verbessert
+\item Review Prozess durchgespielt
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Datenbankanbindung}
+\begin{minipage}{0.5\textwidth}
+\begin{itemize}
+\setlength\itemsep{1em}
+\item docker \& docker-compose
+\item PostgreSQL
+\item Liquibase
+\item JPA
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{center}
+\includegraphics[height=0.175\textheight]{docker}\\[12pt]
+\includegraphics[height=0.175\textheight]{liquibase}\\[12pt]
+\includegraphics[height=0.175\textheight]{postgres}\\[12pt]
+\includegraphics[height=0.175\textheight]{springjpa}\\[12pt]
+\end{center}
+\end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{Altes Frontend...}
+\begin{minipage}{0.5\textwidth}
+\begin{itemize}
+\item LitComponents
+\item NPM
+\item webpack
+\item TypeScript
+\item Babel
+\item Kommunikation über Rest-API
+\item DevServer mit hot reloading
+\item mit gradle Frontend bauen und dann ins Backend kopieren
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{center}
+\includegraphics[height=0.175\textheight]{lit}\\[12pt]
+\includegraphics[height=0.175\textheight]{npm}\\[12pt]
+\includegraphics[height=0.175\textheight]{webpack}\\[12pt]
+\includegraphics[height=0.175\textheight]{typescript}\\[12pt]
+\end{center}
+\end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{... mit Thymeleaf ersetzt}
+\begin{minipage}{0.5\textwidth}
+\begin{itemize}
+\item server-side Java template engine
+\item sehr nah an HTML
+\item schnelle Entwicklung 
+\item gute Integration in IntelliJ & Spring Boot
+\item Nachteil: kein DevServer
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{center}
+\includegraphics[height=0.25\textheight]{thymeleaf}\\[12pt]
+\end{center}
+\end{minipage}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\begin{center}
+\begin{lstlisting}[language=HTML]
+<table>
+  <thead>
+    <tr>
+      <th th:text="#{msgs.headers.name}">Name</th>
+      <th th:text="#{msgs.headers.price}">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="prod: ${allProducts}">
+      <td th:text="${prod.name}">Oranges</td>
+      <td th:text="${#numbers.formatDecimal(prod.price, 1, 2)}">0.99</td>
+    </tr>
+  </tbody>
+</table>
+\end{lstlisting}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Testabdeckung verbessert}
+\begin{itemize}
+\item Unit und Integrationstests eingesetzt
+\item Benutzte Bibliotheken:
+\begin{itemize}
+\item JUnit
+\item Mockito
+\item spring-boot-starter-test
+\item spring-security-test
+\item H2 in memory DB
+\end{itemize}
+\item Testabdeckung auf 82\% erhöhen
+\end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Beispiel für einen Unit Test mit Mockito}
+\begin{shaded}
+\begin{lstlisting}[language=Java, basicstyle=\tiny, numbers=left]
+public class TaskServiceTest {
+
+    DBAbstraction dbAbstraction = Mockito.mock(DBAbstraction.class);
+    private final TaskService cut = new TaskService(dbAbstraction);
+
+    @Test
+    void getAllTasks_databaseReturnsData_arrayEquals() {
+        // Given
+        var tasks = new CodeTask[]{new CodeTask("taskName", "taskDesc", "psvm")};
+        Mockito.when(dbAbstraction.getAllTasks()).thenReturn(tasks);
+
+        // When
+        var result = cut.getAllTasks();
+
+        // Then
+        Assertions.assertArrayEquals(tasks, result);
+    }
+
+}
+\end{lstlisting}
+\end{shaded}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Beispiel für einen Integrations Test}
+\begin{shaded}
+\begin{lstlisting}[language=Java, basicstyle=\tiny, numbers=left]
+@SpringBootTest
+@AutoConfigureMockMvc
+class CodeTaskControllerTest {
+// test was shorted for presentation
+
+    @Autowired
+    MockMvc mockMvc;
+
+    @MockBean
+    UserRepository repository;
+
+    @MockBean
+    TaskService taskService;
+
+    @Test
+    void listAllTasks_noLoginProvided_redirectedToLoginPage() throws Exception {
+        mockMvc.perform(get("/api/task/listAll"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/login"));
+    }
+}
+\end{lstlisting}
+\end{shaded}
+\end{frame}
+
+\begin{frame}
+\frametitle{Review Prozess durchgespielt}
+\begin{itemize}
+\item Leon hat Testabdeckung verbessert
+\item Gemeinsames Review mit der Gruppe
+\item Findings wurden besprochen
+\item Pull request wurde gemerged
+\item[$\rightarrow$] Integration in GitHub wurde erforscht
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+{\Huge FIN}
+\end{center}
+\end{frame}
+\end{document}
