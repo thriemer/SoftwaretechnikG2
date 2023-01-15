@@ -48,5 +48,4 @@ public class JavaSourceValidator {
         }
         return clazz;
     }
-
 }
