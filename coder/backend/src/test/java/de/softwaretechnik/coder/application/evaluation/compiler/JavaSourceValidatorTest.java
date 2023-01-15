@@ -69,7 +69,7 @@ class JavaSourceValidatorTest {
         // assert
         assertEquals(float.class, result);
     }
-    
+
     @Test
     void testGetClassType_Double() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // arrange
