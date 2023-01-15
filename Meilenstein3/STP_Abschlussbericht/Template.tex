@@ -1,0 +1,77 @@
+\documentclass[a4paper, 12pt, oneside, BCOR1cm,toc=chapterentrywithdots]{scrbook}
+
+\usepackage{graphicx}           % use for pdfLatex
+\usepackage{makeidx} % f\"{u}r Benutzung des Befehls \printindex
+\usepackage[colorlinks=false]{hyperref}
+\usepackage{tocbibind}
+\usepackage{blindtext}
+\usepackage{subfigure} 
+\usepackage{acronym}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{listings}
+
+\begin{document}
+\begin{titlepage}
+
+{
+    \begin{center}
+        \raisebox{-1ex}{\includegraphics[scale=1.5]{TU_Chemnitz_positiv_gruen.pdf}}\\
+    \end{center}
+    \vspace{0.5cm}
+}
+
+\begin{center}
+
+\LARGE{\textbf{Abschlussbericht Meilenstein 3}}\\
+\vspace{1cm}
+
+
+\Large{\textbf{Softwaretechnikpraktikum - Abschlussbericht}}\\ 
+\vspace{1cm}
+
+Fakultät für Informatik\\
+Professur Softwaretechnik
+\end{center}
+\vspace{3cm}
+Eingereicht von: Gruppe 2 (Lisa Neuhaus, Dai Yun, Thriemer Linus, Rollhagen Leon, Liang Fudong, Barakat Hamza Adnan Daoud)\\
+Einreichungsdatum: 15.01.2023\\
+\vspace{0.3cm}\\
+Betreuerin: Prof. Dr. Janet Siegmund \\
+Betreuer: Dominik Gorgosch
+
+\end{titlepage}
+\chapter{Bericht}
+\section*{Was ist passiert}
+
+In den letzten Wochen hatten wir unsere regulären Meetings, jeweils am Montag und Freitag. Im Projekt haben wir mit Hilfe von spring-security das Login System umgesetzt. Benutzer können sich jetzt registrieren und anmelden. Zusätzlich haben wir eine PostgreSQL Datenbank mit docker, Liquibase und JPA angebunden, um die Benutzer zu speichern. Die Aufgaben bleiben zunächst noch hart codiert, da noch keine Administrationsoberfläche existiert, mit der man diese bearbeiten kann.
+
+Wir haben uns dazu entschieden unser LitComponent Frontend durch Thymeleaf zu ersetzen. Das alte Frontend war zwar modern, hatte dadurch aber eine hohe Komplexität. Für die Entwicklung musste man den DevServer starten und dann die LitComponents in TypeScript schreiben.
+
+Um das Frontend in die Applikation zu integrieren, muss zuerst TypeScript zu JavaScript transpiliert, danach mit Babel Browserkompatibel gemacht und anschließend in den static Ordner des Frontends kopiert werden. Das ist zwar alles mit npm und gradle tasks automatisiert gewesen, sodass man am Ende nur einen Task ausführen musste, jedoch ändert das nichts an der Komplexität die man verstehen musste.
+
+Weswegen wir versucht haben diese zu entfernen, indem wir das Frontend zu Thymeleaf migrieren. Thymeleaf ist eine templating engine und somit ist das neue Frontend sehr eng mit dem Backend verbunden. Die Templates die man schreibt sind sehr nah an HTML und somit sehr viel Einsteigerfreundlicher.
+
+Für den Meilenstein haben wir die Testabdeckung von etwa 60\% auf etwa 80\% erhöht. Dabei haben wir Unit- und Integrationstests eingesetzt und JUnit, Mockito und spring-boot-test benutzt. Im Zuge der Testabdeckungsverbesserung konnten wir auch erstmals den Review Prozess für Pull Requests durchgehen und im Team demonstrieren.
+
+\section*{Herausforderungen und Probleme}
+
+Ein großes Problem ist Motivation und Arbeitsbereitschaft, die mit näher rückenden Prüfungen immer weiter sinkt. Das wird durch die Komplexität der Anwendung noch weiter verstärkt, da die Einstiegshürde sehr hoch ist. Dadurch hat eine Person 90\% der Commits und Arbeit geleistet. 
+
+\section*{Relevanz des Meilensteins}
+
+Gute Tests verifizieren ob der Code funktioniert und nach Änderungen immer noch funktioniert.
+
+\section*{Wer hat was bearbeitet:}
+\begin{itemize}
+\item Linus: Frontendumstellung, Loginsystem, Datenbankanbindung
+\item Leon: Testabdeckung verbessert
+\item Hamza: hat sich viel Mühe gegeben, aber da er die Aufgabenstellung ignoriert hat oder die Schuld für nicht ausführbaren Code bei anderen gesucht hat, konnte er keinen sinnvollen Beitrag leisten
+\item Fudong \& Lisa: waren bei allen Treffen anwesend und haben sich mit der Thematik auseinandergesetzt
+\item Dai Yun: keine Mitarbeit
+\end{itemize}
+
+\end{document}
