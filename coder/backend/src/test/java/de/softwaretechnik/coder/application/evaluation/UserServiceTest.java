@@ -1,6 +1,7 @@
-package de.softwaretechnik.coder.application.login;
+package de.softwaretechnik.coder.application.evaluation;
 
 import de.softwaretechnik.coder.adapter.secondary.UserRepository;
+import de.softwaretechnik.coder.application.login.UserService;
 import de.softwaretechnik.coder.domain.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
