@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
+    <!--<link rel="stylesheet" href="mystyle.css">-->
     <title>Login</title>
     <style>
 .middleOfBrowser{
@@ -12,23 +13,61 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+h2 {
+  font-family: sans-serif;
+}
+input[type=text], input[type=password] {
+  margin-bottom: 5px;
+}
+input[type=submit]{
+  background-color: #4A8246;
+  color: white;
+  border-radius: 5%;
+  border: 2px solid #4A8246;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px 7px;
+}
+input[type=submit]:hover {
+  cursor: pointer;
+}
+#registrationlink {
+  font-family: sans-serif;
+  font-size: 10pt;
+}
+a:link {
+  color: #4A8246;
+  text-decoration: none;
+}
+a:visited {
+  color: #4A8246;
+  text-decoration: none;
+}
+#loginerror {
+  font-family: sans-serif;
+  color: darkred;
+  margin-bottom: 10px;
+}
+#logout {
+  font-family: sans-serif;
+}
     </style>
 </head>
 <body>
 <div class="middleOfBrowser">
     <h2>Login</h2>
     <form th:action="@{/login}" method="post">
-        <div th:if="${param.error}">
+        <div id="loginerror" th:if="${param.error}">
             Invalid username and password.
         </div>
-        <div th:if="${param.logout}">
+        <div id="logout" th:if="${param.logout}">
             You have been logged out.
         </div>
         <div><input type="text" placeholder="Username" name="username"/></div>
         <div><input type="password" placeholder="Password" name="password"/></div>
         <div><input type="submit" value="Sign In"/></div>
     </form>
-    <div>Not a member? <a href="/registration">Register here!</a></div>
+    <div id="registrationlink">Not a member? <a href="/registration">Register here!</a></div>
 </div>
 </body>
 </html>
