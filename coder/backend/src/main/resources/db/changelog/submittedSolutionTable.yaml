@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-submitted-solution
+      author: lthriemer
+      changes:
+        - createTable:
+            tableName: submitted_solution
+            columns:
+              - column:
+                  autoIncrement: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_name
+                  type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: task_name
+                  type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: submission_content
+                  type: varchar
