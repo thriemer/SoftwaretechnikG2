@@ -13,8 +13,11 @@ public class TaskService {
 
     private final DBAbstraction dbAbstraction;
 
-    public CodeTask[] getAllTasks(){
+    public CodeTask[] getAllTasks() {
         return dbAbstraction.getAllTasks();
     }
 
+    public CodeTask getTaskByName(String taskName) {
+        return dbAbstraction.getTaskByName(taskName);
+    }
 }

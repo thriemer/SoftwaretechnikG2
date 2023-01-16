@@ -1,5 +1,7 @@
 package de.softwaretechnik.coder.adapter.primary;
 
+import de.softwaretechnik.coder.application.evaluation.SolutionEvaluationService;
+import de.softwaretechnik.coder.application.evaluation.SolutionSaveService;
 import de.softwaretechnik.coder.application.evaluation.SolutionSubmitService;
 import de.softwaretechnik.coder.application.evaluation.compiler.TemplateModifiedException;
 import de.softwaretechnik.coder.adapter.secondary.UserRepository;
@@ -46,6 +48,13 @@ class CodeTaskControllerTest {
 
     @MockBean
     SolutionSubmitService solutionSubmitService;
+
+    @MockBean
+    SolutionSaveService solutionSaveService;
+
+    @MockBean
+    SolutionEvaluationService solutionEvaluationService;
+
 
     @BeforeEach
     void setupTasks() {
@@ -131,7 +140,7 @@ class CodeTaskControllerTest {
     @Test
     void testhandleTemplateModifiedException_returnsBadRequestWithErrorMessage() throws Exception {
         //arrange
-        TaskController taskController = new TaskController(solutionSubmitService, taskService);
+        TaskController taskController = new TaskController(solutionSubmitService, taskService, solutionSaveService, solutionEvaluationService);
         Exception cause = new ClassNotFoundException("Class not found");
         TemplateModifiedException ex = new TemplateModifiedException("template modified", cause);
         //act
@@ -144,7 +153,7 @@ class CodeTaskControllerTest {
     @Test
     void testhandleTemplateModifiedException_WithoutCause() throws Exception {
         //arrange
-        TaskController taskController = new TaskController(solutionSubmitService, taskService);
+        TaskController taskController = new TaskController(solutionSubmitService, taskService, solutionSaveService, solutionEvaluationService);
         TemplateModifiedException ex = new TemplateModifiedException("template modified", new Exception());
         //act
         ResponseEntity<String> response = taskController.handleTemplateModifiedException(ex);
