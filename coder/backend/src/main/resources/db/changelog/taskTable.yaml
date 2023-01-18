@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-task
+      author: Leon
+      changes:
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: task_pkey
+                  name: name
+                  type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: displayName
+                  type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: shortDescription
+                  type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: taskType
+                  type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: taskDescription
+                  type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: codeTemplate
+                  type: varchar
