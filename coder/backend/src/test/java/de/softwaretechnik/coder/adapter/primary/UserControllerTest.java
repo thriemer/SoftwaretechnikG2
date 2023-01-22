@@ -1,74 +1,93 @@
 package de.softwaretechnik.coder.adapter.primary;
 
+import de.softwaretechnik.coder.adapter.secondary.UserRepository;
 import de.softwaretechnik.coder.application.login.UserService;
+import static org.mockito.Mockito.*;
 import de.softwaretechnik.coder.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.mockito.ArgumentMatchers.anyString;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
+
 
     @MockBean
-    UserService userService;
+    private UserService userService;
+
 
     @Test
-    void showLoginPage_mappedToThymeleafLogin() throws Exception {
-        mockMvc.perform(get("/login"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("login"));
+    void testShowLoginPage() {
+        // create the UserController
+        UserController controller = new UserController(mock(UserService.class));
+
+        // act
+        String result = controller.showLoginPage();
+
+        // assert
+        assertEquals("login", result);
     }
 
     @Test
-    void showRegistrationPage_mappedToThymeleafRegistration() throws Exception {
-        mockMvc.perform(get("/registration"))
+    void testShowRegistrationPage() {
+        // create the UserController
+        UserController controller = new UserController(mock(UserService.class));
+
+        // act
+        String result = controller.showRegistrationPage();
+
+        // assert
+        assertEquals("registration", result);
+    }
+
+    @Test
+    void testRegisterUser_userExists() throws Exception {
+        //arrange
+        String username = "testuser";
+        String password = "password";
+
+        User user = User.builder().userName("testuser").password("password").build();
+        when(userService.loadUserByUsername(username)).thenReturn(user);
+        //act
+        mockMvc.perform(post("/registration")
+                        .param("username", username)
+                        .param("password", password))
                 .andExpect(status().isOk())
+                .andExpect(model().attribute("userAlreadyExists", true))
                 .andExpect(view().name("registration"));
+
+        //assert
+        verify(userService).loadUserByUsername(username);
     }
 
     @Test
-    void showLoginPage_registerUserAlreadyExist_noRedirect() throws Exception {
+    void testRegisterUser_success() throws Exception {
         //arrange
-        when(userService.loadUserByUsername(anyString())).thenReturn(new User());
-        //act, assert
+        String username = "testuser";
+        String password = "password";
+        when(userService.loadUserByUsername(username)).thenThrow(UsernameNotFoundException.class);
+        //act
         mockMvc.perform(post("/registration")
-                        .param("username", "user")
-                        .param("password", "strongPassword"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("registration"))
-                .andExpect(model().attribute("userAlreadyExists", true));
-
-    }
-
-
-    @Test
-    void showLoginPage_freshUser_redirected() throws Exception {
-        //arrange
-        when(userService.loadUserByUsername(anyString())).
-                thenThrow(new UsernameNotFoundException("Ist halt nicht da"));
-        //act, assert
-        mockMvc.perform(post("/registration")
-                        .param("username", "user")
-                        .param("password", "strongPassword")
-                )
+                        .param("username", username)
+                        .param("password", password))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrlPattern("**/"));
-
+                .andExpect(redirectedUrl("http://localhost/login"));
+        //assert
+        verify(userService).createUser(username,password);
+        verify(userService,times(2)).loadUserByUsername(username);
     }
-
 
 }
