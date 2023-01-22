@@ -53,8 +53,10 @@ class JavaSourceValidatorTest {
                 }
             }
             """;
-        //act and assert
-        assertThrows(TemplateModifiedException.class, () -> cut.testProgram(sourceCode, codeSampleSolution));
+        //act
+        var actual = cut.testProgram(sourceCode, codeSampleSolution);
+        //assert
+        assertArrayEquals(new CodeEvaluation[]{new CodeEvaluation(false,CODE_MODIFIED_MESSAGE)}, actual);
     }
 
     @Test
