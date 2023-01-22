@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changelog/userTable.yaml
+  - include:
+      file: db/changelog/submittedSolutionTable.yaml

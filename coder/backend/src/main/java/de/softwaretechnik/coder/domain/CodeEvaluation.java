@@ -8,6 +8,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
+@ToString
 public class CodeEvaluation {
 
     public static final String ERROR_MESSAGE_TEMPLATE = "Input: \"%s\"\nExpected: \"%s\" but was: \"%s\"";
