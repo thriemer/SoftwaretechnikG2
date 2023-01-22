@@ -2,7 +2,9 @@ package de.softwaretechnik.coder.application.evaluation.compiler;
 
 import de.softwaretechnik.coder.domain.CodeSampleSolution;
 import de.softwaretechnik.coder.domain.CodeEvaluation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -10,6 +12,8 @@ import java.util.Arrays;
 
 @Service
 public class JavaSourceValidator {
+
+    static final String CODE_MODIFIED_MESSAGE = "The source code was modified in a way so that it can't be evaluated automatically. \n Easy way out is to reset the Task";
 
     public CodeEvaluation[] testProgram(String source, CodeSampleSolution codeSampleSolution) {
         try {
@@ -29,9 +33,11 @@ public class JavaSourceValidator {
                 result[i] = new CodeEvaluation(correct, correct ? correctMessage : wrongMessage);
             }
             return result;
-        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
-                 IllegalAccessException ex) {
-            throw new TemplateModifiedException("The source code was modified", ex);
+        } catch (ClassNotFoundException ex) {
+            return new CodeEvaluation[]{new CodeEvaluation(false, ex.getMessage())};
+        } catch (NoSuchMethodException | InvocationTargetException |
+                 IllegalAccessException | NullPointerException ex) {
+            return new CodeEvaluation[]{new CodeEvaluation(false, CODE_MODIFIED_MESSAGE)};
         }
     }
 
