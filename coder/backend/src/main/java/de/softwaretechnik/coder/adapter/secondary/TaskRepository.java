@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends CrudRepository<CodeTask,Long> {
-    Optional<User> findByName(String name);
+    Optional<CodeTask> findByName(String name);
 }
