@@ -13,8 +13,7 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class SiteController {
 
-    @Autowired
-    TaskService taskService;
+    private final TaskService taskService;
 
     @GetMapping("/")
     String showHomePage(Model model, Principal principal) {

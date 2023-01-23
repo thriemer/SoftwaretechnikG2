@@ -16,25 +16,25 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: displayName
+                  name: display_name
                   type: varchar
               - column:
                   constraints:
                     nullable: false
-                  name: shortDescription
+                  name: short_description
                   type: varchar
               - column:
                   constraints:
                     nullable: false
-                  name: taskType
+                  name: task_type
                   type: varchar
               - column:
                   constraints:
                     nullable: false
-                  name: taskDescription
+                  name: task_description
                   type: varchar
               - column:
                   constraints:
                     nullable: false
-                  name: codeTemplate
+                  name: code_template
                   type: varchar

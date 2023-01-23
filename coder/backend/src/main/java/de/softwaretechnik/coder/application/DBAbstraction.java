@@ -13,4 +13,7 @@ public interface DBAbstraction {
     CodeSampleSolution getCodeSampleSolutionByName(String taskName);
 
     CodeTask[] getAllTasks();
+
+    void saveTask(CodeTask task);
+
 }
