@@ -16,6 +16,10 @@ public class SiteController {
     @Autowired
     TaskService taskService;
 
+    @GetMapping("/succ")
+    String showLogoutSuccessfulPage() {
+        return "succ";
+    }
     @GetMapping("/")
     String showHomePage(Model model, Principal principal) {
         model.addAttribute("userName", principal.getName());
