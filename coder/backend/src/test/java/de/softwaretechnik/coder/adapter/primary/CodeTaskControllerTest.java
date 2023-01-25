@@ -49,7 +49,7 @@ class CodeTaskControllerTest {
 
     @BeforeEach
     void setupTasks() {
-        when(taskService.getAllTasks()).thenReturn(new CodeTask[]{new CodeTask("taskName", "taskDesc", "psvm")});
+        when(taskService.getAllTasks()).thenReturn(new CodeTask[]{new CodeTask("taskName", "taskDesc","","","", "psvm")});
     }
 
     @Test
@@ -108,7 +108,7 @@ class CodeTaskControllerTest {
     void testShowHomePage() throws Exception {
         //arrange
         mockUserDatabase();
-        CodeTask[] codeTasks = new CodeTask[]{new CodeTask("Task 1", "This is a task 1", "psvm"), new CodeTask("Task 2", "This is a task 2", "psvm")};
+        CodeTask[] codeTasks = new CodeTask[]{new CodeTask("Task 1", "This is a task 1","" ,"","","psvm"), new CodeTask("Task 2", "This is a task 2","","","", "psvm")};
         when(taskService.getAllTasks()).thenReturn(codeTasks);
         //act, assert
         mockMvc.perform(get("/")
