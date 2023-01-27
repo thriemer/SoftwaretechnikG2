@@ -51,7 +51,7 @@ if(evaluation == undefined){
 }else{
                 var builtHTML = "<ul>";
                 for(const e of evaluation){
-                   let showColor = e.correct ? 'green': 'red';
+                   let showColor = e.correct ? '#4A8246': 'darkred';
                    builtHTML = builtHTML + '<li style="color:'+ showColor+'">'+e.message+'</li>'
                 }
                 builtHTML = builtHTML+"</ul>";
