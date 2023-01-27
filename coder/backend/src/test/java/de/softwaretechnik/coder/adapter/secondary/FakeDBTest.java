@@ -35,10 +35,6 @@ class FakeDBTest {
                     }
                 }
                     """)));
-    }
-
-    @BeforeEach
-    void mockSetup() {
         when(taskRepository.findByName("add")).thenReturn(Optional.of(new CodeTask("add", "add", "Complete the function so that it adds two numbers.", "", "", """
                 public class Calculator {
                     public static int add(int a, int b){
