@@ -27,7 +27,7 @@ public class SiteControllerTest {
     @Test
     void testShowHomePage() throws Exception {
         //arrange
-        CodeTask[] codeTasks = new CodeTask[]{new CodeTask("Task 1", "This is a task 1", "psvm"), new CodeTask("Task 2", "This is a task 2", "psvm")};
+        CodeTask[] codeTasks = new CodeTask[]{new CodeTask("Task 1", "This is a task 1", "", "", "", "psvm"), new CodeTask("Task 2", "This is a task 2", "", "", "", "psvm")};
         when(taskService.getAllTasks()).thenReturn(codeTasks);
         //act, assert
         mockMvc.perform(get("/")

@@ -16,7 +16,7 @@ public class TaskServiceTest {
     @Test
     void testGetAllTasks() {
         // Given
-        var tasks = new CodeTask[]{new CodeTask("taskName", "taskDesc", "psvm")};
+        var tasks = new CodeTask[]{new CodeTask("taskName","","","", "taskDesc", "psvm")};
         Mockito.when(dbAbstraction.getAllTasks()).thenReturn(tasks);
 
         // When
