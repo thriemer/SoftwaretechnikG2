@@ -5,21 +5,56 @@ import de.softwaretechnik.coder.domain.CodeTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class FakeDBTest {
+    private TaskRepository taskRepository = mock(TaskRepository.class);
+
     @InjectMocks
-    private FakeDB fakeDB;
+    private FakeDB fakeDB = new FakeDB(taskRepository);
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        when(taskRepository.findAll()).thenReturn(List.of(
+                new CodeTask("add", "add","Complete the function so that it adds two numbers.","","", """
+                public class Calculator {
+                    public static int add(int a, int b){
+                        return /*TODO*/;
+                    }
+                }
+                    """),
+                new CodeTask("reverse","reverse", "Complete the function so that it reverses a string","","", """
+                public class StringManipulator {
+                    public static String reverse(String s){
+                        return /*TODO*/;
+                    }
+                }
+                    """)));
     }
+
+    @BeforeEach
+    void mockSetup() {
+        when(taskRepository.findByName("add")).thenReturn(Optional.of(new CodeTask("add", "add", "Complete the function so that it adds two numbers.", "", "", """
+                public class Calculator {
+                    public static int add(int a, int b){
+                        return /*TODO*/;
+                    }
+                }
+                    """)));
+        when(taskRepository.findByName("reverse")).thenReturn(Optional.of(new CodeTask("reverse", "reverse", "Complete the function so that it reverses a string", "", "", """
+                public class StringManipulator {
+                    public static String reverse(String s){
+                        return /*TODO*/;
+                    }
+                }
+                    """)));
+    }
+
 
     @Test
     void testGetTaskNames() {
@@ -34,10 +69,9 @@ class FakeDBTest {
     }
 
     @Test
-    void testGetTaskByName_found() {
-        // arrange
-        String taskName = "add";
-        CodeTask expectedTask = new CodeTask("add", "Complete the function so that it adds two numbers.", """
+    public void testGetTaskByName_found() {
+        // Arrange
+        CodeTask expectedTask = new CodeTask("add", "add","Complete the function so that it adds two numbers.","","", """
                 public class Calculator {
                     public static int add(int a, int b){
                         return /*TODO*/;
@@ -45,11 +79,18 @@ class FakeDBTest {
                 }
                     """);
 
-        // act
-        CodeTask task = fakeDB.getTaskByName(taskName);
+        // Act
+        CodeTask actualTask = fakeDB.getTaskByName("add");
 
-        // assert
-        assertEquals(expectedTask, task);
+        // Assert
+
+        assertEquals(expectedTask.getName(), actualTask.getName());
+        assertEquals(expectedTask.getDisplayName(), actualTask.getDisplayName());
+        assertEquals(expectedTask.getShortDescription(), actualTask.getShortDescription());
+        assertEquals(expectedTask.getTaskType(), actualTask.getTaskType());
+        assertEquals(expectedTask.getTaskDescription(), actualTask.getTaskDescription());
+        assertEquals(expectedTask.getCodeTemplate(), actualTask.getCodeTemplate());
+
     }
 
     @Test
@@ -66,18 +107,12 @@ class FakeDBTest {
 
     @Test
     void testGetCodeSampleSolutionByName_found() {
-        // arrange
-        String taskName = "add";
-        CodeSampleSolution expected = new CodeSampleSolution("add", "add",
-                new Object[][]{{5, 4}, {11, 12}},
-                new Object[]{9, 23}
-        );
-
-        // act
-        CodeSampleSolution result = fakeDB.getCodeSampleSolutionByName(taskName);
-
-        // assert
-        assertEquals(expected.taskName(), result.taskName());
+        CodeSampleSolution result = fakeDB.getCodeSampleSolutionByName("addTwoNumbers");
+        if(result != null){
+            assertEquals("addTwoNumbers", result.taskName());
+        }else{
+            fail("no solution found");
+        }
     }
 
     @Test
@@ -98,8 +133,8 @@ class FakeDBTest {
 
         // assert
         assertEquals(2, allTasks.length);
-        assertEquals("add", allTasks[0].name());
-        assertEquals("reverse", allTasks[1].name());
+        assertEquals("add", allTasks[0].getName());
+        assertEquals("reverse", allTasks[1].getName());
     }
 
 }
