@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static de.softwaretechnik.coder.application.evaluation.compiler.JavaSourceValidator.CODE_MODIFIED_MESSAGE;
 
 class JavaSourceValidatorTest {
 
@@ -52,8 +53,10 @@ class JavaSourceValidatorTest {
                 }
             }
             """;
-        //act and assert
-        assertThrows(TemplateModifiedException.class, () -> cut.testProgram(sourceCode, codeSampleSolution));
+        //act
+        var actual = cut.testProgram(sourceCode, codeSampleSolution);
+        //assert
+        assertArrayEquals(new CodeEvaluation[]{new CodeEvaluation(false,CODE_MODIFIED_MESSAGE)}, actual);
     }
 
     @Test
@@ -96,5 +99,47 @@ class JavaSourceValidatorTest {
 
         // assert
         assertEquals(boolean.class, result);
+    }
+
+
+    @Test
+    void testAPlusB_invalidSource_compilationFailed() {
+        //arrange
+        CodeSampleSolution codeSampleSolution = new CodeSampleSolution("add", "add",
+                new Object[][]{{5, 4}, {11, 11}},
+                new Object[]{9, 24}
+        );
+        String sourceCode = """
+                public class Calculator {
+                    public static int add(int a, int b){
+                        return a+b
+                    }
+                }
+                """;
+        //act
+        var actual = cut.testProgram(sourceCode, codeSampleSolution);
+        //assert
+        assertArrayEquals(new CodeEvaluation[]{new CodeEvaluation(false,"Unable to load: Calculator. Reason = compilation failed.")}, actual);
+    }
+
+
+    @Test
+    void testAPlusB_invalidSource_reflectionFailed() {
+        //arrange
+        CodeSampleSolution codeSampleSolution = new CodeSampleSolution("add", "add",
+                new Object[][]{{5, 4}, {11, 11}},
+                new Object[]{9, 24}
+        );
+        String sourceCode = """
+                public class Calculator {
+                    private int add(int a, int b){
+                        return a+b;
+                    }
+                }
+                """;
+        //act
+        var actual = cut.testProgram(sourceCode, codeSampleSolution);
+        //assert
+        assertArrayEquals(new CodeEvaluation[]{new CodeEvaluation(false,CODE_MODIFIED_MESSAGE)}, actual);
     }
 }

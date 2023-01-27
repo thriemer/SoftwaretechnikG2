@@ -2,21 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Registration</title>
-    <style>
-.middleOfBrowser{
-    width=40%;
-    text-align:center;
-    left: 50%;
-    top: 30%;
-    position: absolute;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-    </style>
+    <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
 <div class="middleOfBrowser">
-    <h2>Registration!</h2>
+    <h2>Registration</h2>
     <form th:action="@{/registration}" method="post">
         <div th:if="${userAlreadyExists}">
             This user already exists.

@@ -24,4 +24,7 @@ public class TaskService {
         dbAbstraction.saveTask(task);
     }
 
+    public CodeTask getTaskByName(String taskName) {
+        return dbAbstraction.getTaskByName(taskName);
+    }
 }

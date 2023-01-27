@@ -1,8 +1,12 @@
 package de.softwaretechnik.coder.adapter.primary;
 
+import de.softwaretechnik.coder.application.evaluation.SolutionEvaluationService;
+import de.softwaretechnik.coder.application.evaluation.SolutionSaveService;
+import de.softwaretechnik.coder.application.evaluation.SolutionService;
 import de.softwaretechnik.coder.application.evaluation.SolutionSubmitService;
 import de.softwaretechnik.coder.application.evaluation.compiler.TemplateModifiedException;
 import de.softwaretechnik.coder.adapter.secondary.UserRepository;
+import de.softwaretechnik.coder.application.login.UserService;
 import de.softwaretechnik.coder.application.tasks.TaskService;
 import de.softwaretechnik.coder.domain.CodeTask;
 import de.softwaretechnik.coder.domain.CodeEvaluation;
@@ -33,19 +37,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CodeTaskControllerTest {
 
     @Autowired
-    BCryptPasswordEncoder passwordEncoder;
-
-    @Autowired
     MockMvc mockMvc;
 
     @MockBean
-    UserRepository repository;
-
-    @MockBean
-    TaskService taskService;
-
-    @MockBean
     SolutionSubmitService solutionSubmitService;
+
+    @MockBean
+    SolutionService solutionService;
+
+    @MockBean
+    UserService userService;
 
     @BeforeEach
     void setupTasks() {
@@ -54,21 +55,9 @@ class CodeTaskControllerTest {
 
     @Test
     void listAllTasks_noLoginProvided_redirectedToLoginPage() throws Exception {
-        mockMvc.perform(get("/api/task/listAll"))
+        mockMvc.perform(get("/api/task/add"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrlPattern("**/login"));
-    }
-
-    @Test
-    void listAllTasks_withExistingUser_atLeastOneTaskReturned() throws Exception {
-        //arrange
-        mockUserDatabase();
-        //act, assert
-        mockMvc.perform(get("/api/task/listAll")
-                        .with(SecurityMockMvcRequestPostProcessors.user("user")))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.*", hasSize(1)));
     }
 
     @Test
@@ -82,7 +71,6 @@ class CodeTaskControllerTest {
     void sumbitTask_withExistingUser_evaluationReturned() throws Exception {
         //arrange
         String codedSolution = "psvm(){sout(myFancyCode);}";
-        mockUserDatabase();
 
         when(solutionSubmitService.submitSolution("user", codedSolution, "taskName")).thenReturn(new CodeEvaluation[]{new CodeEvaluation(true, "fine")});
 
@@ -96,62 +84,21 @@ class CodeTaskControllerTest {
                 .andExpect(content().string("[{\"correct\":true,\"message\":\"fine\"}]"));
     }
 
-
-    private void mockUserDatabase() {
-        when(repository.findByUserName("user")).thenReturn(Optional.of(User.builder()
-                .userName("username")
-                .password(passwordEncoder.encode("securePassword"))
-                .build()));
-    }
-
     @Test
-    void testShowHomePage() throws Exception {
+    void getTaskByName_withExistingUser_taskReturned() throws Exception {
         //arrange
         mockUserDatabase();
         CodeTask[] codeTasks = new CodeTask[]{new CodeTask("Task 1", "This is a task 1","" ,"","","psvm"), new CodeTask("Task 2", "This is a task 2","","","", "psvm")};
         when(taskService.getAllTasks()).thenReturn(codeTasks);
+        String codedSolution = "psvm(){sout(myFancyCode);}";
+        var expected = new SolutionService.TaskAndSubmittedSolution(new CodeTask("MyTask", "taskDescription", "psvm"), null, null);
+        when(solutionService.getTaskAndSolution("MyTask", "user")).thenReturn(expected);
         //act, assert
-        mockMvc.perform(get("/")
+        mockMvc.perform(get("/api/task/MyTask")
+                        .contentType(MediaType.APPLICATION_JSON)
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index"))
-                .andExpect(model().attribute("userName", "user"))
-                .andExpect(model().attribute("tasks", codeTasks));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
-
-    @Test
-    public void testTemplateModifiedException() {
-        Exception originalException = new Exception("original message");
-        TemplateModifiedException ex = new TemplateModifiedException("Wrapper message", originalException);
-        assertEquals("Wrapper message", ex.getMessage());
-        assertEquals(originalException, ex.getCause());
-    }
-
-
-    @Test
-    void testhandleTemplateModifiedException_returnsBadRequestWithErrorMessage() throws Exception {
-        //arrange
-        TaskController taskController = new TaskController(solutionSubmitService, taskService);
-        Exception cause = new ClassNotFoundException("Class not found");
-        TemplateModifiedException ex = new TemplateModifiedException("template modified", cause);
-        //act
-        ResponseEntity<String> response = taskController.handleTemplateModifiedException(ex);
-        //assert
-        assertEquals(response.getStatusCodeValue(), 400);
-        assertEquals(response.getBody(), "Class not found");
-    }
-
-    @Test
-    void testhandleTemplateModifiedException_WithoutCause() throws Exception {
-        //arrange
-        TaskController taskController = new TaskController(solutionSubmitService, taskService);
-        TemplateModifiedException ex = new TemplateModifiedException("template modified", new Exception());
-        //act
-        ResponseEntity<String> response = taskController.handleTemplateModifiedException(ex);
-        //assert
-        assertEquals(response.getStatusCodeValue(), 400);
-        assertEquals(response.getBody(), ex.getMessage());
-    }
-
 
 }
