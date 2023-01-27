@@ -1,17 +1,74 @@
-html,body{height:100%}
+html,body {height:100%}
 #monacoEditor {
-width: 100%;
-height: 50%;
-margin: 0;
-padding: 0;
+  width: 100%;
+  height: 50%;
+  margin: 0;
+  padding: 0;
+}
+header {
+  font-family: sans-serif;
+  color: white;
+  background-color: #4A8246;
+  padding: 20px;
+  margin: 0px;
+  text-alignment: left;
+}
+.title {
+  font-size: 24pt;
+  font-weight: bold;
+  color: white;
+}
+.title:link {
+  color: white;
+}
+.title:visited {
+  color: white;
+}
+.profileicon {
+  vertical-align: middle;
+}
+.usermenu {
+  font-size: 16pt;
+  position: relative;
+  display: inline-block;
+  float: right;
+  right: 10px;
+  padding: 5px;
+}
+.dropdown {
+  font-size: 12pt;
+  text-align: right;
+  display: none;
+  position: absolute;
+  right: 0px;
+  background-color: #AAAAAA;
+  min-width: 80px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.usermenu:hover .dropdown {
+  display: block;
+}
+.dropdownlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.dropdownlist li a {
+  display: block;
+  padding: 5px 10px;
+}
+.dropdownlist li a:hover {
+  background-color: #888888;
+  cursor: pointer;
 }
 h1 {
   font-family: sans-serif;
-  font-size: 24px;
+  font-size: 18pt;
 }
 h2 {
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 14pt;
 }
 a {
   font-family: sans-serif;
@@ -55,4 +112,67 @@ button:hover {
 }
 #evaluation {
   font-family: sans-serif;
+}
+.middleOfBrowser{
+    width=40%;
+    text-align:center;
+    left: 50%;
+    top: 30%;
+    position: absolute;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+input[type=text], input[type=password] {
+  margin-bottom: 5px;
+}
+input[type=submit]{
+  background-color: #4A8246;
+  color: white;
+  border-radius: 5%;
+  border: 2px solid #4A8246;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px 7px;
+}
+input[type=submit]:hover {
+  cursor: pointer;
+}
+#registrationlink {
+  font-family: sans-serif;
+  font-size: 10pt;
+}
+#loginerror {
+  font-family: sans-serif;
+  color: darkred;
+  margin-bottom: 10px;
+}
+#logout {
+  font-family: sans-serif;
+}
+.taskboxes {
+  font-family: sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.taskname {
+  font-size: 14pt;
+  font-weight: bold;
+}
+.boxdescription {
+  font-size: 11pt;
+  height: 60px;
+}
+.status {
+  font-size: 11pt;
+  vertical-align: bottom;
+}
+.taskbutton {
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  text-align: left;
+  width: 180px;
+  border: 2px solid grey;
+  border-radius: 5%;
 }

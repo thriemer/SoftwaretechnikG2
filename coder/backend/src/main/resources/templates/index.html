@@ -4,10 +4,30 @@
     <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-<h1>Hello, <span th:text="${userName}"></span>!</h1>
-<h2>Coding tasks:</h2>
-<ul th:each="task : ${tasks}">
-<li><a th:href="@{/codingTask.html(task = ${task.name}, language = java)}" th:text="${task.name}"></a></li>
-</ul>
+    <header>
+        <a class="title"href="../"> YeetCode </a>
+        <div class="usermenu">
+            <span th:text="${userName}"></span> <img class="profileicon" src="../Profile_Icon.png" alt="x" width="32" height="32">
+            <div class="dropdown">
+                <ul class="dropdownlist">
+                    <li><a> Account</a></li>
+                    <li><a> Logout </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <h1>Hello, <span th:text="${userName}"></span>!</h1>
+    <h2>Coding tasks:</h2>
+    <div class="taskboxes">
+        <div th:each="task : ${tasks}">
+            <div> <a th:href="@{/codingTask.html(task = ${task.name}, language = java)}">
+                <button class="taskbutton">
+                    <div class="taskname" th:text="${task.name}"></div> <hr>
+                    <div class="boxdescription" th:text="${task.taskDescription}"> </div>
+                    <div class="status"> <hr> not yet attempted </div>
+                </button></a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
