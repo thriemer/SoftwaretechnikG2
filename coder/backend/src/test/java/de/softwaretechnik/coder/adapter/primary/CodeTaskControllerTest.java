@@ -1,36 +1,22 @@
 package de.softwaretechnik.coder.adapter.primary;
 
-import de.softwaretechnik.coder.application.evaluation.SolutionEvaluationService;
-import de.softwaretechnik.coder.application.evaluation.SolutionSaveService;
 import de.softwaretechnik.coder.application.evaluation.SolutionService;
 import de.softwaretechnik.coder.application.evaluation.SolutionSubmitService;
-import de.softwaretechnik.coder.application.evaluation.compiler.TemplateModifiedException;
-import de.softwaretechnik.coder.adapter.secondary.UserRepository;
-import de.softwaretechnik.coder.application.login.UserService;
-import de.softwaretechnik.coder.application.tasks.TaskService;
-import de.softwaretechnik.coder.domain.CodeTask;
 import de.softwaretechnik.coder.domain.CodeEvaluation;
-import de.softwaretechnik.coder.domain.User;
-import org.junit.jupiter.api.BeforeEach;
+import de.softwaretechnik.coder.domain.CodeTask;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.http.ResponseEntity;
 
-import java.util.Optional;
-
-import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -44,14 +30,6 @@ class CodeTaskControllerTest {
 
     @MockBean
     SolutionService solutionService;
-
-    @MockBean
-    UserService userService;
-
-    @BeforeEach
-    void setupTasks() {
-        when(taskService.getAllTasks()).thenReturn(new CodeTask[]{new CodeTask("taskName", "taskDesc","","","", "psvm")});
-    }
 
     @Test
     void listAllTasks_noLoginProvided_redirectedToLoginPage() throws Exception {
@@ -87,11 +65,8 @@ class CodeTaskControllerTest {
     @Test
     void getTaskByName_withExistingUser_taskReturned() throws Exception {
         //arrange
-        mockUserDatabase();
-        CodeTask[] codeTasks = new CodeTask[]{new CodeTask("Task 1", "This is a task 1","" ,"","","psvm"), new CodeTask("Task 2", "This is a task 2","","","", "psvm")};
-        when(taskService.getAllTasks()).thenReturn(codeTasks);
-        String codedSolution = "psvm(){sout(myFancyCode);}";
-        var expected = new SolutionService.TaskAndSubmittedSolution(new CodeTask("MyTask", "taskDescription", "psvm"), null, null);
+        var codeTask = new CodeTask("MyTask", "This is a task 1","" ,"","","psvm");
+        var expected = new SolutionService.TaskAndSubmittedSolution(codeTask, null, null);
         when(solutionService.getTaskAndSolution("MyTask", "user")).thenReturn(expected);
         //act, assert
         mockMvc.perform(get("/api/task/MyTask")
