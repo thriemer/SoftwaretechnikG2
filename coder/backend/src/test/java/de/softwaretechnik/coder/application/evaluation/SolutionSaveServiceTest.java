@@ -1,6 +1,7 @@
 package de.softwaretechnik.coder.application.evaluation;
 
 import de.softwaretechnik.coder.adapter.secondary.SubmittedSolutionRepository;
+import de.softwaretechnik.coder.domain.SubmittedSolution;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
@@ -15,6 +16,7 @@ class SolutionSaveServiceTest {
     @BeforeEach
     void setUp() {
         solutionSaveService = new SolutionSaveService(submittedSolutionRepository);
+        when(submittedSolutionRepository.save(any())).thenReturn(new SubmittedSolution(1L,"","",""));
     }
 
     @Test

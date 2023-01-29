@@ -19,12 +19,12 @@
     <h1>Hello, <span th:text="${userName}"></span>!</h1>
     <h2>Coding tasks:</h2>
     <div class="taskboxes">
-        <div th:each="task : ${tasks}">
-            <div> <a th:href="@{/codingTask.html(task = ${task.name}, language = java)}">
+        <div th:each="taskPair : ${tasks}">
+            <div> <a th:href="@{/codingTask.html(task = ${taskPair.codeTask.name}, language = java)}">
                 <button class="taskbutton">
-                    <div class="taskname" th:text="${task.name}"></div> <hr>
-                    <div class="boxdescription" th:text="${task.taskDescription}"> </div>
-                    <div class="status"> <hr> not yet attempted </div>
+                    <div class="taskname" th:text="${taskPair.codeTask.displayName}"></div> <hr>
+                    <div class="boxdescription" th:text="${taskPair.codeTask.shortDescription}"> </div>
+                    <div class="status"> <img class="profileicon" th:src="${taskPair.attempted}" alt="x" width="32" height="32"></div>
                 </button></a>
             </div>
         </div>

@@ -12,8 +12,8 @@ public class SolutionSubmitService {
     private final SolutionSaveService solutionSaveService;
 
     public CodeEvaluation[] submitSolution(String userId, String code, String taskName) {
-        solutionSaveService.saveSolution(userId, taskName, code);
-        return solutionEvaluationService.evaluateSubmission(code, taskName);
+        long solutionId = solutionSaveService.saveSolution(userId, taskName, code);
+        return solutionEvaluationService.evaluateSubmission(code, taskName, solutionId);
     }
 
 }

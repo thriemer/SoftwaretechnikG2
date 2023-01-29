@@ -13,14 +13,15 @@ public class SolutionSaveService {
 
     private final SubmittedSolutionRepository submittedSolutionRepository;
 
-    public void saveSolution(String userName, String taskName, String code) {
+    public long saveSolution(String userName, String taskName, String code) {
         SubmittedSolution submittedSolution = submittedSolutionRepository
                 .findByUserNameAndTaskName(userName, taskName)
                 .orElseGet(SubmittedSolution::new);
         submittedSolution.setUserName(userName);
         submittedSolution.setTaskName(taskName);
         submittedSolution.setSubmissionContent(code);
-        submittedSolutionRepository.save(submittedSolution);
+        submittedSolution = submittedSolutionRepository.save(submittedSolution);
+        return submittedSolution.getId();
     }
 
     public Optional<SubmittedSolution> findSubmission(String userName, String taskName) {

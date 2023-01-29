@@ -1,29 +1,29 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-submitted-solution
+      id: create-table-evaluation
       author: lthriemer
       changes:
         - createTable:
-            tableName: submitted_solution
+            tableName: code_evaluation
             columns:
               - column:
-                  constraints:
-                    unique: true
                   autoIncrement: true
                   name: id
                   type: BIGINT
               - column:
                   constraints:
                     nullable: false
-                  name: user_name
-                  type: varchar
+                    foreignKeyName: fk_submission_evaluation
+                    references: submitted_solution(id)
+                  name: submitted_solution_id
+                  type: BIGINT
               - column:
                   constraints:
                     nullable: false
-                  name: task_name
-                  type: varchar
+                  name: correct
+                  type: bool
               - column:
                   constraints:
                     nullable: false
-                  name: submission_content
+                  name: message
                   type: varchar

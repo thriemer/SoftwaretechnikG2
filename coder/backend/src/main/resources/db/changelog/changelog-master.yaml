@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/submittedSolutionTable.yaml
   - include:
       file: db/changelog/taskTable.yaml
+  - include:
+      file: db/changelog/evaluationTable.yaml

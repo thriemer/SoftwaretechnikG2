@@ -16,7 +16,7 @@ public class SolutionSubmitServiceTest {
         //act
         cut.submitSolution("myUser", "code", "taskName");
         //assert
-        Mockito.verify(evaluationMock, Mockito.times(1)).evaluateSubmission("code", "taskName");
+        Mockito.verify(evaluationMock, Mockito.times(1)).evaluateSubmission("code", "taskName", 0);
         Mockito.verify(saveMock, Mockito.times(1)).saveSolution("myUser", "taskName", "code");
     }
 
