@@ -25,7 +25,7 @@ public class SolutionService {
         CodeTask codeTask = taskService.getTaskByName(taskName);
         Optional<SubmittedSolution> submittedSolution = solutionSaveService.findSubmission(userName, taskName);
         if (submittedSolution.isEmpty()) return new TaskAndSubmittedSolution(codeTask, null, null);
-        CodeEvaluation[] evaluation = solutionEvaluationService.evaluateSubmission(submittedSolution.get().getSubmissionContent(), taskName);
+        CodeEvaluation[] evaluation = solutionEvaluationService.getEvaluation(submittedSolution.get().getId());
         return new TaskAndSubmittedSolution(codeTask, evaluation, submittedSolution.get().getSubmissionContent());
     }
 

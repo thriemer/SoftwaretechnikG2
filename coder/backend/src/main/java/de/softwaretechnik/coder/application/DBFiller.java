@@ -23,30 +23,32 @@ public class DBFiller {
     private final TaskService taskService;
 
     @PostConstruct
-    void initUsers(){
-        if(userRepository.findByUserName("user").isEmpty()){
-            userService.createUser("user","password");
+    void initUsers() {
+        if (userRepository.findByUserName("user").isEmpty()) {
+            userService.createUser("user", "password");
         }
-        if(userRepository.findByUserName("admin").isEmpty()){
-            userService.createUser("admin","password");
+        if (userRepository.findByUserName("admin").isEmpty()) {
+            userService.createUser("admin", "password");
         }
     }
 
     @PostConstruct
-    void initTasks(){
-        if(taskRepository.findByName("addTwoNumbers").isEmpty()){
-            taskService.createTask("addTwoNumbers","addTwoNumbers","Complete the function so that it adds two numbers","coding","Complete the function so that it adds two numbers","public class Calculator {\n" +
-                    "                        public static int add(int a, int b){\n" +
-                    "                            return /*TODO*/;\n" +
-                    "                        }\n" +
-                    "                    }");
+    void initTasks() {
+        if (taskRepository.findByName("addTwoNumbers").isEmpty()) {
+            taskService.createTask("addTwoNumbers", "Intro to functions", "Complete the function so that it adds two numbers", "coding", "Complete the function so that it adds two numbers.", """
+                    public class Calculator {
+                        public static int add(int a, int b){
+                            return /*TODO*/;
+                        }
+                    }""");
         }
-        if(taskRepository.findByName("reverseString").isEmpty()){
-            taskService.createTask("reverseString","reverseString","Complete the function so that it reverses the String","coding","Complete the function so that it reverses the String","public class StringUtil {\n" +
-                    "                        public static String reverseString(String s){\n" +
-                    "                            return \"TODO\";\n" +
-                    "                        }\n" +
-                    "                    }");
+        if (taskRepository.findByName("reverseString").isEmpty()) {
+            taskService.createTask("reverseString", "Reverse string", "Complete the function so that it reverses the String", "coding", "Complete the function so that it reverses the String", """
+                    public class StringUtil {
+                        public static String reverseString(String s){
+                            return "TODO";
+                        }
+                    }""");
         }
     }
 
