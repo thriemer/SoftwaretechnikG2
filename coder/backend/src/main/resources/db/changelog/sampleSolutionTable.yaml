@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-sample_solution
+      author: lthriemer
+      changes:
+        - createTable:
+            tableName: sample_solution
+            columns:
+              - column:
+                  autoIncrement: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: task_name
+                  type: varchar
+              - column:
+                  name: method
+                  type: varchar
+              - column:
+                  name: input
+                  type: varchar
+              - column:
+                  name: input_type
+                  type: varchar
+              - column:
+                  name: expected_output
+                  type: varchar
+              - column:
+                  name: output_type
+                  type: varchar

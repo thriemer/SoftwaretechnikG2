@@ -4,11 +4,13 @@ import de.softwaretechnik.coder.adapter.secondary.UserRepository;
 import de.softwaretechnik.coder.adapter.secondary.TaskRepository;
 import de.softwaretechnik.coder.application.login.UserService;
 import de.softwaretechnik.coder.application.tasks.TaskService;
+import de.softwaretechnik.coder.domain.CodeSampleSolution;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Profile("!prod")
@@ -21,6 +23,7 @@ public class DBFiller {
     private final TaskRepository taskRepository;
 
     private final TaskService taskService;
+    private final DBAbstraction dbAbstraction;
 
     @PostConstruct
     void initUsers() {
@@ -50,6 +53,21 @@ public class DBFiller {
                         }
                     }""");
         }
+    }
+
+    @PostConstruct
+    void initSampleSolution() {
+        List<CodeSampleSolution> allEvaluations = List.of(
+                new CodeSampleSolution("addTwoNumbers", "add",
+                        new Object[][]{{5, 4}, {11, 12}},
+                        new Object[]{9, 23}
+                ),
+                new CodeSampleSolution("reverseString", "reverseString",
+                        new Object[][]{{"HelloWorld!"}, {"I've seen enough of Ba Sing Sei. And I can't even see! ~ Toph"}},
+                        new Object[]{"!dlroWolleH", "hpoT ~ !ees neve t'nac I dnA .ieS gniS aB fo hguone nees ev'I"}
+                )
+        );
+        allEvaluations.forEach(dbAbstraction::saveSampleSolution);
     }
 
 }

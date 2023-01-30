@@ -16,4 +16,6 @@ public interface DBAbstraction {
 
     void saveTask(CodeTask task);
 
+    void saveSampleSolution(CodeSampleSolution sampleSolution);
+
 }
