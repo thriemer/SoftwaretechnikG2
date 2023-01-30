@@ -57,17 +57,24 @@ public class DBFiller {
 
     @PostConstruct
     void initSampleSolution() {
-        List<CodeSampleSolution> allEvaluations = List.of(
-                new CodeSampleSolution("addTwoNumbers", "add",
-                        new Object[][]{{5, 4}, {11, 12}},
-                        new Object[]{9, 23}
-                ),
-                new CodeSampleSolution("reverseString", "reverseString",
-                        new Object[][]{{"HelloWorld!"}, {"I've seen enough of Ba Sing Sei. And I can't even see! ~ Toph"}},
-                        new Object[]{"!dlroWolleH", "hpoT ~ !ees neve t'nac I dnA .ieS gniS aB fo hguone nees ev'I"}
-                )
+
+        var sol1 = new CodeSampleSolution("addTwoNumbers", "add",
+                new Object[][]{{5, 4}, {11, 12}},
+                new Object[]{9, 23}
         );
-        allEvaluations.forEach(dbAbstraction::saveSampleSolution);
+        var sol2 = new CodeSampleSolution("reverseString", "reverseString",
+                new Object[][]{{"HelloWorld!"}, {"I've seen enough of Ba Sing Sei. And I can't even see! ~ Toph"}},
+                new Object[]{"!dlroWolleH", "hpoT ~ !ees neve t'nac I dnA .ieS gniS aB fo hguone nees ev'I"}
+        );
+
+        if (dbAbstraction.getCodeSampleSolutionByName(sol1.taskName()) == null) {
+            dbAbstraction.saveSampleSolution(sol1);
+        }
+
+        if (dbAbstraction.getCodeSampleSolutionByName(sol2.taskName()) == null) {
+            dbAbstraction.saveSampleSolution(sol2);
+        }
+
     }
 
 }
