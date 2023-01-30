@@ -1,5 +1,7 @@
 package de.softwaretechnik.coder.adapter.secondary;
 
+import de.softwaretechnik.coder.adapter.secondary.sample_solution.SampleSolutionConverter;
+import de.softwaretechnik.coder.adapter.secondary.sample_solution.SampleSolutionRepository;
 import de.softwaretechnik.coder.application.DBAbstraction;
 import de.softwaretechnik.coder.domain.CodeSampleSolution;
 import de.softwaretechnik.coder.domain.CodeTask;
@@ -14,17 +16,8 @@ import java.util.stream.StreamSupport;
 public class FakeDB implements DBAbstraction {
 
     private final TaskRepository taskRepository;
-
-    private final List<CodeSampleSolution> allEvaluations = List.of(
-            new CodeSampleSolution("addTwoNumbers", "add",
-                    new Object[][]{{5, 4}, {11, 12}},
-                    new Object[]{9, 23}
-            ),
-            new CodeSampleSolution("reverseString", "reverseString",
-                    new Object[][]{{"HelloWorld!"}, {"I've seen enough of Ba Sing Sei. And I can't even see! ~ Toph"}},
-                    new Object[]{"!dlroWolleH", "hpoT ~ !ees neve t'nac I dnA .ieS gniS aB fo hguone nees ev'I"}
-            )
-    );
+    private final SampleSolutionConverter sampleSolutionConverter;
+    private final SampleSolutionRepository sampleSolutionRepository;
 
     public List<String> getTaskNames() {
         return StreamSupport.stream(taskRepository.findAll().spliterator(), false).map(CodeTask::getName).toList();
@@ -35,7 +28,9 @@ public class FakeDB implements DBAbstraction {
     }
 
     public CodeSampleSolution getCodeSampleSolutionByName(String taskName) {
-        return allEvaluations.stream().filter(e -> e.taskName().equals(taskName)).findFirst().orElse(null);
+        return sampleSolutionConverter.convertToDomainObject(
+                sampleSolutionRepository.findByTaskName(taskName)
+        );
     }
 
     public CodeTask[] getAllTasks() {
@@ -45,6 +40,13 @@ public class FakeDB implements DBAbstraction {
     @Override
     public void saveTask(CodeTask task) {
         taskRepository.save(task);
+    }
+
+    @Override
+    public void saveSampleSolution(CodeSampleSolution sampleSolution) {
+        sampleSolutionRepository.save(
+                sampleSolutionConverter.convertToAdapterObject(sampleSolution)
+        );
     }
 
 }
