@@ -17,13 +17,19 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/favicon.ico","/registration","/mystyle.css").permitAll()
+                .antMatchers("/favicon.ico", "/registration","/mystyle.css").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
+                )
+                .logout((l) ->
+                        l.logoutUrl("/logout")
+                                .clearAuthentication(true)
+                                .logoutSuccessUrl("/logoutSuccessful")
+                                .permitAll()
                 )
                 .build();
     }
