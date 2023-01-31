@@ -28,14 +28,22 @@ public class SiteController {
         model.addAttribute("userName", principal.getName());
 
         var tasks = taskService.getAllTasks();
-        var tasksPairArray = Arrays.stream(tasks).map(t -> {
-            var taskAndSolution = solutionService.getTaskAndSolution(t.getName(), principal.getName());
-            String taskState = getState(taskAndSolution.evaluation());
-            return new TaskPair(taskAndSolution.task(), taskState);
-        }).toArray(TaskPair[]::new);
+        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
+        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
 
-        model.addAttribute("tasks", tasksPairArray);
+        model.addAttribute("codeTasks", codeTasks);
+        model.addAttribute("outputTasks", outputTasks);
         return "index";
+    }
+
+    private TaskPair[] accumulate(CodeTask[] tasks, String type, String username) {
+        return Arrays.stream(tasks)
+                .filter(t -> t.getTaskType().equals(type))
+                .map(t -> {
+                    var taskAndSolution = solutionService.getTaskAndSolution(t.getName(), username);
+                    String taskState = getState(taskAndSolution.evaluation());
+                    return new TaskPair(taskAndSolution.task(), taskState);
+                }).toArray(TaskPair[]::new);
     }
 
     private String getState(CodeEvaluation[] evaluations) {
