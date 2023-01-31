@@ -12,7 +12,6 @@ import javax.persistence.Id;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
 @Entity(name="SampleSolution")
 public class SampleSolutionSDTO {

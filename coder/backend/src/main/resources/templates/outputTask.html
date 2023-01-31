@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet"
+          href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/default.min.css">
+    <script src="//unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+<header>
+    <a class="title" href="../"> YeetCode </a>
+    <div class="usermenu">
+        <span th:text="${userName}"></span> <img class="profileicon" src="../Profile_Icon.png" alt="x" width="32"
+                                                 height="32">
+        <div class="dropdown">
+            <ul class="dropdownlist">
+                <li><a> Account</a></li>
+                <li><a> Logout </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<h1 id="taskName" th:text="${codeTaskAndSolution.task.displayName}">Task Name</h1>
+<p id="taskDescription" th:text="${codeTaskAndSolution.task.taskDescription}">This is the description of the task.</p>
+<div style="width:100%;height:100%;display: flex">
+    <div style="width:50%">
+        <pre><code class="language-java" th:text="${codeTaskAndSolution.task.codeTemplate}"></code></pre>
+        <form method="POST" th:action="@{/outputTask}">
+            <input type="hidden" th:value="${codeTaskAndSolution.task.name}" name="taskName">
+        <div><input type="text" style="width:100%" name="submittedSolution" id ="submittedSolution"></div>
+        <button id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+    <div style="margin-left: 1cm">
+        <h1>Evaluation</h1>
+        <p id="evaluation" th:if="${codeTaskAndSolution.evaluation == null}">Nothing to show</p>
+        <ul th:if="${codeTaskAndSolution.evaluation != null}" th:each="eval : ${codeTaskAndSolution.evaluation}">
+        <li th:style="${eval.correct ? 'color: #4A8246;' : 'color: darkred;'}" th:text="${eval.message}"></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
