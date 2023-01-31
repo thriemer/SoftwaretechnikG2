@@ -23,6 +23,10 @@ public class SiteController {
     record TaskPair(CodeTask codeTask, String attempted) {
     }
 
+    @GetMapping("/succ")
+    String showLogoutSuccessfulPage() {
+        return "succ";
+    }
     @GetMapping("/")
     String showHomePage(Model model, Principal principal) {
         model.addAttribute("userName", principal.getName());
