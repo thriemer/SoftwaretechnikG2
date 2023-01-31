@@ -20,7 +20,7 @@ class LogoutTest {
     void logout_success_redirectedtosuccpage() throws Exception {
         mockMvc.perform(get("/logout"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(MockMvcResultMatchers.redirectedUrl("/succ"));
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/logoutSuccessful"));
     }
 
 }

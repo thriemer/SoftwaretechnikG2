@@ -23,9 +23,9 @@ public class SiteController {
     record TaskPair(CodeTask codeTask, String attempted) {
     }
 
-    @GetMapping("/succ")
+    @GetMapping("/logoutSuccessful")
     String showLogoutSuccessfulPage() {
-        return "succ";
+        return "logoutSuccessful";
     }
     @GetMapping("/")
     String showHomePage(Model model, Principal principal) {

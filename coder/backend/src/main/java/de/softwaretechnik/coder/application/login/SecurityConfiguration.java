@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                 .logout((l) ->
                         l.logoutUrl("/logout")
                                 .clearAuthentication(true)
-                                .logoutSuccessUrl("/succ")
+                                .logoutSuccessUrl("/logoutSuccessful")
                                 .permitAll()
                 )
                 .build();
