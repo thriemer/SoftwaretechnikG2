@@ -5,12 +5,16 @@ import de.softwaretechnik.coder.adapter.secondary.TaskRepository;
 import de.softwaretechnik.coder.application.login.UserService;
 import de.softwaretechnik.coder.application.tasks.TaskService;
 import de.softwaretechnik.coder.domain.CodeSampleSolution;
+import de.softwaretechnik.coder.domain.CodeTask;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+
+import static de.softwaretechnik.coder.domain.CodeTask.CODE_TASK_TYPE;
+import static de.softwaretechnik.coder.domain.CodeTask.OUTPUT_TASK_TYPE;
 
 @Service
 @Profile("!prod")
@@ -38,7 +42,7 @@ public class DBFiller {
     @PostConstruct
     void initTasks() {
         if (taskRepository.findByName("addTwoNumbers").isEmpty()) {
-            taskService.createTask("addTwoNumbers", "Intro to functions", "Complete the function so that it adds two numbers", "coding", "Complete the function so that it adds two numbers.", """
+            taskService.createTask("addTwoNumbers", "Intro to functions", "Complete the function so that it adds two numbers", CODE_TASK_TYPE, "Complete the function so that it adds two numbers.", """
                     public class Calculator {
                         public static int add(int a, int b){
                             return /*TODO*/;
@@ -46,13 +50,22 @@ public class DBFiller {
                     }""");
         }
         if (taskRepository.findByName("reverseString").isEmpty()) {
-            taskService.createTask("reverseString", "Reverse string", "Complete the function so that it reverses the String", "coding", "Complete the function so that it reverses the String", """
+            taskService.createTask("reverseString", "Reverse string", "Complete the function so that it reverses the String", CODE_TASK_TYPE, "Complete the function so that it reverses the String", """
                     public class StringUtil {
                         public static String reverseString(String s){
                             return "TODO";
                         }
                     }""");
         }
+        if (taskRepository.findByName("helloWorld").isEmpty()) {
+            taskService.createTask("helloWorld", "Hello World!", "What is the console output of this code", OUTPUT_TASK_TYPE, "What is the console output of this code. You can ignore newlines.", """
+                    public class HelloJava {
+                        public static void main(String args[]){
+                            System.out.println("Hello fellow Java learner");
+                        }
+                    }""");
+        }
+
     }
 
     @PostConstruct
@@ -67,12 +80,21 @@ public class DBFiller {
                 new Object[]{"!dlroWolleH", "hpoT ~ !ees neve t'nac I dnA .ieS gniS aB fo hguone nees ev'I"}
         );
 
+        var sol3 = new CodeSampleSolution("helloWorld", "main",
+                new Object[][]{{}},
+                new Object[]{"Hello fellow Java learner"}
+        );
+
         if (dbAbstraction.getCodeSampleSolutionByName(sol1.taskName()) == null) {
             dbAbstraction.saveSampleSolution(sol1);
         }
 
         if (dbAbstraction.getCodeSampleSolutionByName(sol2.taskName()) == null) {
             dbAbstraction.saveSampleSolution(sol2);
+        }
+
+        if (dbAbstraction.getCodeSampleSolutionByName(sol3.taskName()) == null) {
+            dbAbstraction.saveSampleSolution(sol3);
         }
 
     }

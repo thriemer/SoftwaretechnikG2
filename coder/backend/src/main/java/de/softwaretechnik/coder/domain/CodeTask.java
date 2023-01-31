@@ -14,6 +14,10 @@ import javax.persistence.Id;
 @Getter
 @Entity(name = "tasks")
 public class CodeTask {
+
+    public static String CODE_TASK_TYPE = "coding";
+    public static String OUTPUT_TASK_TYPE = "write_output";
+
     @Id
     String name; //name in database
     String displayName; //name in frontend

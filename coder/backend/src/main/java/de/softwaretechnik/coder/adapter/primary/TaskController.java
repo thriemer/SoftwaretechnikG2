@@ -11,12 +11,14 @@ import de.softwaretechnik.coder.domain.CodeEvaluation;
 import de.softwaretechnik.coder.domain.SubmittedSolution;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class TaskController {
 
@@ -33,5 +35,21 @@ public class TaskController {
     ResponseEntity<SolutionService.TaskAndSubmittedSolution> getTaskByName(@PathVariable String taskName, Principal principal) {
         return ResponseEntity.ok(solutionService.getTaskAndSolution(taskName, principal.getName()));
     }
+
+    @GetMapping("/outputTask")
+    String showOutputTaskPage(Model model, Principal principal, @RequestParam String taskName){
+        model.addAttribute("userName", principal.getName());
+        model.addAttribute("codeTaskAndSolution",solutionService.getTaskAndSolution(taskName,principal.getName()));
+        return "outputTask";
+    }
+
+    @PostMapping("/outputTask")
+    String showEvaluation(Model model, Principal principal, @RequestParam String taskName, @RequestParam String submittedSolution){
+        solutionSubmitService.submitSolution(principal.getName(),submittedSolution,taskName);
+        model.addAttribute("userName", principal.getName());
+        model.addAttribute("codeTaskAndSolution",solutionService.getTaskAndSolution(taskName,principal.getName()));
+        return "outputTask";
+    }
+
 
 }
