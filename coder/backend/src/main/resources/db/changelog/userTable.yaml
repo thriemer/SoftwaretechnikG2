@@ -24,3 +24,8 @@ databaseChangeLog:
                     nullable: false
                   name: password
                   type: varchar
+              - column:
+                  constraints:
+                    nullable: false
+                  name: admin_role
+                  type: boolean
