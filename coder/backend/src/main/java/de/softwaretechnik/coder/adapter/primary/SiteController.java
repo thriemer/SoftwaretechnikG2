@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.Arrays;
@@ -39,6 +41,25 @@ public class SiteController {
         model.addAttribute("outputTasks", outputTasks);
         return "index";
     }
+
+    @GetMapping("/admin")
+    String showAdminHomePage(Model model, Principal principal){
+        model.addAttribute("userName", principal.getName());
+
+        var tasks = taskService.getAllTasks();
+        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
+        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
+
+        model.addAttribute("codeTasks", codeTasks);
+        model.addAttribute("outputTasks", outputTasks);
+        return  "admin";
+    }
+
+    @PostMapping("/admin/newTask")
+    String showNewTaskPage(Model model, @RequestParam String taskType){
+        return "redirect:/editTask";
+    }
+
 
     private TaskPair[] accumulate(CodeTask[] tasks, String type, String username) {
         return Arrays.stream(tasks)
