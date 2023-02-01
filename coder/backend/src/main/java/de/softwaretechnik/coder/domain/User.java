@@ -27,10 +27,17 @@ public class User implements UserDetails {
     private String userName;
     private String password;
 
+    private boolean adminRole;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("USER"));
+        if (adminRole) {
+            return List.of(new SimpleGrantedAuthority("ADMIN"));
+        } else {
+            return List.of(new SimpleGrantedAuthority("USER"));
+        }
     }
+
 
     @Override
     public String getPassword() {
