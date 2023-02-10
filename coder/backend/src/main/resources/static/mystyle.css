@@ -5,6 +5,9 @@ html,body {height:100%}
   margin: 0;
   padding: 0;
 }
+body {
+  background-color: #F8F8F8;
+}
 header {
   font-family: sans-serif;
   color: white;
@@ -57,6 +60,7 @@ header {
 .dropdownlist li a {
   display: block;
   padding: 5px 10px;
+  color: white;
 }
 .dropdownlist li a:hover {
   background-color: #888888;
@@ -175,4 +179,36 @@ input[type=submit]:hover {
   width: 180px;
   border: 2px solid grey;
   border-radius: 5%;
+}
+.taskbuttonnew {
+  background-color: white;
+  margin: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 180px;
+  border: 2px solid grey;
+  border-radius: 5%;
+  font-size: 60pt;
+  color: grey;
+  display: inline-block;
+}
+#header {
+  font-family: sans-serif;
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+#menu {
+  font-family: sans-serif;
+  text-align: center;
+}
+#backtologin:link {
+  color: #4A8246;
+  text-decoration: none;
+}
+#backtologin:visited {
+  color: #4A8246;
+  text-decoration: none;
 }

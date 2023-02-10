@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="mystyle.css">
+  <title>Admin</title>
+</head>
+<body>
+<header>
+  <a class="title" href="../"> YeetCode </a>
+  <div class="usermenu">
+    <span th:text="${userName}"></span> <img class="profileicon" src="../Profile_Icon.png" alt="x" width="32" height="32">
+    <div class="dropdown">
+      <ul class="dropdownlist">
+        <li><a> Account</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<h1>Hello, <span th:text="${userName}"></span>!</h1>
+
+<h2>Coding tasks:</h2>
+<div class="taskboxes">
+  <div th:each="taskPair : ${codeTasks}">
+    <div> <a th:href="@{/codingTask.html(task = ${taskPair.codeTask.name}, language = java)}">
+      <button class="taskbutton">
+        <div class="taskname" th:text="${taskPair.codeTask.displayName}"></div> <hr>
+        <div class="boxdescription" th:text="${taskPair.codeTask.shortDescription}"> </div>
+      </button></a>
+    </div>
+  </div>
+  <button class="taskbuttonnew"> + </button>
+</div>
+
+<h2>Coding output:</h2>
+<div class="taskboxes">
+  <div th:each="taskPair : ${outputTasks}">
+    <div> <a th:href="@{/outputTask(taskName = ${taskPair.codeTask.name})}">
+      <button class="taskbutton">
+        <div class="taskname" th:text="${taskPair.codeTask.displayName}"></div> <hr>
+        <div class="boxdescription" th:text="${taskPair.codeTask.shortDescription}"> </div>
+      </button></a>
+    </div>
+  </div>
+  <button class="taskbuttonnew"> + </button>
+</div>
+
+</body>
+</html>
