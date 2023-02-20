@@ -32,10 +32,10 @@ public class DBFiller {
     @PostConstruct
     void initUsers() {
         if (userRepository.findByUserName("user").isEmpty()) {
-            userService.createUser("user", "password");
+            userService.createUser("user", "password", false);
         }
         if (userRepository.findByUserName("admin").isEmpty()) {
-            userService.createUser("admin", "password");
+            userService.createUser("admin", "password",true);
         }
     }
 
