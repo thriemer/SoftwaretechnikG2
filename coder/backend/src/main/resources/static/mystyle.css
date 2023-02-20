@@ -8,6 +8,8 @@ html,body {height:100%}
 body {
   background-color: #F8F8F8;
 }
+
+/*Header*/
 header {
   font-family: sans-serif;
   color: white;
@@ -45,7 +47,7 @@ header {
   position: absolute;
   right: 0px;
   background-color: #AAAAAA;
-  min-width: 80px;
+  min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -66,6 +68,8 @@ header {
   background-color: #888888;
   cursor: pointer;
 }
+
+/*General*/
 h1 {
   font-family: sans-serif;
   font-size: 18pt;
@@ -86,31 +90,30 @@ a:visited {
   color: #4A8246;
   text-decoration: none;
 }
-#submit {
-  background-color: #4A8246; /* Green */
-  border: 1px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: sans-serif;
-  font-size: 16px;
-  border-radius: 5%;
+textarea {
+  resize: none;
+  margin-bottom: 5px;
 }
 button:hover {
   cursor: pointer;
   border: 2px solid lightgrey;
 }
+
 #homebutton {
-  background-color: #4A8246;
-  color: white;
+  background-color: #F8F8F8; /*#4A8246;*/
+  color: #888888;
   font-family: sans-serif;
   font-size: 11pt;
-  border-radius: 5%;
-  border: 2px solid #4A8246;
-  padding: 7px 15px;
+  border-radius: 5px;
+  border: 2px solid #F8F8F8;
+  padding: 10px;
+  margin-top: 10px;
 }
+#homebutton:before {
+  content: '\2190 \0020';
+}
+
+/*Coding Task*/
 #taskDescription {
   font-family: sans-serif;
 }
@@ -126,13 +129,28 @@ button:hover {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+#submit {
+  background-color: #4A8246; /* Green */
+  border: 1px;
+  color: white;
+  margin-top: 10px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/*Login*/
 input[type=text], input[type=password] {
   margin-bottom: 5px;
 }
 input[type=submit]{
   background-color: #4A8246;
   color: white;
-  border-radius: 5%;
+  border-radius: 3px;
   border: 2px solid #4A8246;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -153,6 +171,8 @@ input[type=submit]:hover {
 #logout {
   font-family: sans-serif;
 }
+
+/*Homepage*/
 .taskboxes {
   font-family: sans-serif;
   display: flex;
@@ -178,20 +198,21 @@ input[type=submit]:hover {
   text-align: left;
   width: 180px;
   border: 2px solid grey;
-  border-radius: 5%;
+  border-radius: 10px;
 }
 .taskbuttonnew {
   background-color: white;
   margin: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   text-align: center;
   width: 180px;
   border: 2px solid grey;
-  border-radius: 5%;
+  border-radius: 10px;
   font-size: 60pt;
   color: grey;
-  display: inline-block;
 }
+
+/*Logout*/
 #header {
   font-family: sans-serif;
   font-size: 16pt;
@@ -211,4 +232,76 @@ input[type=submit]:hover {
 #backtologin:visited {
   color: #4A8246;
   text-decoration: none;
+}
+
+/*create/ edit Task*/
+label {
+  font-family: sans-serif;
+  font-size: 11pt;
+}
+#createtaskform {
+  margin: 15px 5px 5px 5px;
+}
+#createtaskform input[type="text"] {
+  width: 50%;
+  margin-bottom: 10px;
+}
+#description {
+  width: 50%;
+  height: 100px;
+}
+#code {
+  width: 50%;
+  height: 200px;
+}
+.tipcontainer {
+  display: inline-block;
+  width: 48%;
+  text-align: right;
+}
+.tip {
+  font-size: 10pt;
+  color: grey;
+  border: solid 2px grey;
+  border-radius: 100%;
+  display: inline-block;
+  text-align: center;
+  font-family: sans-serif;
+  height: 10pt;
+  width: 10pt;
+  position: relative;
+}
+.tip .tiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: darkgrey;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: -120%;
+  left: 150%;
+}
+.tip .tiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent darkgrey transparent transparent;
+}
+.tip:hover .tiptext {
+  visibility: visible;
+}
+#test {
+  width: 50%;
+}
+#createbutton {
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
