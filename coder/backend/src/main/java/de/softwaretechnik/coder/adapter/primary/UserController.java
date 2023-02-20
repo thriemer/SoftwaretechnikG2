@@ -36,7 +36,7 @@ public class UserController {
             model.addAttribute("userAlreadyExists", true);
             return "registration";
         } catch (UsernameNotFoundException ex) {
-            userService.createUser(username, password);
+            userService.createUser(username, password, false);
             request.login(username, password);
             return "redirect:/";
         }
