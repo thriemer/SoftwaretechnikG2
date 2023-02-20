@@ -19,11 +19,12 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void createUser(String username, String plainTextPassword) {
+    public void createUser(String username, String plainTextPassword, Boolean admin) {
         User user = new User();
         user.setUserName(username);
         String encodedPassword = passwordEncoder.encode(plainTextPassword);
         user.setPassword(encodedPassword);
+        user.setAdminRole(admin);
         userRepository.save(user);
     }
 
