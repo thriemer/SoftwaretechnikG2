@@ -37,6 +37,14 @@ public class TaskService {
         dbAbstraction.saveTask(task);
     }
 
+    public void deleteTask(String taskName) {
+        CodeTask task = dbAbstraction.getTaskByName(taskName);
+        if (task == null) {
+            throw new IllegalArgumentException("Task with name " + taskName + " not found");
+        }
+        dbAbstraction.deleteTask(task);
+    }
+
     public CodeTask getTaskByName(String taskName) {
         return dbAbstraction.getTaskByName(taskName);
     }
