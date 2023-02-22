@@ -86,7 +86,7 @@ class UserControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("http://localhost/login"));
         //assert
-        verify(userService).createUser(username,password);
+        verify(userService).createUser(username,password,false);
         verify(userService,times(2)).loadUserByUsername(username);
     }
 

@@ -49,4 +49,9 @@ public class FakeDB implements DBAbstraction {
         );
     }
 
+    @Override
+    public void deleteTask(CodeTask task) {
+
+    }
+
 }

@@ -24,6 +24,27 @@ public class TaskService {
         dbAbstraction.saveTask(task);
     }
 
+    public void editTask(String name, String displayName, String shortDescription, String taskType, String taskDescription, String codeTemplate) {
+        CodeTask task = dbAbstraction.getTaskByName(name);
+        if (task == null) {
+            throw new IllegalArgumentException("Task with name " + name + " not found");
+        }
+        task.setDisplayName(displayName);
+        task.setShortDescription(shortDescription);
+        task.setTaskType(taskType);
+        task.setTaskDescription(taskDescription);
+        task.setCodeTemplate(codeTemplate);
+        dbAbstraction.saveTask(task);
+    }
+
+    public void deleteTask(String taskName) {
+        CodeTask task = dbAbstraction.getTaskByName(taskName);
+        if (task == null) {
+            throw new IllegalArgumentException("Task with name " + taskName + " not found");
+        }
+        dbAbstraction.deleteTask(task);
+    }
+
     public CodeTask getTaskByName(String taskName) {
         return dbAbstraction.getTaskByName(taskName);
     }
