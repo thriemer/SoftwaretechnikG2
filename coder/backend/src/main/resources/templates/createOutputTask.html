@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="mystyle.css">
+  <meta charset="UTF-8">
+  <title>Create Coding Task</title>
+</head>
+<body>
+<header>
+  <a class="title" href="admin"> YeetCode </a>
+  <div class="usermenu">
+    <span th:text="${userName}"></span> <img class="profileicon" src="../Profile_Icon.png" alt="x" width="32" height="32">
+    <div class="dropdown">
+      <ul class="dropdownlist">
+        <li><a href="../"> User Mode</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<a href="admin"><button id="homebutton">Back to Homepage</button></a>
+<form id="createtaskform">
+  <label for="taskname"> Task Name </label><br>
+  <input type="text" id="taskname" name="taskname"><br>
+  <label for="displayname"> Display Name </label><br>
+  <input type="text" id="displayname" name="displayname"><br>
+  <label for="description"> Task Description </label><br>
+  <textarea id="description" name="description"></textarea><br>
+  <label for="shortdescription"> Short Description </label><br>
+  <input type="text" id="shortdescription" name="shortdescription"><br>
+  <label for="code"> Code </label><br>
+  <textarea id="code" name="code"></textarea><br>
+  <label for="output"> Output </label><br>
+  <input type="text" id="output" name="output"><br>
+  <input id="createbutton" type="submit" value="Create">
+</form>
+</body>
+</html>

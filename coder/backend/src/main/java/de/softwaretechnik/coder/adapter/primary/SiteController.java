@@ -43,7 +43,7 @@ public class SiteController {
     }
 
     @GetMapping("/admin")
-    String showAdminHomePage(Model model, Principal principal){
+    String showAdminHomePage(Model model, Principal principal) {
         model.addAttribute("userName", principal.getName());
 
         var tasks = taskService.getAllTasks();
@@ -52,14 +52,58 @@ public class SiteController {
 
         model.addAttribute("codeTasks", codeTasks);
         model.addAttribute("outputTasks", outputTasks);
-        return  "admin";
+        return "admin";
     }
 
-    @PostMapping("/admin/newTask")
-    String showNewTaskPage(Model model, @RequestParam String taskType){
-        return "redirect:/editTask";
+    @GetMapping("/createCodingTask")
+    String showCreateCodingTaskPage(Model model, Principal principal) {
+        model.addAttribute("userName", principal.getName());
+
+        var tasks = taskService.getAllTasks();
+        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
+        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
+
+        return "createCodingTask";
     }
 
+    @GetMapping("/editCodingTask")
+    String showEditCodingTaskPage(Model model, Principal principal) {
+        model.addAttribute("userName", principal.getName());
+
+        var tasks = taskService.getAllTasks();
+        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
+        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
+
+        model.addAttribute("codeTasks", codeTasks);
+        model.addAttribute("outputTasks", outputTasks);
+        return "editCodingTask";
+    }
+
+    @GetMapping("/createOutputTask")
+    String showCreateOutputTaskPage(Model model, Principal principal) {
+        model.addAttribute("userName", principal.getName());
+
+        var tasks = taskService.getAllTasks();
+        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
+        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
+
+        model.addAttribute("codeTasks", codeTasks);
+        model.addAttribute("outputTasks", outputTasks);
+        return "createOutputTask";
+    }
+
+    @GetMapping("/editOutputTask")
+    String showEditOutputTaskPage(Model model, Principal principal) {
+        model.addAttribute("userName", principal.getName());
+
+        var tasks = taskService.getAllTasks();
+        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
+        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
+
+        model.addAttribute("codeTasks", codeTasks);
+        model.addAttribute("outputTasks", outputTasks);
+        return "editOutputTask";
+    }
 
     private TaskPair[] accumulate(CodeTask[] tasks, String type, String username) {
         return Arrays.stream(tasks)
