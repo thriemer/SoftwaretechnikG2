@@ -274,6 +274,7 @@ label {
 .tip .tiptext {
   visibility: hidden;
   width: 150px;
+  text-align: left;
   background-color: darkgrey;
   color: white;
   border-radius: 5px;
@@ -298,8 +299,9 @@ label {
 }
 #test {
   width: 50%;
+  height: 200px
 }
-#createbutton {
+formbutton {
   font-size: 16px;
   margin-top: 10px;
   padding: 10px 15px;

@@ -52,7 +52,7 @@ if(evaluation == undefined){
                 var builtHTML = "<ul>";
                 for(const e of evaluation){
                    let showColor = e.correct ? '#4A8246': 'darkred';
-                   builtHTML = builtHTML + '<li style="color:'+ showColor+'">'+e.message+'</li>'
+                   builtHTML = builtHTML + '<li style="color:'+ showColor+'">'+e.message.replace(/(?:\r\n|\r|\n)/g, '<br>')+'</li>'
                 }
                 builtHTML = builtHTML+"</ul>";
 }

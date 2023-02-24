@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <link rel="stylesheet" href="mystyle.css">
+  <link rel="stylesheet" href="../mystyle.css">
   <meta charset="UTF-8">
   <title>Create Coding Task</title>
 
@@ -12,7 +12,7 @@
 </head>
 <body>
 <header>
-  <a class="title" href="admin"> YeetCode </a>
+  <a class="title" href="/admin"> YeetCode </a>
   <div class="usermenu">
     <span th:text="${userName}"></span> <img class="profileicon" src="../Profile_Icon.png" alt="x" width="32" height="32">
     <div class="dropdown">
@@ -23,23 +23,24 @@
     </div>
   </div>
 </header>
-<a href="admin"><button id="homebutton">Back to Homepage</button></a>
-<form id="createtaskform">
+<a href="/admin"><button id="homebutton">Back to Homepage</button></a>
+<form id="createtaskform" th:action="@{/admin/editCodingTask}" method="post" th:object="${codeTask}">
   <label for="taskname"> Task Name </label><br>
-  <input type="text" id="taskname" name="taskname"><br>
+  <input type="text" id="taskname" name="taskname" th:value="${task.name}"><br>
   <label for="displayname"> Display Name </label><br>
-  <input type="text" id="displayname" name="displayname"><br>
+  <input type="text" id="displayname" name="displayname" th:value="${task.displayName}"><br>
   <label for="description"> Task Description </label><br>
-  <textarea id="description" name="description"></textarea><br>
+  <textarea id="description" name="description" th:text="${task.taskDescription}"></textarea><br>
   <label for="shortdescription"> Short Description </label><br>
-  <input type="text" id="shortdescription" name="shortdescription"><br>
+  <input type="text" id="shortdescription" name="shortdescription" th:value="${task.taskDescription}"><br>
   <label for="code"> Code Template </label><br>
-  <textarea id="code" name="code"></textarea><br>
+  <textarea id="code" name="code" th:text="${task.codeTemplate}"></textarea><br>
   <label for="test"> Tests </label>
   <span class="tipcontainer"> <div class="tip">? <span class="tiptext">
-            Syntax: "{input, output},{input,output}..." </span> </div> </span>
-  <textarea id="test" name="test"></textarea><br>
-  <input id="createbutton" type="submit" value="Save Changes">
+            Syntax: "{methodName}<br>{type}|{type}|...|{type}<br>{value}|{value}|...|{value}"
+  </span> </div> </span>
+  <textarea id="test" name="test" th:text="${sampleSolution}"></textarea><br>
+  <input class="formbutton" type="submit" value="Save Changes">
 </form>
 </body>
 </html>

@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface TaskRepository extends CrudRepository<CodeTask,Long> {
     Optional<CodeTask> findByName(String name);
+    void deleteByName(String name);
 }

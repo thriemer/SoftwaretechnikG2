@@ -5,21 +5,20 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 enum JavaStringCompiler {
     INSTANCE;
 
     private JavaCompiler compiler;
-    private DiagnosticCollector<JavaFileObject> collector;
     private StandardJavaFileManager manager;
 
     private static final Logger logger = Logger.getLogger(JavaStringCompiler.class.getName());
 
-    private JavaStringCompiler() {
+    JavaStringCompiler() {
         this.compiler = ToolProvider.getSystemJavaCompiler();
-        this.collector = new DiagnosticCollector<JavaFileObject>();
-        this.manager = compiler.getStandardFileManager(collector, null, null);
+        this.manager = compiler.getStandardFileManager(null, null, null);
     }
 
     // class to represent a string object as a source file
@@ -38,23 +37,29 @@ enum JavaStringCompiler {
     }
 
     // Compile the Java code stored inside the string
-    public boolean compileStringCode(final String name, final String code) {
+    public boolean compileStringCode(final String name, final String code) throws ClassNotFoundException {
         logger.info("Compiling: " + name);
 
         boolean result = false;
         StringCodeObject source = new StringCodeObject(name, code);
 
-        result = compiler.getTask(null, manager, null, null, null, List.of(source)).call();
+        DiagnosticCollector<JavaFileObject> collector = new DiagnosticCollector<>();
+        result = compiler.getTask(null, manager, collector, null, null, List.of(source)).call();
 
-// display errors, if any
-        for (Diagnostic<? extends JavaFileObject> d : collector.getDiagnostics()) {
-            System.err.format("Error at line: %d, in file: %s\n", d.getLineNumber(), d.getSource().toUri());
+        if (!result) {
+            StringBuilder compilationErrorsBuilder = new StringBuilder();
+            for (Diagnostic<? extends JavaFileObject> d : collector.getDiagnostics()) {
+                logger.info(d.getMessage(Locale.ENGLISH));
+                compilationErrorsBuilder.append("Error at line ").append(d.getLineNumber()).append(": ").append(d.getMessage(Locale.ENGLISH)).append("\n");
+            }
+            throw new ClassNotFoundException("Unable to load: " + name + ". Reason = compilation failed.\n" + compilationErrorsBuilder);
         }
 
         try {
             manager.close();
         } catch (IOException ex) {
-//
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
 
         logger.info("Finished compiling: " + name);

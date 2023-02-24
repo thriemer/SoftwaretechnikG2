@@ -33,22 +33,19 @@ class CompilingClassLoader extends ClassLoader {
         }
 
         logger.info("Loading " + fullClassName);
+        JavaStringCompiler.INSTANCE.compileStringCode(fullClassName, program);
 
-// compile it!
-        boolean result = JavaStringCompiler.INSTANCE.compileStringCode(fullClassName, program);
-
-        if (result) {
-            byte[] classBytes = getClassBytes(className);
-            if (classBytes != null) {
-                logger.info("Loaded " + fullClassName);
-                return defineClass(fullClassName, classBytes, 0, classBytes.length);
-            } else
-                throw new ClassNotFoundException("Unable to load: " + fullClassName + ". Reason = failed to load class bytes.");
-        } else throw new ClassNotFoundException("Unable to load: " + fullClassName + ". Reason = compilation failed.");
+        byte[] classBytes = getClassBytes(className);
+        if (classBytes != null) {
+            logger.info("Loaded " + fullClassName);
+            return defineClass(fullClassName, classBytes, 0, classBytes.length);
+        } else {
+            throw new ClassNotFoundException("Unable to load: " + fullClassName + ". Reason = failed to load class bytes.");
+        }
     }
 
     private String getClassName(final String program) {
-        String clean = program.replace("\n", "");
+        String clean = program.replace("\n", "").replace("\r", "");
         Matcher m = namePattern.matcher(clean);
 
         if (m.matches() && (m.groupCount() == 1)) {
