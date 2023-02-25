@@ -24,7 +24,7 @@
   </div>
 </header>
 <a href="/admin"><button id="homebutton">Back to Homepage</button></a>
-<form id="createtaskform" th:action="@{/admin/editCodingTask}" method="post" th:object="${codeTask}">
+<form id="createtaskform" th:action="@{/admin/editTask}" method="post" th:object="${codeTask}">
   <label for="taskname"> Task Name </label><br>
   <input type="text" id="taskname" name="taskname" th:value="${task.name}"><br>
   <label for="displayname"> Display Name </label><br>
@@ -40,6 +40,7 @@
             Syntax: "{methodName}<br>{type}|{type}|...|{type}<br>{value}|{value}|...|{value}"
   </span> </div> </span>
   <textarea id="test" name="test" th:text="${sampleSolution}"></textarea><br>
+  <input type="hidden" name="taskType" value="coding">
   <input class="formbutton" type="submit" value="Save Changes">
 </form>
 </body>
