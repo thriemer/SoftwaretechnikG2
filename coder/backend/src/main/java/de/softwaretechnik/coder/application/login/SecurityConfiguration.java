@@ -17,9 +17,12 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/favicon.ico", "/registration","/mystyle.css").permitAll()
+                .antMatchers("/favicon.ico", "/registration","/mystyle.css","/denied").permitAll()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
+                .and()
+                .exceptionHandling().accessDeniedPage("/denied")
                 .and()
                 .formLogin((form) -> form
                         .loginPage("/login")

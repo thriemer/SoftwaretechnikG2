@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <link rel="stylesheet" href="mystyle.css">
+  <link rel="stylesheet" href="../mystyle.css">
   <title>Admin</title>
 </head>
 <body>
@@ -22,27 +22,27 @@
 <h2>Coding tasks:</h2>
 <div class="taskboxes">
   <div th:each="taskPair : ${codeTasks}">
-    <div> <a th:href="@{/editCodingTask(taskName = ${taskPair.codeTask.name})}">
+    <div> <a th:href="@{/admin/editCodingTask(taskName = ${taskPair.codeTask.name})}">
       <button class="taskbutton">
         <div class="taskname" th:text="${taskPair.codeTask.displayName}"></div> <hr>
         <div class="boxdescription" th:text="${taskPair.codeTask.shortDescription}"> </div>
       </button></a>
     </div>
   </div>
-  <a href="createCodingTask"><button class="taskbuttonnew"> + </button></a>
+  <a href="/admin/editCodingTask?createNewTask=true"><button class="taskbuttonnew"> + </button></a>
 </div>
 
 <h2>Coding output:</h2>
 <div class="taskboxes">
   <div th:each="taskPair : ${outputTasks}">
-    <div> <a th:href="@{/editOutputTask(taskName = ${taskPair.codeTask.name})}">
+    <div> <a th:href="@{/admin/editOutputTask(taskName = ${taskPair.codeTask.name})}">
       <button class="taskbutton">
         <div class="taskname" th:text="${taskPair.codeTask.displayName}"></div> <hr>
         <div class="boxdescription" th:text="${taskPair.codeTask.shortDescription}"> </div>
       </button></a>
     </div>
   </div>
-  <a href="createOutputTask"><button class="taskbuttonnew"> + </button></a>
+  <a href="/admin/editOutputTask?createNewTask=true"><button class="taskbuttonnew"> + </button></a>
 </div>
 
 </body>

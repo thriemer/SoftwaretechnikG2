@@ -3,12 +3,14 @@ package de.softwaretechnik.coder.adapter.primary;
 import de.softwaretechnik.coder.application.evaluation.SolutionService;
 import de.softwaretechnik.coder.application.tasks.TaskService;
 import de.softwaretechnik.coder.domain.CodeEvaluation;
+import de.softwaretechnik.coder.domain.CodeSampleSolution;
 import de.softwaretechnik.coder.domain.CodeTask;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,6 +31,12 @@ public class SiteController {
     String showLogoutSuccessfulPage() {
         return "logoutSuccessful";
     }
+
+    @GetMapping("/denied")
+    String showAccessDeniedPage() {
+        return "denied";
+    }
+
     @GetMapping("/")
     String showHomePage(Model model, Principal principal) {
         model.addAttribute("userName", principal.getName());
@@ -52,57 +60,7 @@ public class SiteController {
 
         model.addAttribute("codeTasks", codeTasks);
         model.addAttribute("outputTasks", outputTasks);
-        return "admin";
-    }
-
-    @GetMapping("/createCodingTask")
-    String showCreateCodingTaskPage(Model model, Principal principal) {
-        model.addAttribute("userName", principal.getName());
-
-        var tasks = taskService.getAllTasks();
-        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
-        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
-
-        return "createCodingTask";
-    }
-
-    @GetMapping("/editCodingTask")
-    String showEditCodingTaskPage(Model model, Principal principal) {
-        model.addAttribute("userName", principal.getName());
-
-        var tasks = taskService.getAllTasks();
-        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
-        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
-
-        model.addAttribute("codeTasks", codeTasks);
-        model.addAttribute("outputTasks", outputTasks);
-        return "editCodingTask";
-    }
-
-    @GetMapping("/createOutputTask")
-    String showCreateOutputTaskPage(Model model, Principal principal) {
-        model.addAttribute("userName", principal.getName());
-
-        var tasks = taskService.getAllTasks();
-        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
-        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
-
-        model.addAttribute("codeTasks", codeTasks);
-        model.addAttribute("outputTasks", outputTasks);
-        return "createOutputTask";
-    }
-
-    @GetMapping("/editOutputTask")
-    String showEditOutputTaskPage(Model model, Principal principal) {
-        model.addAttribute("userName", principal.getName());
-
-        var tasks = taskService.getAllTasks();
-        var codeTasks = accumulate(tasks, CodeTask.CODE_TASK_TYPE, principal.getName());
-        var outputTasks = accumulate(tasks, CodeTask.OUTPUT_TASK_TYPE, principal.getName());
-
-        model.addAttribute("codeTasks", codeTasks);
-        model.addAttribute("outputTasks", outputTasks);
-        return "editOutputTask";
+        return "admin/admin";
     }
 
     private TaskPair[] accumulate(CodeTask[] tasks, String type, String username) {

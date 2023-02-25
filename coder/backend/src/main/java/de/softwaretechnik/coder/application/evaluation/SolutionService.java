@@ -2,6 +2,7 @@ package de.softwaretechnik.coder.application.evaluation;
 
 import de.softwaretechnik.coder.application.tasks.TaskService;
 import de.softwaretechnik.coder.domain.CodeEvaluation;
+import de.softwaretechnik.coder.domain.CodeSampleSolution;
 import de.softwaretechnik.coder.domain.CodeTask;
 import de.softwaretechnik.coder.domain.SubmittedSolution;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,10 @@ public class SolutionService {
     private final SolutionSaveService solutionSaveService;
     private final SolutionEvaluationService solutionEvaluationService;
 
+    public void createSampleSolution(CodeSampleSolution codeSampleSolution) {
+        solutionEvaluationService.createSampleSolution(codeSampleSolution);
+    }
+
 
     public record TaskAndSubmittedSolution(CodeTask task, CodeEvaluation[] evaluation, String submission) {
     }
@@ -27,6 +32,10 @@ public class SolutionService {
         if (submittedSolution.isEmpty()) return new TaskAndSubmittedSolution(codeTask, null, null);
         CodeEvaluation[] evaluation = solutionEvaluationService.getEvaluation(submittedSolution.get().getId());
         return new TaskAndSubmittedSolution(codeTask, evaluation, submittedSolution.get().getSubmissionContent());
+    }
+
+    public CodeSampleSolution getCodeSampleSolution(String taskName){
+        return solutionEvaluationService.getCodeSampleSolution(taskName);
     }
 
 }

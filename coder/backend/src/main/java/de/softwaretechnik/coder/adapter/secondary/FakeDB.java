@@ -7,6 +7,7 @@ import de.softwaretechnik.coder.domain.CodeSampleSolution;
 import de.softwaretechnik.coder.domain.CodeTask;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
@@ -37,13 +38,21 @@ public class FakeDB implements DBAbstraction {
         return StreamSupport.stream(taskRepository.findAll().spliterator(), false).toArray(CodeTask[]::new);
     }
 
+    @Transactional
     @Override
     public void saveTask(CodeTask task) {
+        if (taskRepository.findByName(task.getName()).isPresent()) {
+            taskRepository.deleteByName(task.getName());
+        }
         taskRepository.save(task);
     }
 
+    @Transactional
     @Override
     public void saveSampleSolution(CodeSampleSolution sampleSolution) {
+        if(sampleSolutionRepository.findByTaskName(sampleSolution.taskName())!=null){
+            sampleSolutionRepository.deleteByTaskName(sampleSolution.taskName());
+        }
         sampleSolutionRepository.save(
                 sampleSolutionConverter.convertToAdapterObject(sampleSolution)
         );

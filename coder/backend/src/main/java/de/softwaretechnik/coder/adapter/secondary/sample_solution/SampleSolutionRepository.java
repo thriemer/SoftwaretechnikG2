@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 public interface SampleSolutionRepository extends CrudRepository<SampleSolutionSDTO, Long> {
 
     SampleSolutionSDTO findByTaskName(String taskName);
+    void deleteByTaskName(String taskName);
 
 }

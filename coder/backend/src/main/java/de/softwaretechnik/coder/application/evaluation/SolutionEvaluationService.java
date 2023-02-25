@@ -51,8 +51,15 @@ public class SolutionEvaluationService {
         return new CodeEvaluation(correct, correct ? correctMessage : wrongMessage);
     }
 
+    public CodeSampleSolution getCodeSampleSolution(String taskName) {
+        return dbAbstraction.getCodeSampleSolutionByName(taskName);
+    }
+
     public CodeEvaluation[] getEvaluation(long solutionId) {
         return evaluationRepository.findAllBySubmittedSolutionId(solutionId);
     }
 
+    public void createSampleSolution(CodeSampleSolution codeSampleSolution) {
+        dbAbstraction.saveSampleSolution(codeSampleSolution);
+    }
 }

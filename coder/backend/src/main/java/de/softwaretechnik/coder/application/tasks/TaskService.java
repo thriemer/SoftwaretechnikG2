@@ -21,20 +21,11 @@ public class TaskService {
 
     public void createTask(String name, String displayName, String shortDescription, String taskType, String taskDescription, String codeTemplate) {
         CodeTask task = new CodeTask(name, displayName, shortDescription, taskType, taskDescription, codeTemplate);
-        dbAbstraction.saveTask(task);
+        createTask(task);
     }
 
-    public void editTask(String name, String displayName, String shortDescription, String taskType, String taskDescription, String codeTemplate) {
-        CodeTask task = dbAbstraction.getTaskByName(name);
-        if (task == null) {
-            throw new IllegalArgumentException("Task with name " + name + " not found");
-        }
-        task.setDisplayName(displayName);
-        task.setShortDescription(shortDescription);
-        task.setTaskType(taskType);
-        task.setTaskDescription(taskDescription);
-        task.setCodeTemplate(codeTemplate);
-        dbAbstraction.saveTask(task);
+    public void createTask(CodeTask codeTask) {
+        dbAbstraction.saveTask(codeTask);
     }
 
     public void deleteTask(String taskName) {
