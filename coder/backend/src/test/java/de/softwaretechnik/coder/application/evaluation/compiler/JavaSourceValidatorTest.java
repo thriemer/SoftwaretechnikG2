@@ -119,7 +119,9 @@ class JavaSourceValidatorTest {
         //act
         var actual = cut.testProgram(sourceCode, codeSampleSolution);
         //assert
-        assertArrayEquals(new CodeEvaluation[]{new CodeEvaluation(false,"Unable to load: Calculator. Reason = compilation failed.")}, actual);
+        assertArrayEquals(new CodeEvaluation[]{new CodeEvaluation(false,"CodeEvaluation(id=null, submittedSolutionId=0, correct=false, message=Unable to load: Calculator. Reason = compilation failed.\n" +
+                "Error at line 3: ';' expected\n" +
+                ")")}, actual);
     }
 
 
