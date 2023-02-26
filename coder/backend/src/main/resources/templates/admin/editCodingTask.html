@@ -32,7 +32,7 @@
   <label for="description"> Task Description </label><br>
   <textarea id="description" name="description" th:text="${task.taskDescription}"></textarea><br>
   <label for="shortdescription"> Short Description </label><br>
-  <input type="text" id="shortdescription" name="shortdescription" th:value="${task.taskDescription}"><br>
+  <input type="text" id="shortdescription" name="shortdescription" th:value="${task.shortDescription}"><br>
   <label for="code"> Code Template </label><br>
   <textarea id="code" name="code" th:text="${task.codeTemplate}"></textarea><br>
   <label for="test"> Tests </label>
@@ -41,7 +41,12 @@
   </span> </div> </span>
   <textarea id="test" name="test" th:text="${sampleSolution}"></textarea><br>
   <input type="hidden" name="taskType" value="coding">
+  <input type="hidden" name="originalName" th:value="${task.name}">
   <input class="formbutton" type="submit" value="Save Changes">
 </form>
+<form id="deleteForm" th:action="@{/admin/deleteTask}" method="post">
+  <input type="hidden" name="taskName" th:value="${task.name}">
+  <input class="formbutton" type="submit" value="Delete Task" onClick="return confirm('sure?')"/>
+  </form>
 </body>
 </html>

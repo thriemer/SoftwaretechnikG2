@@ -41,16 +41,14 @@ public class FakeDB implements DBAbstraction {
     @Transactional
     @Override
     public void saveTask(CodeTask task) {
-        if (taskRepository.findByName(task.getName()).isPresent()) {
-            taskRepository.deleteByName(task.getName());
-        }
+        deleteTask(task);
         taskRepository.save(task);
     }
 
     @Transactional
     @Override
     public void saveSampleSolution(CodeSampleSolution sampleSolution) {
-        if(sampleSolutionRepository.findByTaskName(sampleSolution.taskName())!=null){
+        if (sampleSolutionRepository.findByTaskName(sampleSolution.taskName()) != null) {
             sampleSolutionRepository.deleteByTaskName(sampleSolution.taskName());
         }
         sampleSolutionRepository.save(
@@ -58,9 +56,15 @@ public class FakeDB implements DBAbstraction {
         );
     }
 
+    @Transactional
     @Override
     public void deleteTask(CodeTask task) {
-
+        if (taskRepository.findByName(task.getName()).isPresent()) {
+            taskRepository.deleteByName(task.getName());
+        }
+        if (sampleSolutionRepository.findByTaskName(task.getName()) != null) {
+            sampleSolutionRepository.deleteByTaskName(task.getName());
+        }
     }
 
 }

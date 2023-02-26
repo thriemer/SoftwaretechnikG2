@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -43,7 +40,7 @@ public class AdminController {
     }
 
     record EditedCodeTask(String taskname, String displayname, String description, String shortdescription, String code,
-                          String test, String taskType) {
+                          String test, String taskType, String originalName) {
     }
 
     @PostMapping("/admin/editTask")
@@ -60,13 +57,21 @@ public class AdminController {
             codeSampleSolution = new CodeSampleSolution(cleanTaskName, "main", new Object[][]{{}},
                     new Object[]{codeTask.test.replace("\r", "")});
         }
-        model.addAttribute("task", createdCodetask);
-        model.addAttribute("sampleSolution", codeTask.test);
 
+        taskService.deleteTask(codeTask.originalName);
         taskService.createTask(createdCodetask);
         solutionService.createSampleSolution(codeSampleSolution);
 
+        model.addAttribute("task", createdCodetask);
+        model.addAttribute("sampleSolution", codeTask.test);
+
         return codeTask.taskType.equals(CodeTask.CODE_TASK_TYPE) ? "admin/editCodingTask" : "admin/editOutputTask";
+    }
+
+    @PostMapping("/admin/deleteTask")
+    String deleteTask(@RequestParam String taskName) {
+        taskService.deleteTask(taskName);
+        return "redirect:/admin";
     }
 
     @GetMapping("/admin/editOutputTask")
