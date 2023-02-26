@@ -30,10 +30,9 @@ public class TaskService {
 
     public void deleteTask(String taskName) {
         CodeTask task = dbAbstraction.getTaskByName(taskName);
-        if (task == null) {
-            throw new IllegalArgumentException("Task with name " + taskName + " not found");
+        if (task != null) {
+            dbAbstraction.deleteTask(task);
         }
-        dbAbstraction.deleteTask(task);
     }
 
     public CodeTask getTaskByName(String taskName) {
