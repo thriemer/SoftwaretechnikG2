@@ -1,0 +1,192 @@
+\documentclass[a4paper, 12pt, oneside, BCOR1cm,toc=chapterentrywithdots]{scrbook}
+
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\usepackage[colorlinks=false]{hyperref}
+\usepackage{tocbibind}
+\usepackage{blindtext}
+\usepackage{subfigure} 
+\usepackage{acronym}
+%\usepackage{minted}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{listings}
+
+\newenvironment{crc}[3]{
+\setlength{\arrayrulewidth}{0.35mm}
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{2}
+\begin{center}
+\begin{tabular}{|p{7cm}|p{7cm}|}
+\hline
+\multicolumn{2}{|m{14cm}|}{#1}\\
+\hline
+\begin{description}#2\end{description} &
+\begin{description}#3\end{description}\\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\newcommand{\point}[1]{\begin{itemize}\item#1 \end{itemize}}
+
+\newcommand{\class}{\item}
+\newcommand{\resp}{\item}
+\newcommand{\collab}{\item}
+
+\hypersetup{%
+bookmarksnumbered=true, hyperindex=true,
+%
+%Im Acrobat Reader Subtitel 1. Ebene anzeigen
+bookmarksopen=true, bookmarksopenlevel=1,
+%
+pdfborder=0 0 0 % Keine Box um die Links!
+}
+
+\begin{document}
+
+\begin{titlepage}
+
+{
+    \begin{center}
+        \raisebox{-1ex}{\includegraphics[scale=1.5]{TU_Chemnitz_positiv_gruen.pdf}}\\
+    \end{center}
+    \vspace{0.5cm}
+}
+
+\begin{center}
+
+\LARGE{\textbf{Abschlussbericht Meilenstein 2}}\\
+\vspace{1cm}
+
+
+\Large{\textbf{Softwaretechnikpraktikum - Abschlussbericht}}\\ 
+\vspace{1cm}
+
+Fakultät für Informatik\\
+Professur Softwaretechnik
+\end{center}
+\vspace{3cm}
+Eingereicht von: Gruppe 2 (Lisa Neuhaus, Yun Dai, Haowei Li, Linus Thriemer, Leon Rollenhagen, Fudong Liang, Hamza Adnan Daoud Barakat)\\
+Einreichungsdatum: 11.12.2022\\
+\vspace{0.3cm}\\
+Betreuerin: Prof. Dr. Janet Siegmund \\
+Betreuer: Dominik Gorgosch
+
+\end{titlepage}
+
+\chapter{Bericht}
+\section{Was ist passiert}
+Unser erstes Treffen für den zweiten Meilenstein fand am Montag, dem 21.11., statt. In diesem Treffen besprachen wir zunächst die neue Aufgabenstellung und legten fest, dass jeder bis zum nächsten regulären Treffen am Freitag anfangen sollte einige CRC-Karten zu den in Meilenstein 1 aufgeteilten Bereichen zu schreiben. Außerdem stellte Linus die Entwicklungsumgebung und das Framework vor welches er bis dahin vorbereitet hatte. Da viele Inhalte dieses Templates für die meisten Gruppenmitglieder noch neu waren beschlossen wir uns am nächsten Tag nochmal zu treffen um die Entwicklungsumgebung bei allen lauffähig zu machen. Das gelang jedoch am Dienstag nur bei zwei Gruppenmitgliedern. Am Freitag mussten wir feststellen, dass noch niemand irgendwelche CRC-Karten erstellt hatte, da es noch Probleme gab beim Verständnis der Karten und der Findung der Klassen, die wir für unser Projekt benötigen. Deshalb nutzten wir dann die Zeit, um nochmal Fragen zu klären und die Entwicklungsumgebung bei den noch fehlenden Gruppenmitgliedern zum Laufen zu bringen. Am nachfolgenden Montag, dem 28.11., trafen wir uns erneut und diesmal hatten auch alle anwesenden Gruppenmitglieder ein paar Karten vorbereitet. Als wir uns über unsere erstellten Karten austauschten, stellten wir fest, dass die Ergebnisse von Linus die am besten strukturierten waren und entschlossen uns daher auf Basis dessen gemeinsam weiterzuarbeiten. Die CRC-Karten wurden dann am Freitag gemeinsam fertiggestellt. Da wir mit der Aufgabe für den Meilenstein bereits fertig waren, entschieden wir außerdem, das nächste Montagstreffen nicht wie üblich in Präsenz stattfinden zu lassen, sondern online per Discord. Da Discord sich als Plattform in diesem Meeting gut bewährte, entschieden wir auch das nächste Treffen wieder online durchzuführen. Bei beiden Online-Meetings beschäftigten wir uns damit Probleme und Fragen bezüglich der Implementierung des Projekts zu klären.
+\section{Herausforderungen und Probleme}
+Das größte Problem beim Aufsetzen der Entwicklungsumgebung waren die verschiedenen Betriebssysteme (Windows, Linux und MacOS) und Hardwarevoraussetzungen, die die einzelnen Gruppenmitglieder zur Verfügung haben. Dadurch kostete es einige Zeit und Mühe bei allen alles lauffähig zu machen. 
+Ein weiteres Problem ist die fehlende Erfahrung der meisten Gruppenmitglieder beim Entwickeln umfangreicherer Projekte. Besonders die Studenten, die Biomedizinische Technik studieren, haben größere Probleme mit der Implementierung des Projekts, da sie durch ihr bisheriges Studium nur wenig Programmiererfahrung sammeln konnten. Aber auch bei den restlichen Gruppenmitgliedern, mit Ausnahme von Linus, sind eher geringe Programmierkenntnisse vorhanden. Daraus resultiert auch, dass im Umgang mit Klassen wenig Erfahrung vorhanden ist, weshalb auch das Schreiben der CRC-Karten für die meisten eine Herausforderung war.
+\section{Was lief gut}
+Das Erarbeiten der CRC-Karten bereitete einzeln zwar zunächst Schwierigkeiten, funktionierte dann gemeinsam in der Gruppe aber sehr gut. Auch das Einrichten der Entwicklungsumgebung hat, nach ersten Startschwierigkeiten, gut geklappt. Mit der Implementierung haben wir zwar erst spät begonnen, jedoch sind  wir in der kurzen Zeit gut vorangekommen.
+\section{Erkenntnisse}
+Uns ist aufgefallen, dass es uns deutlich leichter fällt, Klassen zu finden und damit CRC-Karten zu schreiben, wenn alle Gruppenmitglieder die Architektur des Projekts bereits gut verstanden haben. Im Laufe der Bearbeitung des Meilensteins ist vielen Gruppenmitgliedern die Gesamtstruktur des Projekts allerdings deutlich klarer geworden, was auch dazu betragen sollte, dass die Implementierung gut gelingt. Allerdings sollten wir in Zukunft häufiger auch individuelle Treffen nutzen, um schneller Probleme klären zu können. Außerdem hat sich gezeigt, dass Onlinemeetings eine nützliche Alternative zu Meetings in Präsenz darstellen, insbesondere wenn es vorrangig um organisatorische Inhalte geht.
+\section{Wer hat was bearbeitet:}
+\begin{itemize}
+\item {Fudong, Hamza, Leon, Lisa, Yun: einige CRC-Karten erstellt, die später verworfen wurden}
+\item {als Gruppe (Fudong, Hamza, Leon, Linus, Lisa) CRC-Karten gemeinsam fertiggestellt auf Basis der von Linus erarbeiteten Karten}
+\item {Linus: Entwicklungsumgebung und Framework aufgesetzt}
+\item {Lisa: Template für CRC-Karten erstellt}
+\item {Haowei: hat nichts bearbeitet und war bei den Meetings nicht anwesend}
+\end{itemize}
+
+\chapter{CRC-Karten}
+\begin{crc}
+{\class Registration Service}
+{\resp \point{legt Nutzer an}}
+{\collab \point{User Data Object}
+\collab \point{Database Abstraction}}
+\end{crc}
+
+\begin{crc}
+{\class Security Config}
+{\resp \point{reguliert Zugriff auf Endpunkte}}
+{\collab \point{User Data Object}
+\collab \point{Database Abstraction}}
+\end{crc}
+
+\begin{crc}
+{\class Task Creation Service}
+{\resp \point{legt neue Aufgaben an}}
+{\collab \point{Task Data Object}
+\collab \point{Sample Solution Data Object}
+\collab \point{Database Abstraction}}
+\end{crc}
+
+\begin{crc}
+{\class User Manipulation Service}
+{\resp \point{legt Nutzer an}
+\resp \point{löscht Nutzer}}
+{\collab \point{Database Abstraction}
+\collab \point{User Data Object}}
+\end{crc}
+
+\begin{crc}
+{\class Solution Submit Service}
+{\resp \point{nimmt abgegebene Lösung an}
+\resp \point{gibt Evaluation zurück}}
+{\collab \point{Solution Save Service}
+\collab \point{Solution Evaluation Service}}
+\end{crc}
+
+\begin{crc}
+{\class Solution Save Service}
+{\resp \point{speichert Lösung}}
+{\collab \point{Database Abstraction}
+\collab \point{Submitted Solution}}
+\end{crc}
+
+\begin{crc}
+{\class Submitted Solution}
+{\resp \point{hält Informationen über die Bearbeitungsmetriken und abgegebene Lösung}}
+{\collab \point{Evaluation}
+\collab \point{User Data Object}}
+\end{crc}
+
+\begin{crc}
+{\class Solution Evaluation Service}
+{\resp \point{wertet die Abgabe aus}}
+{\collab \point{Submitted Solution}
+\collab \point{Evaluation}}
+\end{crc}
+
+\begin{crc}
+{\class User Data Object}
+{\resp \point{hält Login-Infos}
+\resp \point{besitzt ID um Abgaben Nutzern zuzuordnen}}
+{\collab }%\point{collaboration1}}
+\end{crc}
+
+\begin{crc}
+{\class Database Abstraction}
+{\resp \point{stellt die benötigten Datenbankenfunktionalitäten bereit}
+\resp \point{abstrahiert die Datenbank für leichte Austauschbarkeit}}
+{\collab}% \point{collaboration1}}
+\end{crc}
+
+\begin{crc}
+{\class Sample Solution}
+{\resp \point{stellt Evaluationsinformationen bereit}}
+{\collab}% \point{collaboration1}}
+\end{crc}
+
+\begin{crc}
+{\class Task Data Object}
+{\resp \point{hält die Aufgabenstellung}}
+{\collab}% \point{collaboration1}}
+\end{crc}
+
+%\begin{crc}
+%{\class class}
+%{\resp \point{responsibility1}}
+%{\collab \point{collaboration1}}
+%\end{crc}
+
+\end{document}
