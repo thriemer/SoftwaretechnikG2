@@ -1,0 +1,92 @@
+\begin{crc}
+{\class Registration Service}
+{\resp \point{legt Nutzer an}}
+{\collab \point{User Data Object}
+\collab \point{Database Abstraction}}
+\end{crc}
+
+\begin{crc}
+{\class Security Config}
+{\resp \point{reguliert Zugriff auf Endpunkte}}
+{\collab \point{User Data Object}
+\collab \point{Database Abstraction}}
+\end{crc}
+
+\begin{crc}
+{\class Task Creation Service}
+{\resp \point{legt neue Aufgaben an}}
+{\collab \point{Task Data Object}
+\collab \point{Sample Solution Data Object}
+\collab \point{Database Abstraction}}
+\end{crc}
+
+\begin{crc}
+{\class User Manipulation Service}
+{\resp \point{legt Nutzer an}
+\resp \point{löscht Nutzer}}
+{\collab \point{Database Abstraction}
+\collab \point{User Data Object}}
+\end{crc}
+
+\begin{crc}
+{\class Solution Submit Service}
+{\resp \point{nimmt abgegebene Lösung an}
+\resp \point{gibt Evaluation zurück}}
+{\collab \point{Solution Save Service}
+\collab \point{Solution Evaluation Service}}
+\end{crc}
+
+\begin{crc}
+{\class Solution Save Service}
+{\resp \point{speichert Lösung}}
+{\collab \point{Database Abstraction}
+\collab \point{Submitted Solution}}
+\end{crc}
+
+\begin{crc}
+{\class Submitted Solution}
+{\resp \point{hält Informationen über die Bearbeitungsmetriken und abgegebene Lösung}}
+{\collab \point{Evaluation}
+\collab \point{User Data Object}}
+\end{crc}
+
+\begin{crc}
+{\class Solution Evaluation Service}
+{\resp \point{wertet die Abgabe aus}}
+{\collab \point{Submitted Solution}
+\collab \point{Evaluation}}
+\end{crc}
+
+\begin{crc}
+{\class User Data Object}
+{\resp \point{hält Login-Infos}
+\resp \point{besitzt ID um Abgaben Nutzern zuzuordnen}}
+{\collab }%\point{collaboration1}}
+\end{crc}
+
+\begin{crc}
+{\class Database Abstraction}
+{\resp \point{stellt die benötigten Datenbankenfunktionalitäten bereit}
+\resp \point{abstrahiert die Datenbank für leichte Austauschbarkeit}}
+{\collab}% \point{collaboration1}}
+\end{crc}
+
+\begin{crc}
+{\class Sample Solution}
+{\resp \point{stellt Evaluationsinformationen bereit}}
+{\collab}% \point{collaboration1}}
+\end{crc}
+
+\begin{crc}
+{\class Task Data Object}
+{\resp \point{hält die Aufgabenstellung}}
+{\collab}% \point{collaboration1}}
+\end{crc}
+
+%\begin{crc}
+%{\class class}
+%{\resp \point{responsibility1}}
+%{\collab \point{collaboration1}}
+%\end{crc}
+
+\end{document}

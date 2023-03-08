@@ -1,15 +1,21 @@
 
 # How to
+## Necessary programs
+- Java 17
+- gradle
+- docker and docker-compose
+- we recommend IntelliJ
 ## Run the application
 - start the database docker by running `docker-compose up&`
 - start the application or run the gradle task `bootRun`
+- open the coder in Browser [localhost:8080](localhost:8080)
 - the default user has username `user` and password `password`
 - the default admin has username `admin` and password `password`  
   The default user and admin only work on local machine
 ## Cleanup docker and the database
 - To stop the database: `docker-compose down`
-- To delete all volumes (the data in the database): `docker volume rm $(docker volume ls -q)`
-- To delete all images/containers/networks/etc: `docker system prune -a`
+- To delete ALL volumes from ALL docker containers (the data in the database): `docker volume rm $(docker volume ls -q)`
+- To delete all images/containers/networks/etc (system wide!): `docker system prune -a`
 # Technology stack
 ## Architecture
 We decided to use a classical monolith since we are a very inexperienced team. However we are using the hexagonal architecture to separate responsibilities which makes it easy to split up the application into microservices later. A fitting cut could be the user facing application and the administration part.
